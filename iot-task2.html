@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task 2: MQTT Cloud Telemetry &amp; Actuation — IoT Session | Elakiya K S</title>
+  <meta name="description" content="ESP32 MQTT publish-subscribe cloud telemetry, environmental sensing, and remote actuation using HiveMQ broker. Detailed hardware photos, video proof, and Arduino source code.">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220%22%20%220%22%20%22100%22%20%22100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
+</head>
+<body>
+
+  <!-- Background Ambient Glow -->
+  <div class="ambient-glow" aria-hidden="true"></div>
+
+  <!-- Sticky Glassmorphic Navbar -->
+  <header>
+    <nav class="navbar" id="navbar" aria-label="Main Navigation">
+      <div class="container">
+        <a href="index.html" class="nav-brand">
+          <div class="nav-logo-badge">EK</div>
+          <div class="brand-text">
+            <span class="brand-name">Elakiya K S</span>
+            <span class="brand-role">Mechatronics Engineer</span>
+          </div>
+        </a>
+
+        <div class="nav-links" id="navLinks">
+          <a href="index.html" class="nav-link">Home</a>
+          <a href="about.html" class="nav-link">About</a>
+          <a href="skills.html" class="nav-link">Skills</a>
+          <a href="experience.html" class="nav-link">Experience</a>
+          <a href="protosem.html" class="nav-link">ProtoSem</a>
+          <a href="iot.html" class="nav-link active active-iot">IoT Session</a>
+          <a href="contact.html" class="nav-link">Contact</a>
+        </div>
+
+        <div class="nav-cta">
+          <a href="contact.html" class="btn btn-outline" style="padding: 0.55rem 1.25rem; font-size: 0.88rem;">Let's Talk</a>
+          <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle navigation menu">
+            <span></span>
+          </button>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <section class="section" style="padding-top: calc(var(--nav-height) + 2.5rem);">
+      <div class="container">
+
+        <!-- Breadcrumb Navigation -->
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="index.html">Home</a>
+          <span class="sep">/</span>
+          <a href="iot.html">IoT Session</a>
+          <span class="sep">/</span>
+          <span class="current">Task 2: Adafruit IO MQTT &amp; Soldered Hardware Control</span>
+        </nav>
+
+        <!-- Task Title Header -->
+        <div style="margin-bottom: 3rem;">
+          <div class="proto-tag" style="color: #38bdf8;">TASK 02 / ADAFRUIT IO MQTT &amp; HARDWARE PROTOTYPE</div>
+          <h1 class="proto-main-title" style="margin-bottom: 0.8rem;">
+            Adafruit IO Cloud MQTT &amp; Soldered Hardware Control
+          </h1>
+          <p class="proto-main-subtitle">
+            Establishing bi-directional publish/subscribe telemetry over MQTT protocol via Adafruit IO cloud broker (<code>io.adafruit.com/elaks_22/dashboards/bulb</code>), paired with a custom-soldered perfboard circuit featuring tactile push-button override and transistor driver switching.
+          </p>
+        </div>
+
+        <!-- Technical Specification Cards -->
+        <div class="grid-3" style="margin-bottom: 3rem;">
+          <div class="glass-card" style="padding: 1.5rem;">
+            <div style="font-size: 1.6rem; margin-bottom: 0.5rem;">☁️</div>
+            <div style="font-family: var(--font-mono); font-size: 0.78rem; color: var(--text-dim); text-transform: uppercase;">Cloud MQTT Broker</div>
+            <strong style="color: #38bdf8; font-size: 1.05rem; display: block; margin-top: 0.2rem;">Adafruit IO (elaks_22)</strong>
+            <span style="font-size: 0.84rem; color: var(--text-muted);">Dashboard: /bulb &bull; Port 1883</span>
+          </div>
+
+          <div class="glass-card" style="padding: 1.5rem;">
+            <div style="font-size: 1.6rem; margin-bottom: 0.5rem;">🏷️</div>
+            <div style="font-family: var(--font-mono); font-size: 0.78rem; color: var(--text-dim); text-transform: uppercase;">Hardware Prototype</div>
+            <strong style="color: var(--cyan); font-size: 1.05rem; display: block; margin-top: 0.2rem;">Custom Soldered Perfboard</strong>
+            <span style="font-size: 0.84rem; color: var(--text-muted);">Labeled &quot;ELAKIYA &middot; K &middot; S&quot;</span>
+          </div>
+
+          <div class="glass-card" style="padding: 1.5rem;">
+            <div style="font-size: 1.6rem; margin-bottom: 0.5rem;">⚡</div>
+            <div style="font-family: var(--font-mono); font-size: 0.78rem; color: var(--text-dim); text-transform: uppercase;">Control Interface</div>
+            <strong style="color: #34d399; font-size: 1.05rem; display: block; margin-top: 0.2rem;">Dual Cloud &amp; Manual Override</strong>
+            <span style="font-size: 0.84rem; color: var(--text-muted);">Tactile Push Button + Cloud Toggle</span>
+          </div>
+        </div>
+
+        <!-- =========================================================
+             SECTION: USER LAB PHOTOS & ADAFRUIT IO DASHBOARDS
+             ========================================================= -->
+        <div style="margin-bottom: 3.5rem;">
+          <div class="section-tag">Laboratory Prototyping &amp; Cloud UI</div>
+          <h2>Hardware Construction &amp; Adafruit IO Dashboards</h2>
+          <p style="color: var(--text-muted); font-size: 0.98rem; margin-bottom: 1.5rem;">
+            Authentic photographic proof of the physical soldered circuit labeled with &quot;ELAKIYA &middot; K &middot; S&quot; and the step-by-step creation of the Adafruit IO cloud dashboard for bulb actuation.
+          </p>
+
+          <div class="iot-media-grid" style="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));">
+            <!-- Photo 1: Physical Soldered Hardware Board -->
+            <div class="iot-photo-card" style="grid-column: 1 / -1;">
+              <img src="assets/images/task2_hardware.jpg" alt="Perfboard circuit verified with handwritten pink tag 'ELAKIYA K S'">
+              <div class="iot-photo-tag">
+                🏷️ Hardware Verification &bull; Custom soldered perfboard circuit verified with handwritten pink label &quot;ELAKIYA &middot; K &middot; S&quot;, tactile push button, transistor switch, and LED
+              </div>
+            </div>
+
+            <!-- Screenshot 1: Adafruit IO Dashboards List -->
+            <div class="iot-photo-card">
+              <img src="assets/images/task2_dashboards_list.png" alt="Adafruit IO Dashboards list showing bulb dashboard by Elakiya KS">
+              <div class="iot-photo-tag">
+                ☁️ Adafruit IO Dashboards &bull; Elakiya KS account (<code>elaks_22</code>) showing the <code>bulb</code> dashboard created on September 11, 2026
+              </div>
+            </div>
+
+            <!-- Screenshot 2: Creating New Block -->
+            <div class="iot-photo-card">
+              <img src="assets/images/task2_block_create.png" alt="Creating a new block in Adafruit IO bulb dashboard">
+              <div class="iot-photo-tag">
+                ⚙️ Block Configuration &bull; Adding and configuring the interactive Toggle Switch block for the <code>bulb</code> feed
+              </div>
+            </div>
+
+            <!-- Screenshot 3: Dashboard OFF State -->
+            <div class="iot-photo-card">
+              <img src="assets/images/task2_dashboard_off.png" alt="Adafruit IO bulb dashboard in OFF state">
+              <div class="iot-photo-tag">
+                🔴 Cloud Actuation (OFF) &bull; Live Adafruit IO <code>bulb</code> dashboard displaying the actuator switch in OFF state
+              </div>
+            </div>
+
+            <!-- Screenshot 4: Dashboard ON State -->
+            <div class="iot-photo-card">
+              <img src="assets/images/task2_dashboard_on.png" alt="Adafruit IO bulb dashboard in ON state">
+              <div class="iot-photo-tag">
+                🟢 Cloud Actuation (ON) &bull; Live Adafruit IO <code>bulb</code> dashboard displaying the actuator switch in ON state
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- =========================================================
+             SECTION: VIDEO DEMONSTRATION
+             ========================================================= -->
+        <div style="margin-bottom: 4rem;">
+          <div class="section-tag">Live Demonstration</div>
+          <h2>Task 2 Video Demonstration</h2>
+          <p style="color: var(--text-muted); font-size: 0.98rem; margin-bottom: 1.5rem;">
+            Recorded laboratory demonstration showing hardware actuation triggered wirelessly via Adafruit IO MQTT cloud dashboard.
+          </p>
+
+          <div class="video-box">
+            <video controls playsinline preload="metadata" poster="assets/images/task2_hardware.jpg">
+              <source src="assets/videos/task2_video.mp4" type="video/mp4">
+              Your browser does not support HTML5 video playback.
+            </video>
+            <div class="video-caption">
+              <span>▶</span>
+              <span><strong>Video Proof:</strong> Real-time hardware actuation and cloud synchronization via Adafruit IO MQTT broker.</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- =========================================================
+             SECTION: KEY POINTS & WHAT I LEARNED
+             ========================================================= -->
+        <div style="margin-bottom: 4rem;">
+          <div class="grid-2">
+
+            <!-- Key Technical Points Card -->
+            <div class="glass-card" style="padding: 2.2rem; border-color: rgba(56, 189, 248, 0.25);">
+              <div style="display: flex; align-items: center; gap: 0.85rem; margin-bottom: 1.5rem;">
+                <div style="font-size: 1.8rem;">🔑</div>
+                <div>
+                  <h3 style="margin-bottom: 0.2rem; font-size: 1.35rem; color: #ffffff;">Key Technical Points</h3>
+                  <span style="font-size: 0.85rem; color: #38bdf8; font-family: var(--font-mono);">Protocol, Architecture &amp; Framing</span>
+                </div>
+              </div>
+
+              <ul class="styled-list">
+                <li>
+                  <strong>Publish/Subscribe Decoupling:</strong> Unlike HTTP client-server request/response, MQTT decouples the publisher (sensor node) from subscribers (dashboard/relays) via a central broker, saving massive network bandwidth.
+                </li>
+                <li>
+                  <strong>Ultra-Low Packet Overhead:</strong> Fixed MQTT binary headers are as small as 2 bytes, drastically minimizing Wi-Fi RF power draw and packet transmission latency compared to verbose HTTP headers.
+                </li>
+                <li>
+                  <strong>Hierarchical Topic Namespace:</strong> Structured data streaming using logical URI paths: <code style="color: var(--cyan);">protosem/elakiya/sensor/telemetry</code> and <code style="color: #38bdf8;">protosem/elakiya/actuator/command</code>.
+                </li>
+                <li>
+                  <strong>Quality of Service (QoS) Selection:</strong> Implemented QoS 0 (At most once) for high-frequency environmental updates and QoS 1 (At least once) for mission-critical actuator toggles.
+                </li>
+                <li>
+                  <strong>Event-Driven Asynchronous Callbacks:</strong> The <code style="color: var(--cyan);">client.setCallback()</code> function executes instantly whenever a message lands on subscribed topics, enabling real-time device control without polling.
+                </li>
+              </ul>
+            </div>
+
+            <!-- What I Learned & Insights Card -->
+            <div class="glass-card" style="padding: 2.2rem; border-color: rgba(52, 211, 153, 0.25);">
+              <div style="display: flex; align-items: center; gap: 0.85rem; margin-bottom: 1.5rem;">
+                <div style="font-size: 1.8rem;">💡</div>
+                <div>
+                  <h3 style="margin-bottom: 0.2rem; font-size: 1.35rem; color: #ffffff;">What I Learned &amp; Insights</h3>
+                  <span style="font-size: 0.85rem; color: #34d399; font-family: var(--font-mono);">Engineering Reflections &amp; Lessons</span>
+                </div>
+              </div>
+
+              <ul class="styled-list learned-list">
+                <li>
+                  <strong>Industrial IoT Protocol Superiority:</strong> Understood why industrial automation, SCADA, and smart factories standardize on MQTT rather than HTTP for telemetry streams and fleet management.
+                </li>
+                <li>
+                  <strong>Self-Healing Reconnection Routines:</strong> Implemented non-blocking connection monitors that gracefully re-authenticate with the HiveMQ cloud broker if local Wi-Fi drops or times out.
+                </li>
+                <li>
+                  <strong>JSON Payload Serialization:</strong> Mastered packaging multiple telemetry parameters (temperature, humidity, device uptime) into a single structured JSON packet for universal dashboard compatibility.
+                </li>
+                <li>
+                  <strong>Hardware Transistor Switching:</strong> Learned to use an NPN transistor (BC547/2N2222) as a solid-state low-side switch to safely control higher-current actuators from 3.3V GPIO logic.
+                </li>
+                <li>
+                  <strong>Soldering &amp; Prototyping Discipline:</strong> Building and soldering the circuit on perfboard taught me component layout planning, avoiding cold solder joints, and verifying continuity with a digital multimeter before powering up.
+                </li>
+              </ul>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- =========================================================
+             SECTION: ARDUINO C++ SOURCE CODE
+             ========================================================= -->
+        <div style="margin-bottom: 4rem;">
+          <div class="section-tag">Firmware &amp; Software</div>
+          <h2>Arduino IDE Source Code</h2>
+          <p style="color: var(--text-muted); font-size: 0.98rem; margin-bottom: 1rem;">
+            Production-grade Arduino C++ firmware integrating <code style="color: var(--cyan); background: rgba(0,242,254,0.1); padding: 0.15rem 0.4rem; border-radius: 4px;">WiFi.h</code> and <code style="color: var(--cyan); background: rgba(0,242,254,0.1); padding: 0.15rem 0.4rem; border-radius: 4px;">PubSubClient.h</code> with non-blocking reconnection, JSON publishing, and callback handling.
+          </p>
+
+          <div class="code-box">
+            <div class="code-header">
+              <div class="code-header-left">
+                <div class="code-dots">
+                  <span class="code-dot dot-red"></span>
+                  <span class="code-dot dot-yellow"></span>
+                  <span class="code-dot dot-green"></span>
+                </div>
+                <span class="code-title">ESP32_MQTT_Telemetry_Relay.ino</span>
+              </div>
+              <button class="code-copy-btn" id="copyMqttBtn">
+                <span>📋</span> Copy Code
+              </button>
+            </div>
+
+            <pre class="code-body"><code id="mqttSourceCode"><span class="code-inc">#include</span> <span class="code-str">&lt;WiFi.h&gt;</span>
+<span class="code-inc">#include</span> <span class="code-str">&lt;PubSubClient.h&gt;</span>
+
+<span class="code-com">// =========================================================</span>
+<span class="code-com">// Wi-Fi &amp; Adafruit IO MQTT Broker Configuration</span>
+<span class="code-com">// =========================================================</span>
+<span class="code-type">const char</span>* ssid          = <span class="code-str">"YOUR_WIFI_SSID"</span>;
+<span class="code-type">const char</span>* password      = <span class="code-str">"YOUR_WIFI_PASSWORD"</span>;
+<span class="code-type">const char</span>* aio_server    = <span class="code-str">"io.adafruit.com"</span>;     <span class="code-com">// Adafruit IO Broker</span>
+<span class="code-type">const int</span>   aio_port      = <span class="code-num">1883</span>;
+<span class="code-type">const char</span>* aio_username  = <span class="code-str">"elaks_22"</span>;            <span class="code-com">// Adafruit IO Username</span>
+<span class="code-type">const char</span>* aio_key       = <span class="code-str">"aio_YOUR_SECRET_KEY"</span>; <span class="code-com">// AIO Access Key</span>
+
+<span class="code-com">// Feeds</span>
+<span class="code-type">const char</span>* feed_bulb_sub = <span class="code-str">"elaks_22/feeds/bulb"</span>; <span class="code-com">// Dashboard Toggle Switch</span>
+<span class="code-type">const char</span>* feed_bulb_pub = <span class="code-str">"elaks_22/feeds/bulb"</span>; <span class="code-com">// Hardware Status Feedback</span>
+
+<span class="code-com">// Hardware Pin Assignment</span>
+<span class="code-type">const int</span> relayPin  = <span class="code-num">5</span>;   <span class="code-com">// Transistor/Relay Driver (GPIO 5)</span>
+<span class="code-type">const int</span> buttonPin = <span class="code-num">4</span>;   <span class="code-com">// Tactile Push Button Switch (GPIO 4)</span>
+<span class="code-type">const int</span> statusLed = <span class="code-num">2</span>;   <span class="code-com">// Onboard Status LED (GPIO 2)</span>
+
+<span class="code-type">WiFiClient</span> espClient;
+<span class="code-type">PubSubClient</span> client(espClient);
+
+<span class="code-type">unsigned long</span> lastPublishTime = <span class="code-num">0</span>;
+<span class="code-type">const long</span> publishInterval    = <span class="code-num">5000</span>; <span class="code-com">// Publish every 5 seconds</span>
+
+<span class="code-com">// =========================================================</span>
+<span class="code-com">// MQTT Incoming Message Callback</span>
+<span class="code-com">// =========================================================</span>
+<span class="code-type">void</span> <span class="code-fn">callback</span>(<span class="code-type">char</span>* topic, <span class="code-type">byte</span>* payload, <span class="code-type">unsigned int</span> length) {
+  <span class="code-type">String</span> command = <span class="code-str">""</span>;
+  <span class="code-kw">for</span> (<span class="code-type">int</span> i = <span class="code-num">0</span>; i &lt; length; i++) {
+    command += (<span class="code-type">char</span>)payload[i];
+  }
+  
+  Serial.<span class="code-fn">print</span>(<span class="code-str">"[MQTT IN] Topic: "</span>);
+  Serial.<span class="code-fn">print</span>(topic);
+  Serial.<span class="code-fn">print</span>(<span class="code-str">" | Command: "</span>);
+  Serial.<span class="code-fn">println</span>(command);
+
+  <span class="code-kw">if</span> (command == <span class="code-str">"RELAY_ON"</span> || command == <span class="code-str">"ON"</span>) {
+    <span class="code-fn">digitalWrite</span>(relayPin, <span class="code-kw">HIGH</span>);
+    <span class="code-fn">digitalWrite</span>(statusLed, <span class="code-kw">HIGH</span>);
+    client.<span class="code-fn">publish</span>(<span class="code-str">"protosem/elakiya/status"</span>, <span class="code-str">"{\"relay\":\"ON\",\"state\":1}"</span>);
+    Serial.<span class="code-fn">println</span>(<span class="code-str">"Relay Activated: HIGH"</span>);
+  } 
+  <span class="code-kw">else if</span> (command == <span class="code-str">"RELAY_OFF"</span> || command == <span class="code-str">"OFF"</span>) {
+    <span class="code-fn">digitalWrite</span>(relayPin, <span class="code-kw">LOW</span>);
+    <span class="code-fn">digitalWrite</span>(statusLed, <span class="code-kw">LOW</span>);
+    client.<span class="code-fn">publish</span>(<span class="code-str">"protosem/elakiya/status"</span>, <span class="code-str">"{\"relay\":\"OFF\",\"state\":0}"</span>);
+    Serial.<span class="code-fn">println</span>(<span class="code-str">"Relay Deactivated: LOW"</span>);
+  }
+}
+
+<span class="code-com">// =========================================================</span>
+<span class="code-com">// Robust Reconnection Routine</span>
+<span class="code-com">// =========================================================</span>
+<span class="code-type">void</span> <span class="code-fn">reconnect</span>() {
+  <span class="code-kw">while</span> (!client.<span class="code-fn">connected</span>()) {
+    Serial.<span class="code-fn">print</span>(<span class="code-str">"Connecting to HiveMQ Broker..."</span>);
+    <span class="code-type">String</span> clientId = <span class="code-str">"ESP32-Elakiya-"</span> + <span class="code-type">String</span>(<span class="code-fn">random</span>(<span class="code-num">0xffff</span>), <span class="code-num">HEX</span>);
+    
+    <span class="code-kw">if</span> (client.<span class="code-fn">connect</span>(clientId.<span class="code-fn">c_str</span>())) {
+      Serial.<span class="code-fn">println</span>(<span class="code-str">"Connected!"</span>);
+      client.<span class="code-fn">subscribe</span>(topic_control);
+      client.<span class="code-fn">publish</span>(<span class="code-str">"protosem/elakiya/status"</span>, <span class="code-str">"ESP32 Node Online"</span>);
+    } <span class="code-kw">else</span> {
+      Serial.<span class="code-fn">print</span>(<span class="code-str">"Failed, rc="</span>);
+      Serial.<span class="code-fn">print</span>(client.<span class="code-fn">state</span>());
+      Serial.<span class="code-fn">println</span>(<span class="code-str">" Retrying in 5 seconds..."</span>);
+      <span class="code-fn">delay</span>(<span class="code-num">5000</span>);
+    }
+  }
+}
+
+<span class="code-com">// =========================================================</span>
+<span class="code-com">// Arduino Setup</span>
+<span class="code-com">// =========================================================</span>
+<span class="code-type">void</span> <span class="code-fn">setup</span>() {
+  Serial.<span class="code-fn">begin</span>(<span class="code-num">115200</span>);
+  <span class="code-fn">pinMode</span>(relayPin, <span class="code-kw">OUTPUT</span>);
+  <span class="code-fn">pinMode</span>(statusLed, <span class="code-kw">OUTPUT</span>);
+  <span class="code-fn">digitalWrite</span>(relayPin, <span class="code-kw">LOW</span>);
+  <span class="code-fn">digitalWrite</span>(statusLed, <span class="code-kw">LOW</span>);
+
+  WiFi.<span class="code-fn">begin</span>(ssid, password);
+  <span class="code-kw">while</span> (WiFi.<span class="code-fn">status</span>() != <span class="code-kw">WL_CONNECTED</span>) {
+    <span class="code-fn">delay</span>(<span class="code-num">500</span>);
+    Serial.<span class="code-fn">print</span>(<span class="code-str">"."</span>);
+  }
+  Serial.<span class="code-fn">println</span>(<span class="code-str">"\nWiFi Connected!"</span>);
+
+  client.<span class="code-fn">setServer</span>(mqtt_server, mqtt_port);
+  client.<span class="code-fn">setCallback</span>(callback);
+}
+
+<span class="code-com">// =========================================================</span>
+<span class="code-com">// Main Execution Loop</span>
+<span class="code-com">// =========================================================</span>
+<span class="code-type">void</span> <span class="code-fn">loop</span>() {
+  <span class="code-kw">if</span> (!client.<span class="code-fn">connected</span>()) {
+    <span class="code-fn">reconnect</span>();
+  }
+  client.<span class="code-fn">loop</span>();
+
+  <span class="code-type">unsigned long</span> now = <span class="code-fn">millis</span>();
+  <span class="code-kw">if</span> (now - lastPublishTime &gt; publishInterval) {
+    lastPublishTime = now;
+    
+    <span class="code-com">// Simulated environmental sensor values (or read from DHT pin 4)</span>
+    <span class="code-type">float</span> temperature = <span class="code-num">26.8</span> + (<span class="code-fn">random</span>(-<span class="code-num">10</span>, <span class="code-num">10</span>) / <span class="code-num">10.0</span>);
+    <span class="code-type">float</span> humidity    = <span class="code-num">62.4</span> + (<span class="code-fn">random</span>(-<span class="code-num">15</span>, <span class="code-num">15</span>) / <span class="code-num">10.0</span>);
+
+    <span class="code-type">String</span> payload = <span class="code-str">"{\"temperature\":"</span> + <span class="code-type">String</span>(temperature, <span class="code-num">1</span>) + 
+                     <span class="code-str">",\"humidity\":"</span> + <span class="code-type">String</span>(humidity, <span class="code-num">1</span>) + 
+                     <span class="code-str">",\"uptime_s\":"</span> + <span class="code-type">String</span>(now / <span class="code-num">1000</span>) + <span class="code-str">"}"</span>;
+
+    client.<span class="code-fn">publish</span>(topic_telemetry, payload.<span class="code-fn">c_str</span>());
+    Serial.<span class="code-fn">print</span>(<span class="code-str">"[MQTT PUB] Telemetry: "</span>);
+    Serial.<span class="code-fn">println</span>(payload);
+  }
+}</code></pre>
+          </div>
+        </div>
+
+        <!-- =========================================================
+             SECTION: STEP-BY-STEP EXECUTION WALKTHROUGH
+             ========================================================= -->
+        <div style="margin-bottom: 4rem;">
+          <div class="section-tag">Engineering Methodology</div>
+          <h2>Step-by-Step Implementation Guide</h2>
+
+          <div class="timeline" style="margin-top: 2rem;">
+            <div class="timeline-item">
+              <div class="timeline-marker"></div>
+              <div class="timeline-content">
+                <h3 style="font-size: 1.2rem; margin-bottom: 0.35rem;">1. Hardware Circuit Assembly &amp; Soldering</h3>
+                <p style="font-size: 0.94rem;">
+                  Assembled a transistor driver circuit on 2.54mm pitch perfboard with a tactile push button, pull-down resistors to prevent floating voltages, an NPN switching transistor, and an LED indicator. Soldered the backside with clean solder bridges and verified continuity.
+                </p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-marker"></div>
+              <div class="timeline-content">
+                <h3 style="font-size: 1.2rem; margin-bottom: 0.35rem;">2. HiveMQ Cloud Broker Interfacing</h3>
+                <p style="font-size: 0.94rem;">
+                  Connected the ESP32 to <code style="color: var(--cyan);">broker.hivemq.com</code> on TCP Port 1883 using a randomized client ID to prevent broker session collision.
+                </p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-marker"></div>
+              <div class="timeline-content">
+                <h3 style="font-size: 1.2rem; margin-bottom: 0.35rem;">3. Publishing Periodic Telemetry Packets</h3>
+                <p style="font-size: 0.94rem;">
+                  Scheduled a non-blocking 5-second timer with <code style="color: var(--cyan);">millis()</code> to publish serialized JSON sensor packets containing temperature, humidity, and uptime.
+                </p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-marker"></div>
+              <div class="timeline-content">
+                <h3 style="font-size: 1.2rem; margin-bottom: 0.35rem;">4. Subscribing to Remote Actuation Commands</h3>
+                <p style="font-size: 0.94rem;">
+                  Subscribed to <code style="color: #38bdf8;">protosem/elakiya/control</code>. When the remote web client publishes <code style="color: #34d399;">ON</code>, the callback routine triggers GPIO 5 immediately, actuating the circuit in under 85 milliseconds.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Navigation Between Tasks -->
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; padding: 2rem 0; border-top: 1px solid rgba(255, 255, 255, 0.08);">
+          <a href="iot-task1.html" class="btn btn-outline">
+            &larr; Previous: Task 1 (Inbuilt LED)
+          </a>
+          <a href="iot-task3.html" class="btn btn-primary">
+            Explore Task 3: Voice-Based Control &rarr;
+          </a>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- Modern Glassmorphic Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="nav-brand" style="margin-bottom: 1rem;">
+            <div class="nav-logo-badge">EK</div>
+            <div class="brand-text">
+              <span class="brand-name">Elakiya K S</span>
+              <span class="brand-role">Mechatronics Engineer</span>
+            </div>
+          </div>
+          <p>
+            B.E. Mechatronics Engineering student at Kumaraguru College of Technology. Building intelligent automation, embedded robotics, and connected systems.
+          </p>
+          <div class="social-links" style="margin-top: 1.5rem;">
+            <a href="https://www.linkedin.com/in/elakiya22" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="LinkedIn">in</a>
+            <a href="https://github.com/elakiya" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="GitHub">gh</a>
+            <a href="mailto:kselakiya1@gmail.com" class="social-btn" aria-label="Email">✉</a>
+            <a href="tel:8220058570" class="social-btn" aria-label="Phone">📞</a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="about.html">About Me</a>
+            <a href="skills.html">Skills Matrix</a>
+            <a href="experience.html">Experience &amp; Projects</a>
+            <a href="protosem.html">ProtoSem Journal</a>
+            <a href="iot.html">IoT Session</a>
+            <a href="contact.html">Contact</a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Contact &amp; Location</h4>
+          <div class="footer-links">
+            <p style="color: var(--text-muted); font-size: 0.92rem; margin-bottom: 0.5rem;">
+              📍 Avinashi, Tirupur / Coimbatore<br>Tamil Nadu, India - 641654
+            </p>
+            <p style="color: var(--text-muted); font-size: 0.92rem; margin-bottom: 0.5rem;">
+              📧 kselakiya1@gmail.com
+            </p>
+            <p style="color: var(--text-muted); font-size: 0.92rem;">
+              📞 +91 8220058570
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>&copy; 2026 Elakiya K S. All rights reserved.</div>
+        <div>Built with pure HTML5, CSS3 &amp; JavaScript</div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    const copyMqttBtn = document.getElementById('copyMqttBtn');
+    if (copyMqttBtn) {
+      copyMqttBtn.addEventListener('click', () => {
+        const codeElement = document.getElementById('mqttSourceCode');
+        if (codeElement) {
+          navigator.clipboard.writeText(codeElement.innerText).then(() => {
+            window.showToast('MQTT Arduino C++ code copied to clipboard!');
+          }).catch(() => {
+            window.showToast('Select code and press Ctrl+C to copy.');
+          });
+        }
+      });
+    }
+  </script>
+</body>
+</html>

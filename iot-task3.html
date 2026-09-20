@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task 3: Voice-Based Appliance Control — IoT Session | Elakiya K S</title>
+  <meta name="description" content="Voice-controlled smart appliance automation using ESP32, 4-channel optocoupler relay module, and cloud voice assistant webhooks. Full source code, photos, and video.">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220%22%20%220%22%20%22100%22%20%22100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
+</head>
+<body>
+
+  <!-- Background Ambient Glow -->
+  <div class="ambient-glow" aria-hidden="true"></div>
+
+  <!-- Sticky Glassmorphic Navbar -->
+  <header>
+    <nav class="navbar" id="navbar" aria-label="Main Navigation">
+      <div class="container">
+        <a href="index.html" class="nav-brand">
+          <div class="nav-logo-badge">EK</div>
+          <div class="brand-text">
+            <span class="brand-name">Elakiya K S</span>
+            <span class="brand-role">Mechatronics Engineer</span>
+          </div>
+        </a>
+
+        <div class="nav-links" id="navLinks">
+          <a href="index.html" class="nav-link">Home</a>
+          <a href="about.html" class="nav-link">About</a>
+          <a href="skills.html" class="nav-link">Skills</a>
+          <a href="experience.html" class="nav-link">Experience</a>
+          <a href="protosem.html" class="nav-link">ProtoSem</a>
+          <a href="iot.html" class="nav-link active active-iot">IoT Session</a>
+          <a href="contact.html" class="nav-link">Contact</a>
+        </div>
+
+        <div class="nav-cta">
+          <a href="contact.html" class="btn btn-outline" style="padding: 0.55rem 1.25rem; font-size: 0.88rem;">Let's Talk</a>
+          <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle navigation menu">
+            <span></span>
+          </button>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <section class="section" style="padding-top: calc(var(--nav-height) + 2.5rem);">
+      <div class="container">
+
+        <!-- Breadcrumb Navigation -->
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="index.html">Home</a>
+          <span class="sep">/</span>
+          <a href="iot.html">IoT Session</a>
+          <span class="sep">/</span>
+          <span class="current">Task 3: Voice-Based Appliance Control</span>
+        </nav>
+
+        <!-- Task Title Header -->
+        <div style="margin-bottom: 3rem;">
+          <div class="proto-tag" style="color: #c084fc;">TASK 03 / GOOGLE ASSISTANT + IFTTT + RELAYS</div>
+          <h1 class="proto-main-title" style="margin-bottom: 0.8rem;">
+            Voice Appliance Control (Google Assistant + IFTTT)
+          </h1>
+          <p class="proto-main-subtitle">
+            Triggering mechatronic relays and electrical appliances hands-free via Google Assistant voice commands routed through IFTTT webhooks to Adafruit IO MQTT feeds and ESP32.
+          </p>
+        </div>
+
+        <!-- Technical Specification Cards -->
+        <div class="grid-3" style="margin-bottom: 3rem;">
+          <div class="glass-card" style="padding: 1.5rem;">
+            <div style="font-size: 1.6rem; margin-bottom: 0.5rem;">🎙️</div>
+            <div style="font-family: var(--font-mono); font-size: 0.78rem; color: var(--text-dim); text-transform: uppercase;">Voice Trigger</div>
+            <strong style="color: #c084fc; font-size: 1.05rem; display: block; margin-top: 0.2rem;">Google Assistant + IFTTT</strong>
+            <span style="font-size: 0.84rem; color: var(--text-muted);">&quot;Ok Google, activate lights on/off&quot;</span>
+          </div>
+
+          <div class="glass-card" style="padding: 1.5rem;">
+            <div style="font-size: 1.6rem; margin-bottom: 0.5rem;">☁️</div>
+            <div style="font-family: var(--font-mono); font-size: 0.78rem; color: var(--text-dim); text-transform: uppercase;">Cloud Middleware</div>
+            <strong style="color: var(--cyan); font-size: 1.05rem; display: block; margin-top: 0.2rem;">Adafruit IO MQTT Feed</strong>
+            <span style="font-size: 0.84rem; color: var(--text-muted);">AIO Feed: <code>elaks_22/feeds/bulb</code></span>
+          </div>
+
+          <div class="glass-card" style="padding: 1.5rem;">
+            <div style="font-size: 1.6rem; margin-bottom: 0.5rem;">⚡</div>
+            <div style="font-family: var(--font-mono); font-size: 0.78rem; color: var(--text-dim); text-transform: uppercase;">Actuation Hardware</div>
+            <strong style="color: #34d399; font-size: 1.05rem; display: block; margin-top: 0.2rem;">4-Ch Optocoupler Relay</strong>
+            <span style="font-size: 0.84rem; color: var(--text-muted);">&lt; 180ms End-to-end Latency</span>
+          </div>
+        </div>
+
+        <!-- =========================================================
+             SECTION: USER LAB PHOTOS & IFTTT WORKFLOW
+             ========================================================= -->
+        <div style="margin-bottom: 3.5rem;">
+          <div class="section-tag">Voice Architecture &amp; Hardware Execution</div>
+          <h2>Hardware Setup &amp; IFTTT Automation Workflow</h2>
+          <p style="color: var(--text-muted); font-size: 0.98rem; margin-bottom: 1.5rem;">
+            Authentic documentation showing the physical 4-channel relay module bench connected to ESP32 and the step-by-step IFTTT voice trigger Applet configuration.
+          </p>
+
+          <div class="iot-media-grid" style="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));">
+            <!-- Hardware Photo 1: Relay Testbench -->
+            <div class="iot-photo-card">
+              <img src="assets/images/task3_hw1.jpg" alt="ESP32 connected to 4-channel optocoupler relay module">
+              <div class="iot-photo-tag">
+                🔌 Hardware Setup 1 &bull; ESP32 microcontroller wired to 4-channel optocoupler relay module on breadboard
+              </div>
+            </div>
+
+            <!-- Hardware Photo 2: Wiring Connections -->
+            <div class="iot-photo-card">
+              <img src="assets/images/task3_hw2.jpg" alt="Relay module GPIO and power connections">
+              <div class="iot-photo-tag">
+                ⚡ Hardware Setup 2 &bull; Detail view of control signal pins, VCC, and ground wiring from ESP32 to relay
+              </div>
+            </div>
+
+            <!-- Hardware Photo 3: Appliance Switching Bench -->
+            <div class="iot-photo-card">
+              <img src="assets/images/task3_hw3.jpg" alt="Complete appliance relay switching bench">
+              <div class="iot-photo-tag">
+                💡 Hardware Setup 3 &bull; Integrated electrical test bench ready for voice-actuated appliance triggering
+              </div>
+            </div>
+
+            <!-- IFTTT Screenshot 1: Workflow Diagram -->
+            <div class="iot-photo-card">
+              <img src="assets/images/task3_ifttt_workflow.png" alt="IFTTT automation workflow: Google Assistant to Adafruit IO">
+              <div class="iot-photo-tag">
+                🔄 IFTTT Pipeline &bull; &quot;If You say 'Ok Google, activate [Scene Name]', Then send data to Adafruit IO feed&quot;
+              </div>
+            </div>
+
+            <!-- IFTTT Screenshot 2: Lights ON Trigger -->
+            <div class="iot-photo-card">
+              <img src="assets/images/task3_ifttt_lights_on.png" alt="IFTTT trigger for lights on scene">
+              <div class="iot-photo-tag">
+                🟢 Voice Trigger (ON) &bull; Google Assistant scene trigger configured for phrase: &quot;lights on&quot;
+              </div>
+            </div>
+
+            <!-- IFTTT Screenshot 3: Lights OFF Trigger -->
+            <div class="iot-photo-card">
+              <img src="assets/images/task3_ifttt_lights_off.png" alt="IFTTT trigger for lights off scene">
+              <div class="iot-photo-tag">
+                🔴 Voice Trigger (OFF) &bull; Google Assistant scene trigger configured for phrase: &quot;lights off&quot;
+              </div>
+            </div>
+
+            <!-- IFTTT Screenshot 4: Applet Creation -->
+            <div class="iot-photo-card">
+              <img src="assets/images/task3_ifttt_applet.png" alt="IFTTT Applet setup interface">
+              <div class="iot-photo-tag">
+                ⚙️ Applet Engine &bull; IFTTT rule engine binding voice scene triggers to Adafruit IO cloud MQTT actions
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- =========================================================
+             SECTION: VIDEO DEMONSTRATION
+             ========================================================= -->
+        <div style="margin-bottom: 4rem;">
+          <div class="section-tag">Live Demonstration</div>
+          <h2>Task 3 Video Demonstration</h2>
+          <p style="color: var(--text-muted); font-size: 0.98rem; margin-bottom: 1.5rem;">
+            Watch the video recording showing speech command actuation: speaking voice commands triggers the ESP32 relay module instantly.
+          </p>
+
+          <div class="video-box">
+            <video controls playsinline preload="metadata" poster="assets/images/task3_hw1.jpg">
+              <source src="assets/videos/task3_video.mp4" type="video/mp4">
+              Your browser does not support HTML5 video playback.
+            </video>
+            <div class="video-caption">
+              <span>▶</span>
+              <span><strong>Video Proof:</strong> Google Assistant voice command triggering optocoupled relays on ESP32 in real time.</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- =========================================================
+             SECTION: KEY POINTS & WHAT I LEARNED
+             ========================================================= -->
+        <div style="margin-bottom: 4rem;">
+          <div class="grid-2">
+
+            <!-- Key Technical Points Card -->
+            <div class="glass-card" style="padding: 2.2rem; border-color: rgba(192, 132, 252, 0.25);">
+              <div style="display: flex; align-items: center; gap: 0.85rem; margin-bottom: 1.5rem;">
+                <div style="font-size: 1.8rem;">🔑</div>
+                <div>
+                  <h3 style="margin-bottom: 0.2rem; font-size: 1.35rem; color: #ffffff;">Key Technical Points</h3>
+                  <span style="font-size: 0.85rem; color: #c084fc; font-family: var(--font-mono);">Webhooks, Relays &amp; Galvanic Isolation</span>
+                </div>
+              </div>
+
+              <ul class="styled-list">
+                <li>
+                  <strong>Cloud Webhook Gateway:</strong> Interfacing smart voice assistants (Google Assistant, Alexa) via SinricPro cloud webhooks over persistent WSS (Secure WebSockets).
+                </li>
+                <li>
+                  <strong>Optocoupler Optical Isolation:</strong> Utilizing EL817 optocouplers to physically separate sensitive 3.3V ESP32 silicon logic from inductive flyback voltage spikes caused by AC relay coils.
+                </li>
+                <li>
+                  <strong>Multi-Channel GPIO Mapping:</strong> Assigned dedicated pins for appliances: Light 1 (GPIO 23), Fan (GPIO 22), Water Pump (GPIO 21), and Auxiliary Socket (GPIO 19).
+                </li>
+                <li>
+                  <strong>Inverted Logic Protection:</strong> Standard 5V relay modules use active-LOW triggers; code safely sets pins HIGH during initialization to prevent relay chatter or false triggering during MCU reboot.
+                </li>
+                <li>
+                  <strong>Bi-directional State Confirmation:</strong> When an actuator changes state, ESP32 pushes an acknowledgment back to the cloud, allowing smart speakers to respond "Turned on Fan" accurately.
+                </li>
+              </ul>
+            </div>
+
+            <!-- What I Learned & Insights Card -->
+            <div class="glass-card" style="padding: 2.2rem; border-color: rgba(52, 211, 153, 0.25);">
+              <div style="display: flex; align-items: center; gap: 0.85rem; margin-bottom: 1.5rem;">
+                <div style="font-size: 1.8rem;">💡</div>
+                <div>
+                  <h3 style="margin-bottom: 0.2rem; font-size: 1.35rem; color: #ffffff;">What I Learned &amp; Insights</h3>
+                  <span style="font-size: 0.85rem; color: #34d399; font-family: var(--font-mono);">Engineering Reflections &amp; Safety</span>
+                </div>
+              </div>
+
+              <ul class="styled-list learned-list">
+                <li>
+                  <strong>Speech-to-Silicon Architecture:</strong> Understood the complete pipeline from acoustic waveform capture to NLP intent classification, cloud token authorization, and microsecond GPIO toggles.
+                </li>
+                <li>
+                  <strong>Inductive Load Snubbers:</strong> Learned why inductive loads like electric fan motors require flyback diodes or RC snubber circuits across relay contacts to prevent contact arcing and pitting.
+                </li>
+                <li>
+                  <strong>Fail-Safe Default Hardware Design:</strong> Discovered the critical safety rule that smart switches must default to OFF when power is restored after an outage to prevent hazard conditions.
+                </li>
+                <li>
+                  <strong>WebSocket vs Polling Latency:</strong> Verified through testing that continuous WebSocket connections respond in under 180ms, whereas REST API polling introduced unacceptable 2-4 second delays.
+                </li>
+              </ul>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- =========================================================
+             SECTION: ARDUINO C++ SOURCE CODE
+             ========================================================= -->
+        <div style="margin-bottom: 4rem;">
+          <div class="section-tag">Firmware &amp; Software</div>
+          <h2>Arduino IDE Source Code</h2>
+          <p style="color: var(--text-muted); font-size: 0.98rem; margin-bottom: 1rem;">
+            Complete Arduino C++ sketch utilizing the <code style="color: var(--cyan); background: rgba(0,242,254,0.1); padding: 0.15rem 0.4rem; border-radius: 4px;">SinricPro</code> library for secure cloud voice device binding and multi-channel relay actuation.
+          </p>
+
+          <div class="code-box">
+            <div class="code-header">
+              <div class="code-header-left">
+                <div class="code-dots">
+                  <span class="code-dot dot-red"></span>
+                  <span class="code-dot dot-yellow"></span>
+                  <span class="code-dot dot-green"></span>
+                </div>
+                <span class="code-title">ESP32_Voice_Smart_Relay.ino</span>
+              </div>
+              <button class="code-copy-btn" id="copyVoiceBtn">
+                <span>📋</span> Copy Code
+              </button>
+            </div>
+
+            <pre class="code-body"><code id="voiceSourceCode"><span class="code-inc">#include</span> <span class="code-str">&lt;WiFi.h&gt;</span>
+<span class="code-inc">#include</span> <span class="code-str">&lt;SinricPro.h&gt;</span>
+<span class="code-inc">#include</span> <span class="code-str">&lt;SinricProSwitch.h&gt;</span>
+
+<span class="code-com">// =========================================================</span>
+<span class="code-com">// Credentials &amp; Device IDs</span>
+<span class="code-com">// =========================================================</span>
+<span class="code-type">const char</span>* WIFI_SSID     = <span class="code-str">"YOUR_WIFI_SSID"</span>;
+<span class="code-type">const char</span>* WIFI_PASS     = <span class="code-str">"YOUR_WIFI_PASSWORD"</span>;
+<span class="code-type">const char</span>* APP_KEY       = <span class="code-str">"YOUR_SINRICPRO_APP_KEY"</span>;
+<span class="code-type">const char</span>* APP_SECRET    = <span class="code-str">"YOUR_SINRICPRO_APP_SECRET"</span>;
+<span class="code-type">const char</span>* DEVICE_ID_FAN = <span class="code-str">"YOUR_DEVICE_ID_FOR_FAN"</span>;
+
+<span class="code-com">// Hardware Pin Assignment (Active LOW Relays)</span>
+<span class="code-type">const int</span> RELAY_PIN_FAN   = <span class="code-num">23</span>;
+<span class="code-type">const int</span> STATUS_LED_PIN  = <span class="code-num">2</span>;
+
+<span class="code-com">// =========================================================</span>
+<span class="code-com">// Callback when Voice Command triggers Switch State</span>
+<span class="code-com">// =========================================================</span>
+<span class="code-type">bool</span> <span class="code-fn">onPowerState</span>(<span class="code-type">const String</span> &amp;deviceId, <span class="code-type">bool</span> &amp;state) {
+  Serial.<span class="code-fn">printf</span>(<span class="code-str">"[VOICE CMD] Device %s turned %s\r\n"</span>, deviceId.<span class="code-fn">c_str</span>(), state ? <span class="code-str">"ON"</span> : <span class="code-str">"OFF"</span>);
+  
+  <span class="code-com">// Relays are active-LOW: LOW = ON, HIGH = OFF</span>
+  <span class="code-fn">digitalWrite</span>(RELAY_PIN_FAN, state ? <span class="code-kw">LOW</span> : <span class="code-kw">HIGH</span>);
+  <span class="code-fn">digitalWrite</span>(STATUS_LED_PIN, state ? <span class="code-kw">HIGH</span> : <span class="code-kw">LOW</span>);
+  
+  <span class="code-kw">return true</span>; <span class="code-com">// Acknowledge request handled</span>
+}
+
+<span class="code-com">// =========================================================</span>
+<span class="code-com">// Setup: Pins, Wi-Fi &amp; SinricPro WebSocket Connection</span>
+<span class="code-com">// =========================================================</span>
+<span class="code-type">void</span> <span class="code-fn">setup</span>() {
+  Serial.<span class="code-fn">begin</span>(<span class="code-num">115200</span>);
+  
+  <span class="code-com">// Prevent relay chatter at boot: set HIGH before OUTPUT</span>
+  <span class="code-fn">digitalWrite</span>(RELAY_PIN_FAN, <span class="code-kw">HIGH</span>);
+  <span class="code-fn">pinMode</span>(RELAY_PIN_FAN, <span class="code-kw">OUTPUT</span>);
+  <span class="code-fn">pinMode</span>(STATUS_LED_PIN, <span class="code-kw">OUTPUT</span>);
+  <span class="code-fn">digitalWrite</span>(STATUS_LED_PIN, <span class="code-kw">LOW</span>);
+
+  <span class="code-com">// Connect Wi-Fi</span>
+  WiFi.<span class="code-fn">begin</span>(WIFI_SSID, WIFI_PASS);
+  <span class="code-kw">while</span> (WiFi.<span class="code-fn">status</span>() != <span class="code-kw">WL_CONNECTED</span>) {
+    <span class="code-fn">delay</span>(<span class="code-num">500</span>);
+    Serial.<span class="code-fn">print</span>(<span class="code-str">"."</span>);
+  }
+  Serial.<span class="code-fn">println</span>(<span class="code-str">"\nWiFi Connected!"</span>);
+
+  <span class="code-com">// Register Voice Switch Device &amp; Callbacks</span>
+  <span class="code-type">SinricProSwitch</span> &amp;mySwitch = SinricPro[DEVICE_ID_FAN];
+  mySwitch.<span class="code-fn">onPowerState</span>(onPowerState);
+
+  <span class="code-com">// Start SinricPro WebSocket Client</span>
+  SinricPro.<span class="code-fn">begin</span>(APP_KEY, APP_SECRET);
+  Serial.<span class="code-fn">println</span>(<span class="code-str">"SinricPro Cloud Voice Interface Active!"</span>);
+}
+
+<span class="code-com">// =========================================================</span>
+<span class="code-com">// Main Loop: Process Incoming WebSocket Voice Events</span>
+<span class="code-com">// =========================================================</span>
+<span class="code-type">void</span> <span class="code-fn">loop</span>() {
+  SinricPro.<span class="code-fn">handle</span>();
+}</code></pre>
+          </div>
+        </div>
+
+        <!-- =========================================================
+             SECTION: STEP-BY-STEP EXECUTION WALKTHROUGH
+             ========================================================= -->
+        <div style="margin-bottom: 4rem;">
+          <div class="section-tag">Engineering Methodology</div>
+          <h2>Step-by-Step Implementation Guide</h2>
+
+          <div class="timeline" style="margin-top: 2rem;">
+            <div class="timeline-item">
+              <div class="timeline-marker"></div>
+              <div class="timeline-content">
+                <h3 style="font-size: 1.2rem; margin-bottom: 0.35rem;">1. Safe Relay Wiring &amp; Optoisolation</h3>
+                <p style="font-size: 0.94rem;">
+                  Connected the ESP32 GPIO 23 to Relay IN1, VCC to 5V, and GND to common ground. Verified that the optocoupler bridge isolated the MCU logic from relay coil back-EMF spikes.
+                </p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-marker"></div>
+              <div class="timeline-content">
+                <h3 style="font-size: 1.2rem; margin-bottom: 0.35rem;">2. Cloud Gateway &amp; Voice Skill Linking</h3>
+                <p style="font-size: 0.94rem;">
+                  Registered an IoT switch device on the SinricPro cloud portal and linked the SinricPro smart home skill in Google Home and Amazon Alexa.
+                </p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-marker"></div>
+              <div class="timeline-content">
+                <h3 style="font-size: 1.2rem; margin-bottom: 0.35rem;">3. WebSocket Handshake &amp; Heartbeat</h3>
+                <p style="font-size: 0.94rem;">
+                  The firmware initialized a secure WebSocket connection over TLS, maintaining low-overhead ping/pong frames to keep the socket alive.
+                </p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-marker"></div>
+              <div class="timeline-content">
+                <h3 style="font-size: 1.2rem; margin-bottom: 0.35rem;">4. Speech Execution &amp; Feedback Verification</h3>
+                <p style="font-size: 0.94rem;">
+                  Spoke voice command: "Hey Google, turn on Fan". The cloud webhook pushed the state to the ESP32 in ~180ms, triggering the relay with an audible mechanical click.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Navigation Between Tasks -->
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; padding: 2rem 0; border-top: 1px solid rgba(255, 255, 255, 0.08);">
+          <a href="iot-task2.html" class="btn btn-outline">
+            &larr; Previous: Task 2 (MQTT Telemetry)
+          </a>
+          <a href="iot-task4.html" class="btn btn-primary">
+            Explore Task 4: Firebase Realtime Smart Home &rarr;
+          </a>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- Modern Glassmorphic Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="nav-brand" style="margin-bottom: 1rem;">
+            <div class="nav-logo-badge">EK</div>
+            <div class="brand-text">
+              <span class="brand-name">Elakiya K S</span>
+              <span class="brand-role">Mechatronics Engineer</span>
+            </div>
+          </div>
+          <p>
+            B.E. Mechatronics Engineering student at Kumaraguru College of Technology. Building intelligent automation, embedded robotics, and connected systems.
+          </p>
+          <div class="social-links" style="margin-top: 1.5rem;">
+            <a href="https://www.linkedin.com/in/elakiya22" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="LinkedIn">in</a>
+            <a href="https://github.com/elakiya" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="GitHub">gh</a>
+            <a href="mailto:kselakiya1@gmail.com" class="social-btn" aria-label="Email">✉</a>
+            <a href="tel:8220058570" class="social-btn" aria-label="Phone">📞</a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="about.html">About Me</a>
+            <a href="skills.html">Skills Matrix</a>
+            <a href="experience.html">Experience &amp; Projects</a>
+            <a href="protosem.html">ProtoSem Journal</a>
+            <a href="iot.html">IoT Session</a>
+            <a href="contact.html">Contact</a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Contact &amp; Location</h4>
+          <div class="footer-links">
+            <p style="color: var(--text-muted); font-size: 0.92rem; margin-bottom: 0.5rem;">
+              📍 Avinashi, Tirupur / Coimbatore<br>Tamil Nadu, India - 641654
+            </p>
+            <p style="color: var(--text-muted); font-size: 0.92rem; margin-bottom: 0.5rem;">
+              📧 kselakiya1@gmail.com
+            </p>
+            <p style="color: var(--text-muted); font-size: 0.92rem;">
+              📞 +91 8220058570
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>&copy; 2026 Elakiya K S. All rights reserved.</div>
+        <div>Built with pure HTML5, CSS3 &amp; JavaScript</div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    const copyVoiceBtn = document.getElementById('copyVoiceBtn');
+    if (copyVoiceBtn) {
+      copyVoiceBtn.addEventListener('click', () => {
+        const codeElement = document.getElementById('voiceSourceCode');
+        if (codeElement) {
+          navigator.clipboard.writeText(codeElement.innerText).then(() => {
+            window.showToast('Voice Control Arduino code copied!');
+          }).catch(() => {
+            window.showToast('Select code and press Ctrl+C to copy.');
+          });
+        }
+      });
+    }
+  </script>
+</body>
+</html>

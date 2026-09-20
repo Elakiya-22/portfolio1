@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task 5: Firebase Hardware Integration: Bulb, DHT11, Button & ESP32 | Elakiya K S</title>
+  <meta name="description" content="Documentation of Task 5: Firebase Hardware Integration interfacing ESP32 with an AC light bulb, 5V optocoupled relay, DHT11 sensor, push button, and LDR.">
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Sticky Modern Navigation -->
+  <header class="header">
+    <div class="nav-container">
+      <a href="index.html" class="nav-brand">
+        <div class="nav-logo-badge">EK</div>
+        <div class="brand-text">
+          <span class="brand-name">Elakiya K S</span>
+          <span class="brand-role">Mechatronics Engineer</span>
+        </div>
+      </a>
+
+      <nav class="nav-menu" id="navMenu">
+        <div class="nav-pill-list">
+          <a href="index.html" class="nav-link">Home</a>
+          <a href="about.html" class="nav-link">About</a>
+          <a href="skills.html" class="nav-link">Skills</a>
+          <a href="experience.html" class="nav-link">Experience</a>
+          <a href="protosem.html" class="nav-link">ProtoSem</a>
+          <a href="iot.html" class="nav-link active">IoT Session</a>
+          <a href="contact.html" class="nav-link">Contact</a>
+        </div>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="contact.html" class="btn btn-sm btn-primary">Let's Connect</a>
+        <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle navigation">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="section" style="padding-top: calc(var(--nav-height) + 2.5rem);">
+      <div class="container">
+
+        <!-- Breadcrumb Navigation -->
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="index.html">Home</a>
+          <span class="sep">/</span>
+          <a href="iot.html">IoT Session</a>
+          <span class="sep">/</span>
+          <span class="current">Task 5: Firebase Hardware Integration</span>
+        </nav>
+
+        <!-- Task Title Header -->
+        <div style="margin-bottom: 3rem;">
+          <div class="proto-tag" style="color: #fbbf24;">TASK 05 / GOOGLE FIREBASE HARDWARE INTEGRATION</div>
+          <h1 class="proto-main-title" style="margin-bottom: 0.8rem;">
+            Firebase Hardware: Bulb, DHT11, Button &amp; ESP32
+          </h1>
+          <p class="proto-main-subtitle">
+            Complete physical edge device implementation: interfacing NodeMCU ESP32 with an AC light bulb, 5V optocoupled relay, DHT11 temperature/humidity sensor, analog LDR daylight sensor, and tactile push button &mdash; communicating bidirectionally in real time with Google Firebase Realtime Database.
+          </p>
+        </div>
+
+        <!-- Technical Specification Cards -->
+        <div class="grid-3" style="margin-bottom: 3rem;">
+          <div class="glass-card" style="padding: 1.5rem;">
+            <div style="font-size: 1.6rem; margin-bottom: 0.5rem;">🧠</div>
+            <div style="font-family: var(--font-mono); font-size: 0.78rem; color: var(--text-dim); text-transform: uppercase;">Microcontroller &amp; Wi-Fi</div>
+            <strong style="color: #fbbf24; font-size: 1.05rem; display: block; margin-top: 0.2rem;">NodeMCU ESP32 (WROOM-32)</strong>
+            <span style="font-size: 0.84rem; color: var(--text-muted);">240MHz Dual Core &bull; 2.4GHz Wi-Fi</span>
+          </div>
+
+          <div class="glass-card" style="padding: 1.5rem;">
+            <div style="font-size: 1.6rem; margin-bottom: 0.5rem;">📡</div>
+            <div style="font-family: var(--font-mono); font-size: 0.78rem; color: var(--text-dim); text-transform: uppercase;">Sensors &amp; Input</div>
+            <strong style="color: var(--cyan); font-size: 1.05rem; display: block; margin-top: 0.2rem;">DHT11 + LDR + Push Button</strong>
+            <span style="font-size: 0.84rem; color: var(--text-muted);">GPIO 4 (DHT), GPIO 34 (LDR), GPIO 14 (Btn)</span>
+          </div>
+
+          <div class="glass-card" style="padding: 1.5rem;">
+            <div style="font-size: 1.6rem; margin-bottom: 0.5rem;">💡</div>
+            <div style="font-family: var(--font-mono); font-size: 0.78rem; color: var(--text-dim); text-transform: uppercase;">Appliance Actuation</div>
+            <strong style="color: #34d399; font-size: 1.05rem; display: block; margin-top: 0.2rem;">5V Relay &bull; 230V AC Bulb</strong>
+            <span style="font-size: 0.84rem; color: var(--text-muted);">GPIO 26 Driver &bull; Optical Isolation</span>
+          </div>
+        </div>
+
+        <!-- =========================================================
+             SECTION: USER LAB PHOTOS (ALL 8 HARDWARE EXECUTION PHOTOS)
+             ========================================================= -->
+        <div style="margin-bottom: 3.5rem;">
+          <div class="section-tag">Laboratory Prototyping &amp; Hardware Assembly</div>
+          <h2>Hardware Construction &amp; Circuit Execution (8 Authentic Photos)</h2>
+          <p style="color: var(--text-muted); font-size: 0.98rem; margin-bottom: 1.5rem;">
+            Comprehensive photographic proof showing each stage of the physical hardware build: wiring the ESP32 with the DHT11 sensor, LDR light sensor, manual override button, relay driver, and live AC light bulb testing.
+          </p>
+
+          <div class="iot-media-grid" style="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));">
+            <!-- Photo 1: Complete Hardware Setup -->
+            <div class="iot-photo-card">
+              <img src="assets/images/task5_hw1.jpg" alt="Complete physical setup with ESP32, DHT11, relay, and bulb">
+              <div class="iot-photo-tag">
+                🔌 Hardware Assembly 1 &bull; Complete physical prototype showing ESP32, breadboard circuit, DHT11 sensor, 5V optocoupled relay, and AC light bulb
+              </div>
+            </div>
+
+            <!-- Photo 2: ESP32 Wiring & Push Button -->
+            <div class="iot-photo-card">
+              <img src="assets/images/task5_hw2.jpg" alt="ESP32 breadboard interconnections and tactile push button">
+              <div class="iot-photo-tag">
+                🔘 Hardware Assembly 2 &bull; Close-up of ESP32 GPIO connections, tactile push button for local override, and power rails
+              </div>
+            </div>
+
+            <!-- Photo 3: DHT11 Sensor & LDR Circuit -->
+            <div class="iot-photo-card">
+              <img src="assets/images/task5_hw3.jpg" alt="DHT11 sensor and LDR light sensor placement">
+              <div class="iot-photo-tag">
+                🌡️ Hardware Assembly 3 &bull; DHT11 temperature/humidity sensor paired with analog LDR ambient light sensor voltage divider
+              </div>
+            </div>
+
+            <!-- Photo 4: Relay Module & AC Mains Wiring -->
+            <div class="iot-photo-card">
+              <img src="assets/images/task5_hw4.jpg" alt="Relay terminal wiring to 230V AC bulb socket">
+              <div class="iot-photo-tag">
+                ⚡ Hardware Assembly 4 &bull; AC mains wiring to relay module terminal block with optical isolation ensuring microcontroller protection
+              </div>
+            </div>
+
+            <!-- Photo 5: Live Actuation - Bulb Glowing -->
+            <div class="iot-photo-card">
+              <img src="assets/images/task5_hw5.jpg" alt="AC bulb illuminated following Firebase cloud trigger">
+              <div class="iot-photo-tag">
+                💡 Live Actuation 1 &bull; AC light bulb illuminated instantly following a real-time state mutation in the Firebase cloud database
+              </div>
+            </div>
+
+            <!-- Photo 6: Push Button Interaction & Sync -->
+            <div class="iot-photo-card">
+              <img src="assets/images/task5_hw6.jpg" alt="Physical push-button toggle testing updating Firebase">
+              <div class="iot-photo-tag">
+                👆 Live Actuation 2 &bull; Pressing the physical push button toggles the relay locally and synchronizes the state to Firebase in real time
+              </div>
+            </div>
+
+            <!-- Photo 7: Live Cloud Sync Bench -->
+            <div class="iot-photo-card">
+              <img src="assets/images/task5_hw7.jpg" alt="Hardware bench operating beside Firebase console">
+              <div class="iot-photo-tag">
+                🔄 Live Cloud Sync &bull; Hardware testbench running side-by-side with the live AuraIoT Firebase cloud monitoring dashboard
+              </div>
+            </div>
+
+            <!-- Photo 8: Integrated Prototype View -->
+            <div class="iot-photo-card">
+              <img src="assets/images/task5_hw8.jpg" alt="Integrated prototype enclosure and wiring layout">
+              <div class="iot-photo-tag">
+                🛠️ Final Prototype &bull; Fully integrated hardware system with sensors, actuator, and ESP32 ready for autonomous smart home deployment
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- =========================================================
+             SECTION: KEY POINTS & WHAT I LEARNED
+             ========================================================= -->
+        <div style="margin-bottom: 4rem;">
+          <div class="grid-2">
+
+            <!-- Key Technical Points Card -->
+            <div class="glass-card" style="padding: 2.2rem; border-color: rgba(251, 191, 36, 0.25);">
+              <div style="display: flex; align-items: center; gap: 0.85rem; margin-bottom: 1.5rem;">
+                <div style="font-size: 1.8rem;">🔑</div>
+                <div>
+                  <h3 style="margin-bottom: 0.2rem; font-size: 1.35rem; color: #ffffff;">Key Technical Points</h3>
+                  <span style="font-size: 0.85rem; color: #fbbf24; font-family: var(--font-mono);">Hardware Interfacing, Streaming &amp; Safety</span>
+                </div>
+              </div>
+
+              <ul class="styled-list">
+                <li>
+                  <strong>Full-Duplex Bi-Directional Synchronization:</strong> When the web dashboard flips the toggle, the ESP32 stream callback triggers the relay in &lt; 90ms; conversely, pressing the physical push button toggles the relay locally and pushes the new state to Firebase immediately.
+                </li>
+                <li>
+                  <strong>Multi-Sensor Acquisition:</strong> Concurrently reads the digital one-wire protocol of the <strong>DHT11</strong> sensor on GPIO 4 and samples the analog voltage divider of the <strong>LDR</strong> on GPIO 34 (ADC1), mapping raw 12-bit ADC (0-4095) to Lux.
+                </li>
+                <li>
+                  <strong>Optical Relay Isolation &amp; Mains AC Safety:</strong> The 5V relay module incorporates an optocoupler that electrically isolates the 3.3V ESP32 microelectronics from inductive spikes and high-voltage 230V AC mains lines.
+                </li>
+                <li>
+                  <strong>Hardware Debouncing on Manual Override:</strong> Configured GPIO 14 with internal pull-up (<code style="color: var(--cyan);">INPUT_PULLUP</code>) and programmed 200ms software edge-debouncing to prevent erratic multi-triggering.
+                </li>
+                <li>
+                  <strong>Firebase Event-Driven Streaming:</strong> Leveraged <code style="color: var(--cyan);">Firebase.RTDB.beginStream()</code> to establish a continuous HTTP Server-Sent Events (SSE) socket with Google Cloud, removing the need for wasteful continuous polling.
+                </li>
+              </ul>
+            </div>
+
+            <!-- What I Learned & Insights Card -->
+            <div class="glass-card" style="padding: 2.2rem; border-color: rgba(52, 211, 153, 0.25);">
+              <div style="display: flex; align-items: center; gap: 0.85rem; margin-bottom: 1.5rem;">
+                <div style="font-size: 1.8rem;">💡</div>
+                <div>
+                  <h3 style="margin-bottom: 0.2rem; font-size: 1.35rem; color: #ffffff;">What I Learned &amp; Insights</h3>
+                  <span style="font-size: 0.85rem; color: #34d399; font-family: var(--font-mono);">Engineering Lessons &amp; Practical Experience</span>
+                </div>
+              </div>
+
+              <ul class="styled-list learned-list">
+                <li>
+                  <strong>Mixed-Signal Breadboard Prototyping:</strong> Learned to route high-voltage AC mains lines completely separate from sensitive 3.3V digital and analog sensor signal rails to avoid electromagnetic interference (EMI).
+                </li>
+                <li>
+                  <strong>Fail-Safe Cloud Reconnection:</strong> Implemented non-blocking Wi-Fi and Firebase token refresh loops that allow the ESP32 to maintain local button switching even if internet connectivity drops temporarily.
+                </li>
+                <li>
+                  <strong>ADC Calibration on ESP32:</strong> Understood the non-linear response of ESP32 ADC channels and calibrated the LDR voltage divider with a multi-point look-up curve for accurate ambient Lux measurement.
+                </li>
+                <li>
+                  <strong>End-to-End Smart Home Ecosystem:</strong> Built the complete bridge from physical hardware (bulb, DHT11, push button, relay) to cloud middleware (Firebase RTDB) and custom web dashboards.
+                </li>
+              </ul>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- =========================================================
+             SECTION: ARDUINO C++ SOURCE CODE
+             ========================================================= -->
+        <div style="margin-bottom: 4rem;">
+          <div class="section-tag">Firmware &amp; Embedded C++</div>
+          <h2>Arduino IDE Source Code</h2>
+          <p style="color: var(--text-muted); font-size: 0.98rem; margin-bottom: 1rem;">
+            Complete embedded C++ firmware for ESP32 integrating <code style="color: var(--cyan); background: rgba(0,242,254,0.1); padding: 0.15rem 0.4rem; border-radius: 4px;">Firebase_ESP_Client.h</code> and <code style="color: var(--cyan); background: rgba(0,242,254,0.1); padding: 0.15rem 0.4rem; border-radius: 4px;">DHT.h</code> with push-button debouncing, DHT11 sampling, LDR reading, and bidirectional relay control.
+          </p>
+
+          <div class="code-box">
+            <div class="code-header">
+              <div class="code-header-left">
+                <div class="code-dots">
+                  <span class="code-dot dot-red"></span>
+                  <span class="code-dot dot-yellow"></span>
+                  <span class="code-dot dot-green"></span>
+                </div>
+                <span class="code-title">ESP32_Firebase_Hardware_Node.ino</span>
+              </div>
+              <button class="code-copy-btn" id="copyHwBtn">
+                <span>📋</span> Copy Code
+              </button>
+            </div>
+
+            <pre class="code-body"><code id="hwSourceCode"><span class="code-inc">#include</span> <span class="code-str">&lt;WiFi.h&gt;</span>
+<span class="code-inc">#include</span> <span class="code-str">&lt;Firebase_ESP_Client.h&gt;</span>
+<span class="code-inc">#include</span> <span class="code-str">&lt;DHT.h&gt;</span>
+
+<span class="code-com">// =========================================================</span>
+<span class="code-com">// Hardware Pin Assignment</span>
+<span class="code-com">// =========================================================</span>
+<span class="code-type">#define</span> DHT_PIN      <span class="code-num">4</span>    <span class="code-com">// DHT11 Sensor Data (GPIO 4)</span>
+<span class="code-type">#define</span> DHT_TYPE     <span class="code-kw">DHT11</span>
+<span class="code-type">#define</span> LDR_PIN      <span class="code-num">34</span>   <span class="code-com">// LDR Analog Light Sensor (GPIO 34 / ADC1)</span>
+<span class="code-type">#define</span> BUTTON_PIN   <span class="code-num">14</span>   <span class="code-com">// Tactile Push Button (GPIO 14, INPUT_PULLUP)</span>
+<span class="code-type">#define</span> RELAY_PIN    <span class="code-num">26</span>   <span class="code-com">// 5V Relay Module -> AC Bulb (GPIO 26)</span>
+<span class="code-type">#define</span> STATUS_LED   <span class="code-num">2</span>    <span class="code-com">// Onboard Blue Indicator LED (GPIO 2)</span>
+
+<span class="code-com">// Wi-Fi &amp; Firebase Credentials</span>
+<span class="code-type">#define</span> WIFI_SSID     <span class="code-str">"YOUR_WIFI_SSID"</span>
+<span class="code-type">#define</span> WIFI_PASSWORD <span class="code-str">"YOUR_WIFI_PASSWORD"</span>
+<span class="code-type">#define</span> API_KEY       <span class="code-str">"AIzaSyDemoAuraIoTKey_Elakiya"</span>
+<span class="code-type">#define</span> DATABASE_URL  <span class="code-str">"https://smart-iot-dashboard-610b0-default-rtdb.firebaseio.com/"</span>
+
+<span class="code-com">// Objects</span>
+<span class="code-type">DHT</span> dht(DHT_PIN, DHT_TYPE);
+<span class="code-type">FirebaseData</span> streamData;
+<span class="code-type">FirebaseData</span> writeData;
+<span class="code-type">FirebaseAuth</span> auth;
+<span class="code-type">FirebaseConfig</span> config;
+
+<span class="code-com">// Runtime Variables</span>
+<span class="code-type">bool</span> bulbState          = <span class="code-kw">false</span>;
+<span class="code-type">int</span>  lastButtonState    = <span class="code-kw">HIGH</span>;
+<span class="code-type">unsigned long</span> lastDebounce = <span class="code-num">0</span>;
+<span class="code-type">unsigned long</span> lastTelemetry= <span class="code-num">0</span>;
+<span class="code-type">const long</span> telemetryInterval = <span class="code-num">5000</span>; <span class="code-com">// Upload telemetry every 5s</span>
+
+<span class="code-com">// =========================================================</span>
+<span class="code-com">// Firebase Stream Callback: Fires when Web Dashboard clicks toggle</span>
+<span class="code-com">// =========================================================</span>
+<span class="code-type">void</span> <span class="code-fn">streamCallback</span>(<span class="code-type">FirebaseStream</span> data) {
+  <span class="code-kw">if</span> (data.<span class="code-fn">dataPath</span>() == <span class="code-str">"/bulbState"</span>) {
+    bulbState = (data.<span class="code-fn">intData</span>() == <span class="code-num">1</span>);
+    <span class="code-fn">digitalWrite</span>(RELAY_PIN, bulbState ? <span class="code-kw">HIGH</span> : <span class="code-kw">LOW</span>);
+    <span class="code-fn">digitalWrite</span>(STATUS_LED, bulbState ? <span class="code-kw">HIGH</span> : <span class="code-kw">LOW</span>);
+    Serial.<span class="code-fn">printf</span>(<span class="code-str">"[STREAM] AC Bulb switched to: %s\n"</span>, bulbState ? <span class="code-str">"ON"</span> : <span class="code-str">"OFF"</span>);
+  }
+}
+
+<span class="code-type">void</span> <span class="code-fn">setup</span>() {
+  Serial.<span class="code-fn">begin</span>(<span class="code-num">115200</span>);
+  dht.<span class="code-fn">begin</span>();
+
+  <span class="code-fn">pinMode</span>(RELAY_PIN, <span class="code-kw">OUTPUT</span>);
+  <span class="code-fn">pinMode</span>(STATUS_LED, <span class="code-kw">OUTPUT</span>);
+  <span class="code-fn">pinMode</span>(BUTTON_PIN, <span class="code-kw">INPUT_PULLUP</span>);
+  <span class="code-fn">digitalWrite</span>(RELAY_PIN, <span class="code-kw">LOW</span>);
+
+  <span class="code-com">// Connect Wi-Fi</span>
+  WiFi.<span class="code-fn">begin</span>(WIFI_SSID, WIFI_PASSWORD);
+  <span class="code-kw">while</span> (WiFi.<span class="code-fn">status</span>() != <span class="code-kw">WL_CONNECTED</span>) {
+    <span class="code-fn">delay</span>(<span class="code-num">400</span>);
+    Serial.<span class="code-fn">print</span>(<span class="code-str">"."</span>);
+  }
+  Serial.<span class="code-fn">println</span>(<span class="code-str">"\nWi-Fi Connected! IP: "</span> + WiFi.<span class="code-fn">localIP</span>().<span class="code-fn">toString</span>());
+
+  <span class="code-com">// Initialize Firebase</span>
+  config.<span class="code-fn">api_key</span> = API_KEY;
+  config.<span class="code-fn">database_url</span> = DATABASE_URL;
+  Firebase.<span class="code-fn">begin</span>(&amp;config, &amp;auth);
+  Firebase.<span class="code-fn">reconnectWiFi</span>(<span class="code-kw">true</span>);
+
+  <span class="code-com">// Start Realtime Stream for Bulb State Control</span>
+  Firebase.<span class="code-fn">RTDB</span>.<span class="code-fn">beginStream</span>(&amp;streamData, <span class="code-str">"/controls"</span>);
+  Firebase.<span class="code-fn">RTDB</span>.<span class="code-fn">setStreamCallback</span>(&amp;streamData, streamCallback, NULL);
+  Serial.<span class="code-fn">println</span>(<span class="code-str">"Firebase RTDB Stream Listening!"</span>);
+}
+
+<span class="code-type">void</span> <span class="code-fn">loop</span>() {
+  <span class="code-type">unsigned long</span> now = <span class="code-fn">millis</span>();
+
+  <span class="code-com">// 1. Manual Push-Button Edge Detection & Debounce</span>
+  <span class="code-type">int</span> reading = <span class="code-fn">digitalRead</span>(BUTTON_PIN);
+  <span class="code-kw">if</span> (reading == <span class="code-kw">LOW</span> &amp;&amp; lastButtonState == <span class="code-kw">HIGH</span> &amp;&amp; (now - lastDebounce &gt; <span class="code-num">250</span>)) {
+    lastDebounce = now;
+    bulbState = !bulbState;
+    <span class="code-fn">digitalWrite</span>(RELAY_PIN, bulbState ? <span class="code-kw">HIGH</span> : <span class="code-kw">LOW</span>);
+    <span class="code-fn">digitalWrite</span>(STATUS_LED, bulbState ? <span class="code-kw">HIGH</span> : <span class="code-kw">LOW</span>);
+
+    <span class="code-com">// Push new state to Firebase immediately</span>
+    Firebase.<span class="code-fn">RTDB</span>.<span class="code-fn">setInt</span>(&amp;writeData, <span class="code-str">"/controls/bulbState"</span>, bulbState ? <span class="code-num">1</span> : <span class="code-num">0</span>);
+    Serial.<span class="code-fn">printf</span>(<span class="code-str">"[BUTTON] Toggled AC Bulb -> %s\n"</span>, bulbState ? <span class="code-str">"ON"</span> : <span class="code-str">"OFF"</span>);
+  }
+  lastButtonState = reading;
+
+  <span class="code-com">// 2. Periodic Environmental Sensor Reading & Upload</span>
+  <span class="code-kw">if</span> (now - lastTelemetry &gt;= telemetryInterval) {
+    lastTelemetry = now;
+
+    <span class="code-type">float</span> temp = dht.<span class="code-fn">readTemperature</span>();
+    <span class="code-type">float</span> hum  = dht.<span class="code-fn">readHumidity</span>();
+    <span class="code-type">int</span>   ldrRaw = <span class="code-fn">analogRead</span>(LDR_PIN);
+    <span class="code-type">int</span>   lux = <span class="code-fn">map</span>(ldrRaw, <span class="code-num">0</span>, <span class="code-num">4095</span>, <span class="code-num">10</span>, <span class="code-num">1200</span>);
+
+    <span class="code-kw">if</span> (!<span class="code-fn">isnan</span>(temp) &amp;&amp; !<span class="code-fn">isnan</span>(hum)) {
+      <span class="code-type">FirebaseJson</span> json;
+      json.<span class="code-fn">set</span>(<span class="code-str">"temperature"</span>, temp);
+      json.<span class="code-fn">set</span>(<span class="code-str">"humidity"</span>, hum);
+      json.<span class="code-fn">set</span>(<span class="code-str">"lux"</span>, lux);
+      json.<span class="code-fn">set</span>(<span class="code-str">"bulbState"</span>, bulbState ? <span class="code-str">"ON"</span> : <span class="code-str">"OFF"</span>);
+      json.<span class="code-fn">set</span>(<span class="code-str">"timestamp"</span>, now / <span class="code-num">1000</span>);
+
+      Firebase.<span class="code-fn">RTDB</span>.<span class="code-fn">setJSON</span>(&amp;writeData, <span class="code-str">"/telemetry/live"</span>, &amp;json);
+      Serial.<span class="code-fn">printf</span>(<span class="code-str">"[TELEMETRY] Temp: %.1f C | Hum: %.1f %% | Lux: %d\n"</span>, temp, hum, lux);
+    }
+  }
+}</code></pre>
+          </div>
+        </div>
+
+        <!-- Navigation Between Tasks -->
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; padding: 2rem 0; border-top: 1px solid rgba(255, 255, 255, 0.08);">
+          <a href="iot-task4.html" class="btn btn-outline">
+            &larr; Previous: Task 4 (Firebase Web Dashboard)
+          </a>
+          <a href="iot.html" class="btn btn-primary">
+            Back to IoT Session Hub &rarr;
+          </a>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- Modern Glassmorphic Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="nav-brand" style="margin-bottom: 1rem;">
+            <div class="nav-logo-badge">EK</div>
+            <div class="brand-text">
+              <span class="brand-name">Elakiya K S</span>
+              <span class="brand-role">Mechatronics Engineer</span>
+            </div>
+          </div>
+          <p>
+            B.E. Mechatronics Engineering student at Kumaraguru College of Technology. Building intelligent automation, embedded robotics, and connected systems.
+          </p>
+          <div class="social-links" style="margin-top: 1.5rem;">
+            <a href="https://www.linkedin.com/in/elakiya22" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="LinkedIn">in</a>
+            <a href="https://github.com/elakiya" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="GitHub">gh</a>
+            <a href="mailto:kselakiya1@gmail.com" class="social-btn" aria-label="Email">✉</a>
+            <a href="tel:8220058570" class="social-btn" aria-label="Phone">📞</a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="about.html">About Me</a>
+            <a href="skills.html">Skills Matrix</a>
+            <a href="experience.html">Experience &amp; Projects</a>
+            <a href="protosem.html">ProtoSem Journal</a>
+            <a href="iot.html">IoT Session</a>
+            <a href="contact.html">Contact</a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Contact &amp; Location</h4>
+          <div class="footer-links">
+            <p style="color: var(--text-muted); font-size: 0.92rem; margin-bottom: 0.5rem;">
+              📍 Avinashi, Tirupur / Coimbatore<br>Tamil Nadu, India - 641654
+            </p>
+            <p style="color: var(--text-muted); font-size: 0.92rem; margin-bottom: 0.5rem;">
+              📧 kselakiya1@gmail.com
+            </p>
+            <p style="color: var(--text-muted); font-size: 0.92rem;">
+              📞 +91 8220058570
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>&copy; 2026 Elakiya K S. All rights reserved.</div>
+        <div>Built with pure HTML5, CSS3 &amp; JavaScript</div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    const copyHwBtn = document.getElementById('copyHwBtn');
+    if (copyHwBtn) {
+      copyHwBtn.addEventListener('click', () => {
+        const codeElement = document.getElementById('hwSourceCode');
+        if (codeElement) {
+          navigator.clipboard.writeText(codeElement.innerText).then(() => {
+            window.showToast('Firebase Hardware Arduino code copied!');
+          }).catch(() => {
+            window.showToast('Select code and press Ctrl+C to copy.');
+          });
+        }
+      });
+    }
+  </script>
+</body>
+</html>

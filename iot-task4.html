@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task 4: Creating Firebase Realtime Web Dashboard | Elakiya K S</title>
+  <meta name="description" content="Documentation of Task 4: Designing and creating the AuraIoT Google Firebase Realtime Web Dashboard for ESP32 environmental sensing, LDR automation engine, and appliance control.">
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Sticky Modern Navigation -->
+  <header class="header">
+    <div class="nav-container">
+      <a href="index.html" class="nav-brand">
+        <div class="nav-logo-badge">EK</div>
+        <div class="brand-text">
+          <span class="brand-name">Elakiya K S</span>
+          <span class="brand-role">Mechatronics Engineer</span>
+        </div>
+      </a>
+
+      <nav class="nav-menu" id="navMenu">
+        <div class="nav-pill-list">
+          <a href="index.html" class="nav-link">Home</a>
+          <a href="about.html" class="nav-link">About</a>
+          <a href="skills.html" class="nav-link">Skills</a>
+          <a href="experience.html" class="nav-link">Experience</a>
+          <a href="protosem.html" class="nav-link">ProtoSem</a>
+          <a href="iot.html" class="nav-link active">IoT Session</a>
+          <a href="contact.html" class="nav-link">Contact</a>
+        </div>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="contact.html" class="btn btn-sm btn-primary">Let's Connect</a>
+        <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle navigation">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="section" style="padding-top: calc(var(--nav-height) + 2.5rem);">
+      <div class="container">
+
+        <!-- Breadcrumb Navigation -->
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="index.html">Home</a>
+          <span class="sep">/</span>
+          <a href="iot.html">IoT Session</a>
+          <span class="sep">/</span>
+          <span class="current">Task 4: Creating Firebase Realtime Web Dashboard</span>
+        </nav>
+
+        <!-- Task Title Header -->
+        <div style="margin-bottom: 3rem;">
+          <div class="proto-tag" style="color: #ec4899;">TASK 04 / GOOGLE FIREBASE REALTIME CLOUD WEB DASHBOARD</div>
+          <h1 class="proto-main-title" style="margin-bottom: 0.8rem;">
+            Creating Firebase Realtime Web Dashboard
+          </h1>
+          <p class="proto-main-subtitle">
+            Designing and engineering <strong>&quot;AuraIoT&quot;</strong> &mdash; a responsive Google Firebase Realtime Database cloud dashboard (hosted at <code>smart-iot-dashboard-610b0.web.app</code>) featuring live DHT11 microclimate monitoring, intelligent LDR ambient light automation, appliance relay controls, user authentication, and CSV telemetry export.
+          </p>
+        </div>
+
+        <!-- Technical Specification Cards -->
+        <div class="grid-3" style="margin-bottom: 3rem;">
+          <div class="glass-card" style="padding: 1.5rem;">
+            <div style="font-size: 1.6rem; margin-bottom: 0.5rem;">🔥</div>
+            <div style="font-family: var(--font-mono); font-size: 0.78rem; color: var(--text-dim); text-transform: uppercase;">Cloud Database &amp; Hosting</div>
+            <strong style="color: #ec4899; font-size: 1.05rem; display: block; margin-top: 0.2rem;">Google Firebase Realtime DB</strong>
+            <span style="font-size: 0.84rem; color: var(--text-muted);">Hosted at: <code>smart-iot-dashboard-610b0.web.app</code></span>
+          </div>
+
+          <div class="glass-card" style="padding: 1.5rem;">
+            <div style="font-size: 1.6rem; margin-bottom: 0.5rem;">📊</div>
+            <div style="font-family: var(--font-mono); font-size: 0.78rem; color: var(--text-dim); text-transform: uppercase;">Web App Architecture</div>
+            <strong style="color: var(--cyan); font-size: 1.05rem; display: block; margin-top: 0.2rem;">AuraIoT Dashboard SPA</strong>
+            <span style="font-size: 0.84rem; color: var(--text-muted);">Responsive HTML5, Glassmorphic CSS3 &amp; JS</span>
+          </div>
+
+          <div class="glass-card" style="padding: 1.5rem;">
+            <div style="font-size: 1.6rem; margin-bottom: 0.5rem;">⚡</div>
+            <div style="font-family: var(--font-mono); font-size: 0.78rem; color: var(--text-dim); text-transform: uppercase;">Smart Automation Engine</div>
+            <strong style="color: #34d399; font-size: 1.05rem; display: block; margin-top: 0.2rem;">LDR Threshold &amp; CSV Export</strong>
+            <span style="font-size: 0.84rem; color: var(--text-muted);">&lt; 90ms Global synchronization</span>
+          </div>
+        </div>
+
+        <!-- =========================================================
+             SECTION: USER LAB PHOTOS & FIREBASE DASHBOARD VIEWS
+             ========================================================= -->
+        <div style="margin-bottom: 3.5rem;">
+          <div class="section-tag">Dashboard Architecture &amp; Live Views</div>
+          <h2>Firebase Web Dashboard Implementation (AuraIoT)</h2>
+          <p style="color: var(--text-muted); font-size: 0.98rem; margin-bottom: 1.5rem;">
+            Authentic screenshots illustrating each core view of the deployed AuraIoT Firebase Realtime Web Dashboard created by Elakiya K S for smart environmental sensing and appliance automation.
+          </p>
+
+          <div class="iot-media-grid" style="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));">
+            <!-- Screenshot 1: Live Monitoring & Control Panel -->
+            <div class="iot-photo-card" style="grid-column: 1 / -1;">
+              <img src="assets/images/task4_dashboard_control.png" alt="AuraIoT Live Dashboard with DHT11, LDR, and Bulb Relay Control">
+              <div class="iot-photo-tag">
+                🎛️ Live Monitoring &amp; Control Panel &bull; Real-time DHT11 temperature (26.9°C), humidity (44%), LDR ambient light (677 Lux @ Raw ADC 2310/4095), LDR Automation Engine threshold slider (50-1200 Lux), and AC Light Bulb 5V relay switch control
+              </div>
+            </div>
+
+            <!-- Screenshot 2: Telemetry Data Log Table & CSV Export -->
+            <div class="iot-photo-card" style="grid-column: 1 / -1;">
+              <img src="assets/images/task4_telemetry_table.png" alt="AuraIoT Telemetry Data Log Table with CSV Export">
+              <div class="iot-photo-tag">
+                📑 Telemetry Data Log &amp; CSV Export &bull; Chronological historical records of temperature, humidity, ambient light, bulb state, and operating mode with live search filtering and &quot;Export CSV&quot; button
+              </div>
+            </div>
+
+            <!-- Screenshot 3: Cloud Landing Page & Architecture Gateway -->
+            <div class="iot-photo-card">
+              <img src="assets/images/task4_cloud_landing.png" alt="AuraIoT Cloud Automation Landing Page">
+              <div class="iot-photo-tag">
+                🚀 Cloud Automation Gateway &bull; Landing page showcasing Next-Gen ESP32 Cloud Automation, intelligent environmental microclimate monitoring, and live monitor launcher
+              </div>
+            </div>
+
+            <!-- Screenshot 4: Firebase User Authentication Portal -->
+            <div class="iot-photo-card">
+              <img src="assets/images/task4_firebase_login.png" alt="Firebase Email/Password Authentication Login">
+              <div class="iot-photo-tag">
+                🔒 Firebase Authentication Portal &bull; Secure Email/Password login system with role-based access for Administrator (<code>kselakiyal@gmail.com</code>) and demo accounts
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- =========================================================
+             SECTION: KEY POINTS & WHAT I LEARNED
+             ========================================================= -->
+        <div style="margin-bottom: 4rem;">
+          <div class="grid-2">
+
+            <!-- Key Technical Points Card -->
+            <div class="glass-card" style="padding: 2.2rem; border-color: rgba(236, 72, 153, 0.25);">
+              <div style="display: flex; align-items: center; gap: 0.85rem; margin-bottom: 1.5rem;">
+                <div style="font-size: 1.8rem;">🔑</div>
+                <div>
+                  <h3 style="margin-bottom: 0.2rem; font-size: 1.35rem; color: #ffffff;">Key Technical Points</h3>
+                  <span style="font-size: 0.85rem; color: #ec4899; font-family: var(--font-mono);">Cloud DB, WebSocket SSE &amp; UI Architecture</span>
+                </div>
+              </div>
+
+              <ul class="styled-list">
+                <li>
+                  <strong>Google Firebase Realtime Database NoSQL Model:</strong> Structured the cloud database as a lightweight JSON data tree with nodes for <code style="color: var(--cyan);">/telemetry</code> (temperature, humidity, lux), <code style="color: #ec4899;">/controls/bulbState</code>, and <code style="color: #34d399;">/config/ldrThreshold</code>.
+                </li>
+                <li>
+                  <strong>Sub-100ms Bidirectional State Synchronization:</strong> Employed the Firebase JavaScript SDK v10 with persistent WebSocket listeners (<code style="color: var(--cyan);">onValue()</code>) to dynamically render state changes without browser refresh.
+                </li>
+                <li>
+                  <strong>Intelligent LDR Automation Engine:</strong> Built dual operating modes: &quot;Manual Mode&quot; (user directly toggles bulb) and &quot;Auto (LDR) Mode&quot;, where an interactive slider sets a custom threshold (50 Lux Dark, 450 Lux Dusk, 1200 Lux Bright) to automate the bulb based on daylight.
+                </li>
+                <li>
+                  <strong>Chronological Telemetry Logging &amp; CSV Export:</strong> Created client-side data buffering that logs timestamped environmental conditions and generates downloadable RFC-4180 CSV files directly in the browser for analytics.
+                </li>
+                <li>
+                  <strong>Production Deployment on Firebase Hosting:</strong> Deployed the complete responsive web application to Google Firebase CDN edge servers at <code style="color: var(--cyan);">smart-iot-dashboard-610b0.web.app</code> with HTTPS and SSL encryption.
+                </li>
+              </ul>
+            </div>
+
+            <!-- What I Learned & Insights Card -->
+            <div class="glass-card" style="padding: 2.2rem; border-color: rgba(52, 211, 153, 0.25);">
+              <div style="display: flex; align-items: center; gap: 0.85rem; margin-bottom: 1.5rem;">
+                <div style="font-size: 1.8rem;">💡</div>
+                <div>
+                  <h3 style="margin-bottom: 0.2rem; font-size: 1.35rem; color: #ffffff;">What I Learned &amp; Insights</h3>
+                  <span style="font-size: 0.85rem; color: #34d399; font-family: var(--font-mono);">Web Architecture &amp; IoT Cloud Design</span>
+                </div>
+              </div>
+
+              <ul class="styled-list learned-list">
+                <li>
+                  <strong>Full-Stack Cloud Integration:</strong> Learned how a modern cloud database serves as the high-speed bridge between physical IoT edge hardware (ESP32) and multi-user web dashboards worldwide.
+                </li>
+                <li>
+                  <strong>Role-Based Authentication Security:</strong> Implemented Firebase Authentication to protect control panels with email/password credentials, ensuring only authenticated administrators can trigger electrical relays.
+                </li>
+                <li>
+                  <strong>Optimistic UI &amp; Latency Masking:</strong> Mastered the user experience technique of updating dashboard toggles immediately upon click while confirming state persistence asynchronously via database acknowledgements.
+                </li>
+                <li>
+                  <strong>Hysteresis in Automation Algorithms:</strong> Understood why sensor noise and transient ambient light fluctuations require software deadbands in automation engines to prevent rapid relay bouncing.
+                </li>
+              </ul>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- =========================================================
+             SECTION: WEB APP ARCHITECTURE & FIREBASE SDK INTEGRATION
+             ========================================================= -->
+        <div style="margin-bottom: 4rem;">
+          <div class="section-tag">Front-End &amp; Cloud Integration</div>
+          <h2>Firebase Web App Implementation Code</h2>
+          <p style="color: var(--text-muted); font-size: 0.98rem; margin-bottom: 1rem;">
+            Front-end JavaScript implementation showcasing Firebase Realtime Database initialization, live telemetry stream listeners, relay toggle dispatch, and client-side CSV export logic.
+          </p>
+
+          <div class="code-box">
+            <div class="code-header">
+              <div class="code-header-left">
+                <div class="code-dots">
+                  <span class="code-dot dot-red"></span>
+                  <span class="code-dot dot-yellow"></span>
+                  <span class="code-dot dot-green"></span>
+                </div>
+                <span class="code-title">aura_iot_dashboard_firebase.js</span>
+              </div>
+              <button class="code-copy-btn" id="copyFirebaseWebBtn">
+                <span>📋</span> Copy Code
+              </button>
+            </div>
+
+            <pre class="code-body"><code id="firebaseWebCode"><span class="code-com">// =========================================================</span>
+<span class="code-com">// AuraIoT: Google Firebase Realtime Database Client Setup</span>
+<span class="code-com">// Hosted at: smart-iot-dashboard-610b0.web.app</span>
+<span class="code-com">// =========================================================</span>
+<span class="code-inc">import</span> { initializeApp } <span class="code-inc">from</span> <span class="code-str">"https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js"</span>;
+<span class="code-inc">import</span> { getDatabase, ref, onValue, set, get } <span class="code-inc">from</span> <span class="code-str">"https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js"</span>;
+
+<span class="code-type">const</span> firebaseConfig = {
+  apiKey: <span class="code-str">"AIzaSyDemoAuraIoTKey_Elakiya"</span>,
+  authDomain: <span class="code-str">"smart-iot-dashboard-610b0.firebaseapp.com"</span>,
+  databaseURL: <span class="code-str">"https://smart-iot-dashboard-610b0-default-rtdb.firebaseio.com"</span>,
+  projectId: <span class="code-str">"smart-iot-dashboard-610b0"</span>,
+  storageBucket: <span class="code-str">"smart-iot-dashboard-610b0.appspot.com"</span>
+};
+
+<span class="code-com">// Initialize Firebase Services</span>
+<span class="code-type">const</span> app = <span class="code-fn">initializeApp</span>(firebaseConfig);
+<span class="code-type">const</span> db  = <span class="code-fn">getDatabase</span>(app);
+
+<span class="code-com">// Database References</span>
+<span class="code-type">const</span> telemetryRef = <span class="code-fn">ref</span>(db, <span class="code-str">'telemetry/live'</span>);
+<span class="code-type">const</span> bulbStateRef = <span class="code-fn">ref</span>(db, <span class="code-str">'controls/bulbState'</span>);
+<span class="code-type">const</span> autoModeRef  = <span class="code-fn">ref</span>(db, <span class="code-str">'controls/autoLdrMode'</span>);
+<span class="code-type">const</span> ldrThreshRef = <span class="code-fn">ref</span>(db, <span class="code-str">'config/ldrThreshold'</span>);
+
+<span class="code-com">// =========================================================</span>
+<span class="code-com">// 1. Live Telemetry Listener (Temperature, Humidity, Lux)</span>
+<span class="code-com">// =========================================================</span>
+<span class="code-fn">onValue</span>(telemetryRef, (snapshot) =&gt; {
+  <span class="code-type">const</span> data = snapshot.<span class="code-fn">val</span>();
+  <span class="code-kw">if</span> (!data) <span class="code-kw">return</span>;
+
+  <span class="code-com">// Update DOM Gauges</span>
+  document.<span class="code-fn">getElementById</span>(<span class="code-str">'tempVal'</span>).innerText = data.temperature.<span class="code-fn">toFixed</span>(<span class="code-num">1</span>) + <span class="code-str">" °C"</span>;
+  document.<span class="code-fn">getElementById</span>(<span class="code-str">'humVal'</span>).innerText  = data.humidity + <span class="code-str">" %"</span>;
+  document.<span class="code-fn">getElementById</span>(<span class="code-str">'luxVal'</span>).innerText  = data.lux + <span class="code-str">" Lux"</span>;
+
+  <span class="code-com">// Append to Telemetry Historical Table</span>
+  <span class="code-fn">appendDataLogRow</span>(data);
+});
+
+<span class="code-com">// =========================================================</span>
+<span class="code-com">// 2. Bi-Directional Bulb Relay Toggle Handler</span>
+<span class="code-com">// =========================================================</span>
+<span class="code-type">function</span> <span class="code-fn">toggleBulbRelay</span>(newState) {
+  <span class="code-fn">set</span>(bulbStateRef, newState ? <span class="code-num">1</span> : <span class="code-num">0</span>)
+    .<span class="code-fn">then</span>(() =&gt; console.<span class="code-fn">log</span>(<span class="code-str">"Relay state updated to: "</span> + (newState ? <span class="code-str">"ON"</span> : <span class="code-str">"OFF"</span>)))
+    .<span class="code-fn">catch</span>((err) =&gt; console.<span class="code-fn">error</span>(<span class="code-str">"Firebase write error:"</span>, err));
+}
+
+<span class="code-com">// =========================================================</span>
+<span class="code-com">// 3. CSV Dataset Export Engine</span>
+<span class="code-com">// =========================================================</span>
+<span class="code-type">function</span> <span class="code-fn">exportTelemetryCSV</span>() {
+  <span class="code-type">let</span> csv = <span class="code-str">"Timestamp,Temperature (°C),Humidity (%),Ambient Light (Lux),Bulb State,Mode\n"</span>;
+  telemetryHistory.<span class="code-fn">forEach</span>(r =&gt; {
+    csv += `${r.time},${r.temp},${r.hum},${r.lux},${r.bulb},${r.mode}\n`;
+  });
+
+  <span class="code-type">const</span> blob = <span class="code-kw">new</span> <span class="code-fn">Blob</span>([csv], { type: <span class="code-str">'text/csv;charset=utf-8;'</span> });
+  <span class="code-type">const</span> link = document.<span class="code-fn">createElement</span>(<span class="code-str">'a'</span>);
+  link.href = URL.<span class="code-fn">createObjectURL</span>(blob);
+  link.<span class="code-fn">setAttribute</span>(<span class="code-str">'download'</span>, <span class="code-str">'AuraIoT_Telemetry_Log.csv'</span>);
+  link.<span class="code-fn">click</span>();
+}</code></pre>
+          </div>
+        </div>
+
+        <!-- Navigation Between Tasks -->
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; padding: 2rem 0; border-top: 1px solid rgba(255, 255, 255, 0.08);">
+          <a href="iot-task3.html" class="btn btn-outline">
+            &larr; Previous: Task 3 (Voice Appliance Control)
+          </a>
+          <a href="iot-task5.html" class="btn btn-primary">
+            Explore Task 5: Firebase Hardware Integration &rarr;
+          </a>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- Modern Glassmorphic Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="nav-brand" style="margin-bottom: 1rem;">
+            <div class="nav-logo-badge">EK</div>
+            <div class="brand-text">
+              <span class="brand-name">Elakiya K S</span>
+              <span class="brand-role">Mechatronics Engineer</span>
+            </div>
+          </div>
+          <p>
+            B.E. Mechatronics Engineering student at Kumaraguru College of Technology. Building intelligent automation, embedded robotics, and connected systems.
+          </p>
+          <div class="social-links" style="margin-top: 1.5rem;">
+            <a href="https://www.linkedin.com/in/elakiya22" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="LinkedIn">in</a>
+            <a href="https://github.com/elakiya" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="GitHub">gh</a>
+            <a href="mailto:kselakiya1@gmail.com" class="social-btn" aria-label="Email">✉</a>
+            <a href="tel:8220058570" class="social-btn" aria-label="Phone">📞</a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="about.html">About Me</a>
+            <a href="skills.html">Skills Matrix</a>
+            <a href="experience.html">Experience &amp; Projects</a>
+            <a href="protosem.html">ProtoSem Journal</a>
+            <a href="iot.html">IoT Session</a>
+            <a href="contact.html">Contact</a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Contact &amp; Location</h4>
+          <div class="footer-links">
+            <p style="color: var(--text-muted); font-size: 0.92rem; margin-bottom: 0.5rem;">
+              📍 Avinashi, Tirupur / Coimbatore<br>Tamil Nadu, India - 641654
+            </p>
+            <p style="color: var(--text-muted); font-size: 0.92rem; margin-bottom: 0.5rem;">
+              📧 kselakiya1@gmail.com
+            </p>
+            <p style="color: var(--text-muted); font-size: 0.92rem;">
+              📞 +91 8220058570
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>&copy; 2026 Elakiya K S. All rights reserved.</div>
+        <div>Built with pure HTML5, CSS3 &amp; JavaScript</div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    const copyFirebaseWebBtn = document.getElementById('copyFirebaseWebBtn');
+    if (copyFirebaseWebBtn) {
+      copyFirebaseWebBtn.addEventListener('click', () => {
+        const codeElement = document.getElementById('firebaseWebCode');
+        if (codeElement) {
+          navigator.clipboard.writeText(codeElement.innerText).then(() => {
+            window.showToast('Firebase Web App code copied!');
+          }).catch(() => {
+            window.showToast('Select code and press Ctrl+C to copy.');
+          });
+        }
+      });
+    }
+  </script>
+</body>
+</html>

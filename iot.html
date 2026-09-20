@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IoT Session — ESP32 &amp; Connected Systems | Elakiya K S</title>
+  <meta name="description" content="Explore practical IoT experiments on ESP32 development boards, local web servers, MQTT cloud telemetry, voice control, and real-time smart home dashboards.">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220%22%20%220%22%20%22100%22%20%22100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
+</head>
+<body>
+
+  <!-- Background Ambient Glow -->
+  <div class="ambient-glow" aria-hidden="true"></div>
+
+  <!-- Sticky Glassmorphic Navbar -->
+  <header>
+    <nav class="navbar" id="navbar" aria-label="Main Navigation">
+      <div class="container">
+        <a href="index.html" class="nav-brand">
+          <div class="nav-logo-badge">EK</div>
+          <div class="brand-text">
+            <span class="brand-name">Elakiya K S</span>
+            <span class="brand-role">Mechatronics Engineer</span>
+          </div>
+        </a>
+
+        <div class="nav-links" id="navLinks">
+          <a href="index.html" class="nav-link">Home</a>
+          <a href="about.html" class="nav-link">About</a>
+          <a href="skills.html" class="nav-link">Skills</a>
+          <a href="experience.html" class="nav-link">Experience</a>
+          <a href="protosem.html" class="nav-link">ProtoSem</a>
+          <a href="iot.html" class="nav-link active active-iot">IoT Session</a>
+          <a href="contact.html" class="nav-link">Contact</a>
+        </div>
+
+        <div class="nav-cta">
+          <a href="contact.html" class="btn btn-outline" style="padding: 0.55rem 1.25rem; font-size: 0.88rem;">Let's Talk</a>
+          <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle navigation menu">
+            <span></span>
+          </button>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <section class="section" style="padding-top: calc(var(--nav-height) + 3rem);">
+      <div class="container">
+
+        <!-- Page Tag & Header -->
+        <div class="proto-tag" style="color: var(--cyan);">05 / IoT Lab &amp; Embedded Connectivity</div>
+        <h1 class="proto-main-title">IoT Session &mdash; ESP32 &amp; Connected Systems.</h1>
+        <p class="proto-main-subtitle">
+          Hands-on practical Internet of Things (IoT) experiments executed on ESP32 microcontrollers. Click any task box below to open its dedicated page with complete source code, hardware circuit details, photos, and video demonstration.
+        </p>
+
+        <!-- Hardware & Lab Overview Banner -->
+        <div class="glass-card" style="padding: 2.25rem; margin-bottom: 3rem; border-color: rgba(0, 242, 254, 0.25);">
+          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem;">
+            <div>
+              <div style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--cyan); margin-bottom: 0.35rem;">HARDWARE PLATFORM</div>
+              <h2 style="font-size: 1.65rem; margin-bottom: 0.5rem;">ESP32 Wi-Fi &amp; Bluetooth Dual-Core MCU</h2>
+              <p style="font-size: 0.98rem; color: var(--text-muted); margin-bottom: 0; max-width: 650px;">
+                Developing connected embedded applications using the Arduino IDE framework, HTTP web servers, MQTT cloud protocols, Firebase cloud databases, and FreeRTOS task scheduling.
+              </p>
+            </div>
+            <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+              <span class="tech-tag" style="color: var(--cyan); border-color: rgba(0,242,254,0.3); background: rgba(0,242,254,0.08);">NodeMCU ESP32</span>
+              <span class="tech-tag" style="color: #38bdf8;">Arduino IDE</span>
+              <span class="tech-tag" style="color: #34d399;">HTTP WebServer</span>
+              <span class="tech-tag" style="color: #fbbf24;">MQTT Broker</span>
+              <span class="tech-tag" style="color: #ec4899;">Google Firebase</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5 Separate Task Boxes Grid -->
+        <div class="iot-tasks-grid">
+
+          <!-- Task 1 Box -->
+          <a href="iot-task1.html" class="iot-task-card" target="_blank" rel="noopener noreferrer">
+            <div class="iot-card-thumb">
+              <img src="assets/images/task1_lab.jpg" alt="Task 1 - ESP32 Inbuilt LED and Web Server">
+              <span class="iot-thumb-overlay">▶ Video &bull; 2 Photos</span>
+            </div>
+
+            <div class="iot-task-header">
+              <span class="iot-task-badge">TASK 01</span>
+              <span class="iot-task-status status-active">
+                <span class="dot"></span> Photos &bull; Video &bull; Code &bull; Learnings
+              </span>
+            </div>
+
+            <h2 class="iot-task-title">On / Off Inbuilt LED on ESP32</h2>
+            <p class="iot-task-desc">
+              Programmed an embedded HTTP web server on ESP32 to wirelessly toggle the onboard built-in LED (GPIO 2) from a responsive web browser interface with real-time state feedback.
+            </p>
+
+            <div class="tech-tags" style="margin-bottom: 1.25rem;">
+              <span class="tech-tag">Inbuilt LED (GPIO 2)</span>
+              <span class="tech-tag">WiFi.h</span>
+              <span class="tech-tag">WebServer.h</span>
+              <span class="tech-tag">HTTP GET /on /off</span>
+            </div>
+
+            <div class="iot-task-footer">
+              <span class="iot-task-link-text">
+                Open Task 1 Details (New Tab) <span>&rarr;</span>
+              </span>
+              <span style="font-size: 1.2rem;">💡</span>
+            </div>
+          </a>
+
+          <!-- Task 2 Box -->
+          <a href="iot-task2.html" class="iot-task-card" target="_blank" rel="noopener noreferrer">
+            <div class="iot-card-thumb">
+              <img src="assets/images/task2_hardware.jpg" alt="Task 2 - Adafruit IO MQTT and Soldered Perfboard Circuit">
+              <span class="iot-thumb-overlay">▶ Video &bull; 4 Dashboards &bull; Circuit</span>
+            </div>
+
+            <div class="iot-task-header">
+              <span class="iot-task-badge">TASK 02</span>
+              <span class="iot-task-status status-active">
+                <span class="dot"></span> Photos &bull; Video &bull; Code &bull; Learnings
+              </span>
+            </div>
+
+            <h2 class="iot-task-title">Adafruit IO Cloud MQTT &amp; Soldered Hardware Control</h2>
+            <p class="iot-task-desc">
+              Connected ESP32 to Adafruit IO MQTT broker (<code>elaks_22/dashboards/bulb</code>) to remotely toggle the AC bulb/actuator with real-time sync, paired with a custom-soldered perfboard circuit featuring tactile push-button override and transistor switching.
+            </p>
+
+            <div class="tech-tags" style="margin-bottom: 1.25rem;">
+              <span class="tech-tag">Adafruit IO</span>
+              <span class="tech-tag">MQTT Protocol</span>
+              <span class="tech-tag">Perfboard Circuit</span>
+              <span class="tech-tag">Transistor Switch</span>
+            </div>
+
+            <div class="iot-task-footer">
+              <span class="iot-task-link-text">
+                Open Task 2 Details (New Tab) <span>&rarr;</span>
+              </span>
+              <span style="font-size: 1.2rem;">☁️</span>
+            </div>
+          </a>
+
+          <!-- Task 3 Box -->
+          <a href="iot-task3.html" class="iot-task-card" target="_blank" rel="noopener noreferrer">
+            <div class="iot-card-thumb">
+              <img src="assets/images/task3_hw1.jpg" alt="Task 3 - Google Assistant Voice Automation & Relays">
+              <span class="iot-thumb-overlay">▶ Video &bull; 4 Applets &bull; 3 HW Photos</span>
+            </div>
+
+            <div class="iot-task-header">
+              <span class="iot-task-badge">TASK 03</span>
+              <span class="iot-task-status status-active">
+                <span class="dot"></span> Photos &bull; Video &bull; Code &bull; Learnings
+              </span>
+            </div>
+
+            <h2 class="iot-task-title">Voice Appliance Control (Google Assistant + IFTTT)</h2>
+            <p class="iot-task-desc">
+              Implemented hands-free speech automation interfacing Google Assistant voice scenes (&quot;Ok Google, activate lights on/off&quot;) via IFTTT webhooks to Adafruit IO, triggering a 4-channel optocoupler relay module connected to ESP32.
+            </p>
+
+            <div class="tech-tags" style="margin-bottom: 1.25rem;">
+              <span class="tech-tag">Google Assistant</span>
+              <span class="tech-tag">IFTTT Webhooks</span>
+              <span class="tech-tag">Adafruit IO</span>
+              <span class="tech-tag">4-Ch Relay Module</span>
+            </div>
+
+            <div class="iot-task-footer">
+              <span class="iot-task-link-text">
+                Open Task 3 Details (New Tab) <span>&rarr;</span>
+              </span>
+              <span style="font-size: 1.2rem;">🎙️</span>
+            </div>
+          </a>
+
+          <!-- Task 4 Box -->
+          <a href="iot-task4.html" class="iot-task-card" target="_blank" rel="noopener noreferrer">
+            <div class="iot-card-thumb">
+              <img src="assets/images/task4_dashboard_control.png" alt="Task 4 - Firebase Realtime Web Dashboard Creation">
+              <span class="iot-thumb-overlay">4 Dashboard Views &bull; Cloud Sync</span>
+            </div>
+
+            <div class="iot-task-header">
+              <span class="iot-task-badge">TASK 04</span>
+              <span class="iot-task-status status-active">
+                <span class="dot"></span> 4 Views &bull; Web App &bull; Analytics &bull; Learnings
+              </span>
+            </div>
+
+            <h2 class="iot-task-title">Creating Firebase Realtime Web Dashboard</h2>
+            <p class="iot-task-desc">
+              Designed and developed &quot;AuraIoT&quot; &mdash; a responsive Google Firebase Realtime Database cloud dashboard with live DHT11 microclimate gauges, LDR ambient light automation engine, appliance relay controls, user auth, and CSV telemetry export.
+            </p>
+
+            <div class="tech-tags" style="margin-bottom: 1.25rem;">
+              <span class="tech-tag">Firebase Realtime DB</span>
+              <span class="tech-tag">AuraIoT Dashboard</span>
+              <span class="tech-tag">LDR Automation Engine</span>
+              <span class="tech-tag">CSV Data Export</span>
+            </div>
+
+            <div class="iot-task-footer">
+              <span class="iot-task-link-text">
+                Open Task 4 Details (New Tab) <span>&rarr;</span>
+              </span>
+              <span style="font-size: 1.2rem;">🔥</span>
+            </div>
+          </a>
+
+          <!-- Task 5 Box -->
+          <a href="iot-task5.html" class="iot-task-card" target="_blank" rel="noopener noreferrer">
+            <div class="iot-card-thumb">
+              <img src="assets/images/task5_hw1.jpg" alt="Task 5 - Firebase Hardware: Bulb, DHT11, Push Button and ESP32">
+              <span class="iot-thumb-overlay">8 Hardware Execution Photos</span>
+            </div>
+
+            <div class="iot-task-header">
+              <span class="iot-task-badge">TASK 05</span>
+              <span class="iot-task-status status-active">
+                <span class="dot"></span> 8 HW Photos &bull; Code &bull; Bulb &bull; DHT11 &bull; Learnings
+              </span>
+            </div>
+
+            <h2 class="iot-task-title">Firebase Hardware: Bulb, DHT11, Button &amp; ESP32</h2>
+            <p class="iot-task-desc">
+              Assembled and deployed the physical IoT edge node: interfacing ESP32 with an AC light bulb, 5V optocoupled relay, DHT11 temperature/humidity sensor, analog LDR, and tactile push button synchronized bidirectionally with Google Firebase in real time.
+            </p>
+
+            <div class="tech-tags" style="margin-bottom: 1.25rem;">
+              <span class="tech-tag">ESP32 Microcontroller</span>
+              <span class="tech-tag">AC Bulb &amp; Relay</span>
+              <span class="tech-tag">DHT11 &amp; LDR Sensors</span>
+              <span class="tech-tag">Push Button Override</span>
+            </div>
+
+            <div class="iot-task-footer">
+              <span class="iot-task-link-text">
+                Open Task 5 Details (New Tab) <span>&rarr;</span>
+              </span>
+              <span style="font-size: 1.2rem;">⚡</span>
+            </div>
+          </a>
+
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- Modern Glassmorphic Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="nav-brand" style="margin-bottom: 1rem;">
+            <div class="nav-logo-badge">EK</div>
+            <div class="brand-text">
+              <span class="brand-name">Elakiya K S</span>
+              <span class="brand-role">Mechatronics Engineer</span>
+            </div>
+          </div>
+          <p>
+            B.E. Mechatronics Engineering student at Kumaraguru College of Technology. Building intelligent automation, embedded robotics, and connected systems.
+          </p>
+          <div class="social-links" style="margin-top: 1.5rem;">
+            <a href="https://www.linkedin.com/in/elakiya22" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="LinkedIn">in</a>
+            <a href="https://github.com/elakiya" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="GitHub">gh</a>
+            <a href="mailto:kselakiya1@gmail.com" class="social-btn" aria-label="Email">✉</a>
+            <a href="tel:8220058570" class="social-btn" aria-label="Phone">📞</a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="about.html">About Me</a>
+            <a href="skills.html">Skills Matrix</a>
+            <a href="experience.html">Experience &amp; Projects</a>
+            <a href="protosem.html">ProtoSem Journal</a>
+            <a href="iot.html">IoT Session</a>
+            <a href="contact.html">Contact</a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Contact &amp; Location</h4>
+          <div class="footer-links">
+            <p style="color: var(--text-muted); font-size: 0.92rem; margin-bottom: 0.5rem;">
+              📍 Avinashi, Tirupur / Coimbatore<br>Tamil Nadu, India - 641654
+            </p>
+            <p style="color: var(--text-muted); font-size: 0.92rem; margin-bottom: 0.5rem;">
+              📧 kselakiya1@gmail.com
+            </p>
+            <p style="color: var(--text-muted); font-size: 0.92rem;">
+              📞 +91 8220058570
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>&copy; 2026 Elakiya K S. All rights reserved.</div>
+        <div>Built with pure HTML5, CSS3 &amp; JavaScript</div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

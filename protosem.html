@@ -1,0 +1,1089 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ProtoSem — Weekly Learning Journal | Elakiya K S</title>
+  <meta name="description" content="Weekly learning journal of Elakiya K S at ProtoSem innovation incubator - Kumaraguru College of Technology. Documenting mechatronics, 5S, software mindset, 3D CAD, digital fabrication, embedded systems, and IoT.">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220%22%20%220%22%20%22100%22%20%22100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
+</head>
+<body>
+
+  <!-- Background Ambient Glow -->
+  <div class="ambient-glow" aria-hidden="true"></div>
+
+  <!-- Sticky Glassmorphic Navbar (Matching Screenshot) -->
+  <header>
+    <nav class="navbar" id="navbar" aria-label="Main Navigation">
+      <div class="container">
+        <a href="index.html" class="nav-brand">
+          <div class="nav-logo-badge">EK</div>
+          <div class="brand-text">
+            <span class="brand-name">Elakiya K S</span>
+            <span class="brand-role">Mechatronics Engineer</span>
+          </div>
+        </a>
+
+        <div class="nav-links" id="navLinks">
+          <a href="index.html" class="nav-link">Home</a>
+          <a href="about.html" class="nav-link">About</a>
+          <a href="skills.html" class="nav-link">Skills</a>
+          <a href="experience.html" class="nav-link">Experience</a>
+          <a href="protosem.html" class="nav-link active-pill">ProtoSem</a>
+          <a href="iot.html" class="nav-link">IoT Session</a>
+          <a href="contact.html" class="nav-link">Contact</a>
+        </div>
+
+        <div class="nav-cta">
+          <a href="contact.html" class="btn btn-outline" style="padding: 0.55rem 1.25rem; font-size: 0.88rem;">Let's Talk</a>
+          <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle navigation menu">
+            <span></span>
+          </button>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <section class="section protosem-hero">
+      <div class="container">
+
+        <!-- Header Matching Screenshot Exactly -->
+        <div class="proto-tag">04 / ProtoSem</div>
+        <h1 class="proto-main-title">ProtoSem &mdash; a weekly learning journal.</h1>
+        <p class="proto-main-subtitle">
+          Each box below is one week. Click a week to open it and see what I studied, what I built, and what it taught me.
+        </p>
+
+        <!-- Interactive Control Bar & Jump Navigation -->
+        <div class="proto-controls">
+          <div class="week-jump-pills">
+            <span class="jump-pill active" data-target="week-0">W0 Orientation</span>
+            <span class="jump-pill" data-target="week-1">W1 5S &amp; Lab</span>
+            <span class="jump-pill" data-target="week-2">W2 Beyond Coding</span>
+            <span class="jump-pill" data-target="week-3">W3 3D &amp; Electronics</span>
+            <span class="jump-pill" data-target="week-4">W4 Laser &amp; 3DP</span>
+            <span class="jump-pill" data-target="week-5">W5 UI/UX &amp; Market</span>
+            <span class="jump-pill" data-target="week-6">W6 Embedded &amp; Solder</span>
+            <span class="jump-pill" data-target="week-7">W7 IoT &amp; RTOS</span>
+          </div>
+
+          <div class="proto-btn-group">
+            <button class="jump-pill" id="expandAllWeeks" title="Open all weeks at once">Expand All ▾</button>
+            <button class="jump-pill" id="collapseAllWeeks" title="Collapse all weeks">Collapse All ▴</button>
+            <a href="#template-guide" class="jump-pill" style="color: #2dd4bf; border-color: rgba(45,212,191,0.4);">Copy Template 📋</a>
+          </div>
+        </div>
+
+        <!-- =========================================================
+             WEEKS GRID (BOX TYPE ACCORDION)
+             ========================================================= -->
+        <div class="weeks-grid" id="weeksGrid">
+
+          <!-- ============================================ -->
+          <!-- WEEK 0 BOX -->
+          <!-- ============================================ -->
+          <div class="week-box-card" id="week-0">
+            <div class="week-box-header">
+              <div class="week-box-left">
+                <div class="week-badge">W0</div>
+                <div class="week-box-titles">
+                  <span class="week-num">Week 0</span>
+                  <span class="week-sub">Orientation</span>
+                </div>
+              </div>
+              <div class="week-chevron" aria-label="Toggle Week 0">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </div>
+            </div>
+
+            <div class="week-box-body">
+              <!-- Week Header Details -->
+              <div class="week-header" style="margin-top: 1.5rem;">
+                <h2>Week 0</h2>
+                <span>July 2026</span>
+              </div>
+
+              <!-- Week 0 Custom Icons Bar -->
+              <div class="week-icons-bar">
+                <span class="week-icon-pill"><span class="emoji">🧭</span> Orientation Compass</span>
+                <span class="week-icon-pill"><span class="emoji">🐦</span> Zenpencils Reading</span>
+                <span class="week-icon-pill"><span class="emoji">🛡️</span> ESFJ Consul Badge</span>
+                <span class="week-icon-pill"><span class="emoji">🗼</span> Marshmallow &amp; Spaghetti Tower</span>
+              </div>
+
+              <h3>Orientation and Kick Start</h3>
+
+              <p>
+                Initiated the ProtoSem journey with immersive orientation sessions designed to break traditional academic mindsets and foster rapid iterative engineering instincts. We explored reflective philosophical readings from Zenpencils, discovered individual psychological archetypes via the 16 Personalities framework (ESFJ Consul profile), and tackled the famous Marshmallow-and-Spaghetti tower challenge to learn rapid prototyping dynamics under pressure.
+              </p>
+
+              <h4>Topics Learned</h4>
+              <ul>
+                <li>ProtoSem curriculum objectives, milestones, and hands-on innovation culture</li>
+                <li>The Marshmallow Challenge: Rapid prototyping, testing assumptions early vs. late structural failure</li>
+                <li>Zenpencils reflective reading: Cultivating grit, purposeful inquiry, and creative resilience</li>
+                <li>16 Personalities assessment: Understanding the ESFJ Consul archetype and collaborative team strengths</li>
+              </ul>
+
+              <h4>Key Takeaways</h4>
+              <ul>
+                <li>Prototyping early beats endless planning: building immediately exposes physical structural flaws before the deadline</li>
+                <li>Empathy and open communication are fundamental to high-velocity mechatronics teamwork</li>
+                <li>Recognizing your behavioral archetype enables smoother delegation and technical synergy</li>
+              </ul>
+
+              <div class="quote-banner">
+                &ldquo;Do not wait for perfect conditions to begin. Build, test, fail quickly, and iterate with empathy.&rdquo;
+              </div>
+
+              <h4>Reflection</h4>
+              <p>
+                The marshmallow challenge was an unforgettable lesson in engineering humility: teams that spend 15 minutes debating schematics and only 1 minute building almost always watch their tower collapse under the weight of the marshmallow. Discovering my ESFJ Consul archetype reinforced my natural drive for harmony and structured team organization, which I intend to channel throughout every lab sprint in ProtoSem.
+              </p>
+
+              <!-- Week 0 Photo Gallery & Interactive Uploader -->
+              <div class="week-photo-container">
+                <h4 style="margin-bottom: 1rem;">Week 0 Gallery &amp; Photos</h4>
+                <div class="photo-gallery-grid">
+                  <div class="photo-item">
+                    <img src="assets/images/week0-orientation.jpg" alt="Week 0 - Marshmallow Challenge Tower &amp; ProtoSem Orientation">
+                    <div class="photo-caption">Marshmallow &amp; Spaghetti Tower Challenge &bull; ProtoSem Lab</div>
+                  </div>
+                </div>
+
+                <!-- Drop / Add Personal Photo Slot -->
+                <div class="add-photo-dropzone">
+                  <input type="file" accept="image/*">
+                  <span class="dz-icon">📷</span>
+                  <span class="dz-title">+ Add or Drop Your Week 0 Photo</span>
+                  <span class="dz-hint">Click or drag &amp; drop to preview your photo live in this card</span>
+                </div>
+              </div>
+
+              <h4>Resources Used</h4>
+              <ul>
+                <li>Tom Wujec &mdash; The Marshmallow Challenge Design Framework</li>
+                <li>Zenpencils Illustrated Motivational &amp; Philosophical Anthology</li>
+                <li>16Personalities Assessment &amp; Myers-Briggs Type Indicator (MBTI) Team Guide</li>
+              </ul>
+
+              <div class="week-card-footer">
+                <button class="btn btn-outline btn-close-week" style="padding: 0.5rem 1.2rem; font-size: 0.85rem;">▲ Close Week 0</button>
+                <span style="font-family: var(--font-mono); font-size: 0.8rem; color: #94a3b8;">ProtoSem Semester &bull; Week 0</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- ============================================ -->
+          <!-- WEEK 1 BOX -->
+          <!-- ============================================ -->
+          <div class="week-box-card" id="week-1">
+            <div class="week-box-header">
+              <div class="week-box-left">
+                <div class="week-badge">W1</div>
+                <div class="week-box-titles">
+                  <span class="week-num">Week 1</span>
+                  <span class="week-sub">5S &amp; Team Setup</span>
+                </div>
+              </div>
+              <div class="week-chevron" aria-label="Toggle Week 1">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </div>
+            </div>
+
+            <div class="week-box-body">
+              <div class="week-header" style="margin-top: 1.5rem;">
+                <h2>Week 1</h2>
+                <span>July 2026</span>
+              </div>
+
+              <!-- Week 1 Custom Icons Bar -->
+              <div class="week-icons-bar">
+                <span class="week-icon-pill"><span class="emoji">🗄️</span> Labeled Storage Cupboard</span>
+                <span class="week-icon-pill"><span class="emoji">🔌</span> Sensor Circuit Chip</span>
+                <span class="week-icon-pill"><span class="emoji">💻</span> Laptop with Git Branch</span>
+              </div>
+
+              <h3>5S in the Lab, Controllers &amp; Sensors Team, and Going Online</h3>
+
+              <p>
+                Practiced the 5S methodology as part of the Controllers and Sensors team &mdash; counting and listing lab components, then arranging and labeling them in cupboards so anyone on the team can find them. Also set up my portfolio website and GitHub account this week.
+              </p>
+
+              <h4>Topics Learned</h4>
+              <ul>
+                <li>5S methodology (Sort, Set in order, Shine, Standardize, Sustain)</li>
+                <li>Working as part of the Controllers and Sensors team</li>
+                <li>Counting and listing lab components for inventory</li>
+                <li>Arranging components in cupboards and marking their locations</li>
+                <li>Creating and structuring a personal portfolio</li>
+                <li>Setting up a GitHub account</li>
+              </ul>
+
+              <h4>Key Takeaways</h4>
+              <ul>
+                <li>5S turns &ldquo;where is it?&rdquo; into a five-second answer for the whole team</li>
+                <li>Counting components early avoids duplicate orders and lost parts later in the semester</li>
+                <li>Clearly marked storage locations save everyone time, not just the person who organized it</li>
+                <li>Having a portfolio and GitHub live from week one makes it easy to document every week after</li>
+              </ul>
+
+              <div class="quote-banner">
+                &ldquo;A place for everything, and everything in its place. Efficiency in hardware begins with discipline in the lab.&rdquo;
+              </div>
+
+              <h4>Reflection</h4>
+              <p>
+                Organizing the components taught me more about our lab's hardware than any lecture could &mdash; I now know what we have, how much of it, and where it lives. Setting up the portfolio and GitHub in the same week felt right: this journal and my code will grow together from here.
+              </p>
+
+              <!-- Week 1 Photo Gallery & Interactive Uploader -->
+              <div class="week-photo-container">
+                <h4 style="margin-bottom: 1rem;">Week 1 Gallery &amp; Photos</h4>
+                <div class="photo-gallery-grid">
+                  <div class="photo-item">
+                    <img src="assets/images/week1-5s-lab.jpg" alt="Week 1 - 5S Lab Storage and Component Inventory">
+                    <div class="photo-caption">5S Organization &bull; Labeled Cupboards &amp; Sensor Inventory</div>
+                  </div>
+                </div>
+
+                <div class="add-photo-dropzone">
+                  <input type="file" accept="image/*">
+                  <span class="dz-icon">📷</span>
+                  <span class="dz-title">+ Add or Drop Your Week 1 Photo</span>
+                  <span class="dz-hint">Click or drag &amp; drop to preview your photo live in this card</span>
+                </div>
+              </div>
+
+              <h4>Resources Used</h4>
+              <ul>
+                <li>5S methodology reference guide</li>
+                <li>GitHub Docs &mdash; creating an account &amp; first repository</li>
+              </ul>
+
+              <div class="week-card-footer">
+                <button class="btn btn-outline btn-close-week" style="padding: 0.5rem 1.2rem; font-size: 0.85rem;">▲ Close Week 1</button>
+                <span style="font-family: var(--font-mono); font-size: 0.8rem; color: #94a3b8;">ProtoSem Semester &bull; Week 1</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- ============================================ -->
+          <!-- WEEK 2 BOX -->
+          <!-- ============================================ -->
+          <div class="week-box-card" id="week-2">
+            <div class="week-box-header">
+              <div class="week-box-left">
+                <div class="week-badge">W2</div>
+                <div class="week-box-titles">
+                  <span class="week-num">Week 2</span>
+                  <span class="week-sub">Beyond Coding</span>
+                </div>
+              </div>
+              <div class="week-chevron" aria-label="Toggle Week 2">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </div>
+            </div>
+
+            <div class="week-box-body">
+              <div class="week-header" style="margin-top: 1.5rem;">
+                <h2>Week 2</h2>
+                <span>July 2026</span>
+              </div>
+
+              <!-- Week 2 Custom Icons Bar -->
+              <div class="week-icons-bar">
+                <span class="week-icon-pill"><span class="emoji">🌱</span> Frugal Mindset</span>
+                <span class="week-icon-pill"><span class="emoji">🧠</span> Think Like a Coder</span>
+                <span class="week-icon-pill"><span class="emoji">🎮</span> Scratch Animation</span>
+                <span class="week-icon-pill"><span class="emoji">📱</span> Blood Donor MIT App</span>
+                <span class="week-icon-pill"><span class="emoji">🎯</span> Applied Design Thinking</span>
+              </div>
+
+              <h3>Beyond Coding: Building the Mindset Behind Great Software</h3>
+
+              <p>
+                This week expanded my perspective on what it means to be a software developer. While writing code remains an essential skill, I discovered that building impactful software also requires innovation, empathy, collaboration, and a deep understanding of user needs.
+              </p>
+
+              <!-- Deep Dive Activities Grid -->
+              <div class="deep-dive-grid">
+                <!-- Activity 1 -->
+                <div class="deep-dive-card">
+                  <div class="deep-dive-title">🌱 Innovation &amp; Frugal Thinking</div>
+                  <p style="font-size: 0.92rem; margin-bottom: 0.5rem;">
+                    The week began with an inspiring LeanSpark session by Prof. Mukesh Sudh, where I explored the concept of the Frugal Mindset. Meaningful innovation is not driven by abundant resources, but by the ability to solve real-world problems creatively with the resources available.
+                  </p>
+                  <div style="font-style: italic; color: #2dd4bf; font-size: 0.86rem;">
+                    &ldquo;Innovation is not about doing more with more &mdash; it's about achieving more with less.&rdquo;
+                  </div>
+                </div>
+
+                <!-- Activity 2 -->
+                <div class="deep-dive-card">
+                  <div class="deep-dive-title">🧠 Think Like a Coder</div>
+                  <p style="font-size: 0.92rem; margin-bottom: 0.5rem;">
+                    As part of a five-member team, I participated in the Think Like a Coder Challenge, where collaboration became just as important as coding. Working together strengthened my analytical thinking, communication, and teamwork.
+                  </p>
+                  <div class="tech-tags">
+                    <span class="tech-tag">Logical reasoning</span>
+                    <span class="tech-tag">Team collaboration</span>
+                    <span class="tech-tag">Problem decomposition</span>
+                  </div>
+                </div>
+
+                <!-- Activity 3 -->
+                <div class="deep-dive-card">
+                  <div class="deep-dive-title">🎮 Creative Programming with Scratch</div>
+                  <p style="font-size: 0.92rem; margin-bottom: 0.5rem;">
+                    Designed a 2-minute animated story using Scratch, exploring how programming can be combined with storytelling. Demonstrated that programming can be both educational and creative.
+                  </p>
+                  <div class="tech-tags">
+                    <span class="tech-tag">Visual logic</span>
+                    <span class="tech-tag">Event-driven</span>
+                    <span class="tech-tag">Storytelling</span>
+                  </div>
+                </div>
+
+                <!-- Activity 4 -->
+                <div class="deep-dive-card">
+                  <div class="deep-dive-title">📱 Rapid Mobile App Prototyping</div>
+                  <p style="font-size: 0.92rem; margin-bottom: 0.5rem;">
+                    Built a functional Blood Donor application using MIT App Inventor. Gained hands-on experience in rapid application development and how ideas evolve into working prototypes without large codebases.
+                  </p>
+                  <div class="tech-tags">
+                    <span class="tech-tag">Mobile UI</span>
+                    <span class="tech-tag">MIT App Inventor</span>
+                    <span class="tech-tag">Rapid prototype</span>
+                  </div>
+                </div>
+
+                <!-- Activity 5 -->
+                <div class="deep-dive-card">
+                  <div class="deep-dive-title">🎯 Applied Design Thinking</div>
+                  <p style="font-size: 0.92rem; margin-bottom: 0.5rem;">
+                    Successful software begins with understanding people before writing code. Explored how user-centered thinking leads to better products and meaningful solutions.
+                  </p>
+                  <div class="tech-tags">
+                    <span class="tech-tag">Empathy</span>
+                    <span class="tech-tag">Definition</span>
+                    <span class="tech-tag">Ideation</span>
+                    <span class="tech-tag">Testing</span>
+                  </div>
+                </div>
+              </div>
+
+              <h4>Key Takeaways</h4>
+              <ul>
+                <li>Successful software engineers don't just build applications &mdash; they understand users, think creatively, and collaborate effectively</li>
+                <li>Coding is only one piece of the puzzle; innovation, design thinking, communication, and product mindset are equally important</li>
+                <li>Frugal innovation unlocks elegant solutions even when physical and computing resources are limited</li>
+              </ul>
+
+              <div class="quote-banner">
+                &ldquo;Great software isn't built by code alone &mdash; it is built by curiosity, collaboration, empathy, and the courage to solve meaningful problems.&rdquo;
+              </div>
+
+              <h4>Reflection</h4>
+              <p>
+                Week 2 completely changed my perspective on software development. Every activity this week contributed a different perspective, reinforcing that impactful software is created at the intersection of technology, creativity, and human-centered design.
+              </p>
+
+              <!-- Week 2 Photo Gallery & Interactive Uploader -->
+              <div class="week-photo-container">
+                <h4 style="margin-bottom: 1rem;">Week 2 Gallery &amp; Photos</h4>
+                <div class="photo-gallery-grid">
+                  <div class="photo-item">
+                    <img src="assets/images/week2-beyond-coding.jpg" alt="Week 2 - Scratch Creative Animation and MIT App Inventor Mobile App">
+                    <div class="photo-caption">Scratch Storytelling &amp; MIT App Inventor Blood Donor Mobile App</div>
+                  </div>
+                </div>
+
+                <div class="add-photo-dropzone">
+                  <input type="file" accept="image/*">
+                  <span class="dz-icon">📷</span>
+                  <span class="dz-title">+ Add or Drop Your Week 2 Photo</span>
+                  <span class="dz-hint">Click or drag &amp; drop to preview your photo live in this card</span>
+                </div>
+              </div>
+
+              <h4>Resources Used</h4>
+              <ul>
+                <li>Prof. Mukesh Sudh &mdash; LeanSpark Frugal Mindset Lectures</li>
+                <li>MIT App Inventor Educational Environment &amp; Block Coding</li>
+                <li>Scratch MIT Visual Storytelling Framework</li>
+                <li>Stanford d.school Design Thinking Bootleg</li>
+              </ul>
+
+              <div class="week-card-footer">
+                <button class="btn btn-outline btn-close-week" style="padding: 0.5rem 1.2rem; font-size: 0.85rem;">▲ Close Week 2</button>
+                <span style="font-family: var(--font-mono); font-size: 0.8rem; color: #94a3b8;">ProtoSem Semester &bull; Week 2</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- ============================================ -->
+          <!-- WEEK 3 BOX -->
+          <!-- ============================================ -->
+          <div class="week-box-card" id="week-3">
+            <div class="week-box-header">
+              <div class="week-box-left">
+                <div class="week-badge">W3</div>
+                <div class="week-box-titles">
+                  <span class="week-num">Week 3</span>
+                  <span class="week-sub">3D Modelling &amp; Electronics</span>
+                </div>
+              </div>
+              <div class="week-chevron" aria-label="Toggle Week 3">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </div>
+            </div>
+
+            <div class="week-box-body">
+              <div class="week-header" style="margin-top: 1.5rem;">
+                <h2>Week 3</h2>
+                <span>August 2026</span>
+              </div>
+
+              <div class="week-icons-bar">
+                <span class="week-icon-pill"><span class="emoji">🧊</span> Fusion 360 3D CAD</span>
+                <span class="week-icon-pill"><span class="emoji">📐</span> Reference Image Part Modeling</span>
+                <span class="week-icon-pill"><span class="emoji">⚡</span> Tinkercad Electronics Circuit</span>
+              </div>
+
+              <h3>3D Modelling &amp; Electronics</h3>
+
+              <p>
+                Week 3 of my ProtoSem journey was an exciting combination of 3D modelling, CAD design, and electronics. It was a week where I got to explore both digital design and the fundamentals of electronic systems &mdash; a completely different experience from anything I'd tried before.
+              </p>
+
+              <h4>Exploring Fusion 360 &amp; Part Modelling from a Reference Image</h4>
+              <p>
+                I started by learning the fundamentals of 3D modelling in Fusion 360, including sketches, dimensions, constraints, extrusions, and different modelling features. Instead of simply following steps, I tried to understand what each tool was doing and how different features could be combined to create a complete component.
+              </p>
+              <p>
+                One of the activities I worked on was part modelling based on a reference image &mdash; observing its geometry and proportions, then converting that visual reference into a 3D model. This taught me that CAD modelling is as much about planning the process as it is about the final look.
+              </p>
+
+              <h4>Electronics &amp; Tinkercad Simulation</h4>
+              <p>
+                Through electronics and Tinkercad, I started understanding how components can be connected to create simple functional circuits, validating current paths, and checking resistor-LED calculations before breadboarding.
+              </p>
+
+              <h4>Key Takeaways</h4>
+              <ul>
+                <li>Engineering is not limited to learning a single tool or technology &mdash; digital CAD and electronic circuits work in harmony</li>
+                <li>CAD modelling requires strategic feature tree planning rather than jumping into extrusions immediately</li>
+                <li>Mistakes in 3D modeling and circuit wiring are valuable learning stepping stones</li>
+              </ul>
+
+              <div class="quote-banner">
+                &ldquo;Through Fusion 360, I learned how ideas become digital 3D models. Through Tinkercad, how components create functional circuits. Most importantly, I learned the value of learning by doing.&rdquo;
+              </div>
+
+              <h4>Reflection</h4>
+              <p>
+                One of my biggest takeaways from this week is that engineering is not limited to learning a single tool or technology. Through Fusion 360, I learned how ideas and physical objects can be transformed into digital 3D models. Through electronics and Tinkercad, I started understanding how components can be connected to create simple functional circuits. Most importantly, I learned the value of learning by doing. There were moments when I made mistakes, went back to previous steps, changed my approach, and tried again &mdash; but every mistake helped me understand the process better. Before this week, Fusion 360 and electronics were areas I had very limited practical experience in. Now, I have a basic foundation in both, and more importantly, the curiosity to explore them further.
+              </p>
+
+              <!-- Week 3 Photo Gallery & Interactive Uploader -->
+              <div class="week-photo-container">
+                <h4 style="margin-bottom: 1rem;">Week 3 Gallery &amp; Photos</h4>
+                <div class="photo-gallery-grid">
+                  <div class="photo-item">
+                    <img src="assets/images/week3-cad-electronics.jpg" alt="Week 3 - Fusion 360 3D CAD and Tinkercad Electronics">
+                    <div class="photo-caption">Fusion 360 Part Modeling &amp; Tinkercad Circuit Simulation</div>
+                  </div>
+                </div>
+
+                <div class="add-photo-dropzone">
+                  <input type="file" accept="image/*">
+                  <span class="dz-icon">📷</span>
+                  <span class="dz-title">+ Add or Drop Your Week 3 Photo</span>
+                  <span class="dz-hint">Click or drag &amp; drop to preview your photo live in this card</span>
+                </div>
+              </div>
+
+              <h4>Resources Used</h4>
+              <ul>
+                <li>Autodesk Fusion 360 Official Tutorials &amp; Parametric Design Docs</li>
+                <li>Autodesk Tinkercad Circuits Simulation Platform</li>
+                <li>Engineering Reference Blueprints &amp; Caliper Measuring Guides</li>
+              </ul>
+
+              <div class="week-card-footer">
+                <button class="btn btn-outline btn-close-week" style="padding: 0.5rem 1.2rem; font-size: 0.85rem;">▲ Close Week 3</button>
+                <span style="font-family: var(--font-mono); font-size: 0.8rem; color: #94a3b8;">ProtoSem Semester &bull; Week 3</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- ============================================ -->
+          <!-- WEEK 4 BOX -->
+          <!-- ============================================ -->
+          <div class="week-box-card" id="week-4">
+            <div class="week-box-header">
+              <div class="week-box-left">
+                <div class="week-badge">W4</div>
+                <div class="week-box-titles">
+                  <span class="week-num">Week 4</span>
+                  <span class="week-sub">Laser Cutting &amp; 3DP</span>
+                </div>
+              </div>
+              <div class="week-chevron" aria-label="Toggle Week 4">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </div>
+            </div>
+
+            <div class="week-box-body">
+              <div class="week-header" style="margin-top: 1.5rem;">
+                <h2>Week 4</h2>
+                <span>August 2026</span>
+              </div>
+
+              <div class="week-icons-bar">
+                <span class="week-icon-pill"><span class="emoji">⚡</span> RDWorks Laser Cutting</span>
+                <span class="week-icon-pill"><span class="emoji">🖨️</span> Bambu Lab 3D Printing</span>
+                <span class="week-icon-pill"><span class="emoji">🎬</span> Kinematic Animation</span>
+              </div>
+
+              <h3>Animation, Laser Cutting &amp; 3D Printing</h3>
+
+              <p>
+                Week 4 of my ProtoSem journey was focused on exploring animation, digital fabrication, and 3D printing. I continued developing my skills in Fusion 360 and then moved into practical fabrication using RDWorks for laser cutting. I also got introduced to 3D printing using Bambu Lab, which helped me understand how digital designs can be transformed into physical prototypes.
+              </p>
+
+              <h4>Topics Learned</h4>
+              <ul>
+                <li>Kinematic joints and motion animation in Autodesk Fusion 360</li>
+                <li>Digital fabrication pipeline: Exporting 2D DXF profiles to RDWorks</li>
+                <li>Laser cutting parameters: Laser power, speed, kerf compensation, and focal distance</li>
+                <li>3D printing with Bambu Lab X1: Slicing settings, infill density, supports, and layer heights</li>
+              </ul>
+
+              <h4>Key Takeaways</h4>
+              <ul>
+                <li>Digital fabrication bridges the critical gap between conceptual 3D models and tangible physical parts</li>
+                <li>Laser cutting provides instantaneous flat prototyping, while 3D printing allows complex volumetric geometry</li>
+                <li>Accounting for material kerf and thermal shrinkage is essential for snap-fit engineering assemblies</li>
+              </ul>
+
+              <div class="quote-banner">
+                &ldquo;Digital fabrication transforms pixels on a monitor into physical engineering artifacts in your hands.&rdquo;
+              </div>
+
+              <h4>Reflection</h4>
+              <p>
+                Operating the Bambu Lab 3D printer and the RDWorks laser cutter demystified rapid prototyping for me. Seeing a CAD sketch turn into an acrylic bracket in minutes made me realize how fast an engineer can test and validate an idea today.
+              </p>
+
+              <!-- Week 4 Photo Gallery & Interactive Uploader -->
+              <div class="week-photo-container">
+                <h4 style="margin-bottom: 1rem;">Week 4 Gallery &amp; Photos</h4>
+                <div class="photo-gallery-grid">
+                  <div class="photo-item">
+                    <img src="assets/images/week4-fab-3dprint.jpg" alt="Week 4 - Bambu Lab 3D Printing and RDWorks Laser Cutting">
+                    <div class="photo-caption">Bambu Lab 3D Printing &amp; RDWorks Laser Cutting Workshop</div>
+                  </div>
+                </div>
+
+                <div class="add-photo-dropzone">
+                  <input type="file" accept="image/*">
+                  <span class="dz-icon">📷</span>
+                  <span class="dz-title">+ Add or Drop Your Week 4 Photo</span>
+                  <span class="dz-hint">Click or drag &amp; drop to preview your photo live in this card</span>
+                </div>
+              </div>
+
+              <h4>Resources Used</h4>
+              <ul>
+                <li>RDWorks Laser Cutter Software Guide</li>
+                <li>Bambu Studio Slicing &amp; Filament Settings Handbook</li>
+                <li>FabLab Safety &amp; Material Tolerance Manual</li>
+              </ul>
+
+              <div class="week-card-footer">
+                <button class="btn btn-outline btn-close-week" style="padding: 0.5rem 1.2rem; font-size: 0.85rem;">▲ Close Week 4</button>
+                <span style="font-family: var(--font-mono); font-size: 0.8rem; color: #94a3b8;">ProtoSem Semester &bull; Week 4</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- ============================================ -->
+          <!-- WEEK 5 BOX -->
+          <!-- ============================================ -->
+          <div class="week-box-card" id="week-5">
+            <div class="week-box-header">
+              <div class="week-box-left">
+                <div class="week-badge">W5</div>
+                <div class="week-box-titles">
+                  <span class="week-num">Week 5</span>
+                  <span class="week-sub">UI/UX &amp; Marketplace</span>
+                </div>
+              </div>
+              <div class="week-chevron" aria-label="Toggle Week 5">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </div>
+            </div>
+
+            <div class="week-box-body">
+              <div class="week-header" style="margin-top: 1.5rem;">
+                <h2>Week 5</h2>
+                <span>August 2026</span>
+              </div>
+
+              <div class="week-icons-bar">
+                <span class="week-icon-pill"><span class="emoji">🎨</span> UI/UX Design</span>
+                <span class="week-icon-pill"><span class="emoji">💼</span> Startup Marketplace</span>
+                <span class="week-icon-pill"><span class="emoji">🔍</span> User Discovery &amp; Journey Maps</span>
+              </div>
+
+              <h3>UI/UX, Problem Statements &amp; Market Exploration</h3>
+
+              <p>
+                During Week 5, we were introduced to the fundamentals of UI/UX design and learned how user needs and usability influence product development. We also participated in a marketplace session, where client and startup companies presented real-world problem statements. This gave us an opportunity to understand industry requirements, explore different problem areas, and identify problems that could potentially be developed into practical solutions. We also worked on user discovery and requirement understanding to identify the needs of the target users.
+              </p>
+
+              <h4>Topics Learned</h4>
+              <ul>
+                <li>Fundamentals of UI/UX design: Wireframing, visual hierarchy, user journey mapping</li>
+                <li>Startup marketplace dynamics &amp; evaluating commercial viability of technical challenges</li>
+                <li>User discovery interviews: Asking non-leading questions to uncover latent pain points</li>
+                <li>Translating ambiguous stakeholder requests into crisp engineering problem statements</li>
+              </ul>
+
+              <h4>Key Takeaways</h4>
+              <ul>
+                <li>The most technically complex solution is useless if it does not address the actual user need</li>
+                <li>Direct client interaction reveals nuances that rarely appear in written project briefs</li>
+                <li>Early UI mockups and user journey diagrams align interdisciplinary teams before coding begins</li>
+              </ul>
+
+              <div class="quote-banner">
+                &ldquo;Fall in love with the problem, not with your first solution. True innovation begins with deep empathy for the user.&rdquo;
+              </div>
+
+              <h4>Reflection</h4>
+              <p>
+                Participating in the startup marketplace exposed me to how real companies prioritize features. As an engineer, it taught me to step back from technical specs and first ask: &ldquo;Who is this for, and what friction does this remove from their day?&rdquo;
+              </p>
+
+              <!-- Week 5 Photo Gallery & Interactive Uploader -->
+              <div class="week-photo-container">
+                <h4 style="margin-bottom: 1rem;">Week 5 Gallery &amp; Photos</h4>
+                <div class="photo-gallery-grid">
+                  <div class="photo-item">
+                    <img src="assets/images/week5-uiux-market.jpg" alt="Week 5 - Startup Marketplace and UI UX Journey Maps">
+                    <div class="photo-caption">Startup Marketplace &bull; UI/UX Journey Mapping &amp; Client Pitches</div>
+                  </div>
+                </div>
+
+                <div class="add-photo-dropzone">
+                  <input type="file" accept="image/*">
+                  <span class="dz-icon">📷</span>
+                  <span class="dz-title">+ Add or Drop Your Week 5 Photo</span>
+                  <span class="dz-hint">Click or drag &amp; drop to preview your photo live in this card</span>
+                </div>
+              </div>
+
+              <h4>Resources Used</h4>
+              <ul>
+                <li>ProtoSem Startup Problem Statement Dossier</li>
+                <li>Nielsen Norman Group &mdash; Usability &amp; Wireframing Principles</li>
+                <li>Customer Discovery &amp; Value Proposition Canvas</li>
+              </ul>
+
+              <div class="week-card-footer">
+                <button class="btn btn-outline btn-close-week" style="padding: 0.5rem 1.2rem; font-size: 0.85rem;">▲ Close Week 5</button>
+                <span style="font-family: var(--font-mono); font-size: 0.8rem; color: #94a3b8;">ProtoSem Semester &bull; Week 5</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- ============================================ -->
+          <!-- WEEK 6 BOX -->
+          <!-- ============================================ -->
+          <div class="week-box-card" id="week-6">
+            <div class="week-box-header">
+              <div class="week-box-left">
+                <div class="week-badge">W6</div>
+                <div class="week-box-titles">
+                  <span class="week-num">Week 6</span>
+                  <span class="week-sub">Embedded &amp; Soldering</span>
+                </div>
+              </div>
+              <div class="week-chevron" aria-label="Toggle Week 6">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </div>
+            </div>
+
+            <div class="week-box-body">
+              <div class="week-header" style="margin-top: 1.5rem;">
+                <h2>Week 6</h2>
+                <span>September 2026</span>
+              </div>
+
+              <div class="week-icons-bar">
+                <span class="week-icon-pill"><span class="emoji">🔩</span> Embedded Systems</span>
+                <span class="week-icon-pill"><span class="emoji">🔥</span> Soldering &amp; Desoldering</span>
+                <span class="week-icon-pill"><span class="emoji">⏱️</span> 555 Timer Astable Circuit</span>
+              </div>
+
+              <h3>Microcontrollers, Embedded Systems &amp; Soldering</h3>
+
+              <p>
+                Week 6 focused on understanding microcontrollers, microprocessors, and embedded systems. We explored the basic architecture and working principles of embedded systems and learned how different sensors and actuators are used to interact with the physical environment. We also had hands-on experience with soldering and desoldering electronic components. As a practical activity, we successfully soldered a 555 timer circuit with LEDs, resistors, and a capacitor, which helped us understand basic electronic circuit connections and hardware assembly.
+              </p>
+
+              <h4>Topics Learned</h4>
+              <ul>
+                <li>Microcontroller vs. Microprocessor architecture and memory buses</li>
+                <li>Sensor and actuator interfacing: Digital logic levels, PWM, and ADC conversions</li>
+                <li>Soldering bench safety: Temperature control, tinning, flux application, and desoldering braid</li>
+                <li>Hands-on fabrication of a 555 timer astable multivibrator LED flasher on perfboard</li>
+              </ul>
+
+              <h4>Key Takeaways</h4>
+              <ul>
+                <li>A good solder joint is shiny and concave; cold solder joints cause frustrating intermittent bugs</li>
+                <li>Understanding hardware timing at the silicon level is critical for real-time control</li>
+                <li>Building discrete analog timer circuits solidifies the foundational physics behind modern digital chips</li>
+              </ul>
+
+              <div class="quote-banner">
+                &ldquo;Soldering is the physical link between theoretical circuits and working hardware reality.&rdquo;
+              </div>
+
+              <h4>Reflection</h4>
+              <p>
+                Soldering the 555 timer circuit was deeply satisfying. Watching the LEDs blink at precisely the frequency we calculated mathematically proved that our hardware assembly, component values, and solder joints were completely sound.
+              </p>
+
+              <!-- Week 6 Photo Gallery & Interactive Uploader -->
+              <div class="week-photo-container">
+                <h4 style="margin-bottom: 1rem;">Week 6 Gallery &amp; Photos</h4>
+                <div class="photo-gallery-grid">
+                  <div class="photo-item">
+                    <img src="assets/images/week6-embedded-solder.jpg" alt="Week 6 - Soldering 555 Timer Circuit with Flashing LEDs">
+                    <div class="photo-caption">Soldering Bench &bull; 555 Timer Astable LED Flasher Assembly</div>
+                  </div>
+                </div>
+
+                <div class="add-photo-dropzone">
+                  <input type="file" accept="image/*">
+                  <span class="dz-icon">📷</span>
+                  <span class="dz-title">+ Add or Drop Your Week 6 Photo</span>
+                  <span class="dz-hint">Click or drag &amp; drop to preview your photo live in this card</span>
+                </div>
+              </div>
+
+              <h4>Resources Used</h4>
+              <ul>
+                <li>NE555 Precision Timer Datasheet &amp; Application Circuits</li>
+                <li>IPC Soldering &amp; Electronic Hardware Assembly Standards</li>
+                <li>Multimeter Continuity &amp; Signal Oscilloscope Diagnostics</li>
+              </ul>
+
+              <div class="week-card-footer">
+                <button class="btn btn-outline btn-close-week" style="padding: 0.5rem 1.2rem; font-size: 0.85rem;">▲ Close Week 6</button>
+                <span style="font-family: var(--font-mono); font-size: 0.8rem; color: #94a3b8;">ProtoSem Semester &bull; Week 6</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- ============================================ -->
+          <!-- WEEK 7 BOX -->
+          <!-- ============================================ -->
+          <div class="week-box-card" id="week-7">
+            <div class="week-box-header">
+              <div class="week-box-left">
+                <div class="week-badge">W7</div>
+                <div class="week-box-titles">
+                  <span class="week-num">Week 7</span>
+                  <span class="week-sub">IoT, Connectivity &amp; RTOS</span>
+                </div>
+              </div>
+              <div class="week-chevron" aria-label="Toggle Week 7">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </div>
+            </div>
+
+            <div class="week-box-body">
+              <div class="week-header" style="margin-top: 1.5rem;">
+                <h2>Week 7</h2>
+                <span>September 2026</span>
+              </div>
+
+              <div class="week-icons-bar">
+                <span class="week-icon-pill"><span class="emoji">📡</span> ESP32 &amp; Arduino IDE</span>
+                <span class="week-icon-pill"><span class="emoji">☁️</span> Web LED &amp; MQTT Cloud</span>
+                <span class="week-icon-pill"><span class="emoji">🎙️</span> Voice-Based Control</span>
+                <span class="week-icon-pill"><span class="emoji">🔥</span> Firebase Smart Home</span>
+                <span class="week-icon-pill"><span class="emoji">⚙️</span> RTOS Multitasking</span>
+              </div>
+
+              <h3>IoT, Connectivity &amp; RTOS</h3>
+
+              <p>
+                Week 7 focused on IoT and connectivity, where we worked with Arduino IDE and ESP32 to develop connected applications. We completed four practical tasks involving web-based LED control, MQTT cloud communication, voice-based control, and a Firebase-powered smart home system. These activities helped us understand how hardware can communicate with web and cloud platforms. We also learned the fundamentals of Real-Time Operating Systems (RTOS) and applied the concepts by developing a small project.
+              </p>
+
+              <!-- 4 Practical Tasks Grid -->
+              <div class="deep-dive-grid">
+                <div class="deep-dive-card">
+                  <div class="deep-dive-title">💡 Task 1: Web-Based LED Control</div>
+                  <p style="font-size: 0.92rem;">
+                    Configured ESP32 as an HTTP web server, serving an asynchronous HTML UI to toggle GPIO pins and control high-power LEDs over a local Wi-Fi network.
+                  </p>
+                </div>
+
+                <div class="deep-dive-card">
+                  <div class="deep-dive-title">☁️ Task 2: MQTT Cloud Telemetry</div>
+                  <p style="font-size: 0.92rem;">
+                    Published live sensor temperature and humidity data to a cloud MQTT broker and subscribed to remote command topics with minimal latency.
+                  </p>
+                </div>
+
+                <div class="deep-dive-card">
+                  <div class="deep-dive-title">🎙️ Task 3: Voice-Based Control</div>
+                  <p style="font-size: 0.92rem;">
+                    Integrated speech command processing via webhook relays to trigger physical mechatronic actuators and appliances hands-free.
+                  </p>
+                </div>
+
+                <div class="deep-dive-card">
+                  <div class="deep-dive-title">🔥 Task 4: Firebase Smart Home System</div>
+                  <p style="font-size: 0.92rem;">
+                    Connected ESP32 to Google Firebase Realtime Database to synchronize appliance relay states, authentication, and live sensor logging globally.
+                  </p>
+                </div>
+              </div>
+
+              <h4>RTOS Fundamentals</h4>
+              <p>
+                Explored FreeRTOS on dual-core ESP32, learning preemptive scheduling, task priorities, queues, and semaphores to eliminate blocking delays in embedded firmware.
+              </p>
+
+              <h4>Key Takeaways</h4>
+              <ul>
+                <li>IoT bridges embedded firmware to global web platforms through standard network protocols (HTTP, MQTT, WebSockets)</li>
+                <li>Firebase Realtime Database allows seamless bi-directional synchronization between hardware devices and web dashboards</li>
+                <li>FreeRTOS transforms microcontrollers from single-threaded polling loops into robust multi-tasking computing nodes</li>
+              </ul>
+
+              <div class="quote-banner">
+                &ldquo;Connected devices are the future of mechatronics &mdash; giving physical machines a voice on the global web.&rdquo;
+              </div>
+
+              <h4>Reflection</h4>
+              <p>
+                Building the Firebase-powered smart home dashboard and exploring RTOS gave me immense confidence in modern IoT architecture. Seeing our ESP32 respond in real time to web commands and voice triggers proved how powerful the combination of mechatronics and software engineering truly is.
+              </p>
+
+              <!-- Week 7 Photo Gallery & Interactive Uploader -->
+              <div class="week-photo-container">
+                <h4 style="margin-bottom: 1rem;">Week 7 Gallery &amp; Photos</h4>
+                <div class="photo-gallery-grid">
+                  <div class="photo-item">
+                    <img src="assets/images/week7-iot-firebase.jpg" alt="Week 7 - ESP32 IoT Firebase Smart Home Dashboard and MQTT Telemetry">
+                    <div class="photo-caption">ESP32 IoT Smart Home &bull; Firebase Dashboard &amp; MQTT Telemetry</div>
+                  </div>
+                </div>
+
+                <div class="add-photo-dropzone">
+                  <input type="file" accept="image/*">
+                  <span class="dz-icon">📷</span>
+                  <span class="dz-title">+ Add or Drop Your Week 7 Photo</span>
+                  <span class="dz-hint">Click or drag &amp; drop to preview your photo live in this card</span>
+                </div>
+              </div>
+
+              <h4>Resources Used</h4>
+              <ul>
+                <li>Espressif ESP32 FreeRTOS Documentation</li>
+                <li>Firebase Realtime Database REST API &amp; Arduino Client Library</li>
+                <li>MQTT.org Protocol Specification &amp; HiveMQ Broker</li>
+              </ul>
+
+              <div class="week-card-footer">
+                <button class="btn btn-outline btn-close-week" style="padding: 0.5rem 1.2rem; font-size: 0.85rem;">▲ Close Week 7</button>
+                <span style="font-family: var(--font-mono); font-size: 0.8rem; color: #94a3b8;">ProtoSem Semester &bull; Week 7</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Visual Guide: How to Add Future Weeks -->
+        <div class="template-guide-box" id="template-guide">
+          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 1rem;">
+            <div>
+              <div class="section-tag" style="margin-bottom: 0.5rem;">Weekly Journal Expansion Guide</div>
+              <h3 style="font-size: 1.45rem;">How to Add Week 8, Week 9, and Beyond</h3>
+            </div>
+            <button class="btn btn-primary" id="copyTemplateBtn">
+              <span>📋</span> Copy Week Template HTML
+            </button>
+          </div>
+
+          <p style="font-size: 0.96rem; color: #cbd5e1; line-height: 1.7; margin-bottom: 1.25rem;">
+            To add a new week, simply duplicate the template box below, paste it inside <code style="color: #2dd4bf; background: rgba(45,212,191,0.1); padding: 0.15rem 0.4rem; border-radius: 4px;">&lt;div class="weeks-grid"&gt;</code>, update your titles, text, and photos, and save! It automatically gets the box styling, badge, and click-to-expand animation.
+          </p>
+
+          <pre class="code-preview-block"><code>&lt;!-- Reusable Box-Type Week Template --&gt;
+&lt;div class="week-box-card" id="week-8"&gt;
+  &lt;div class="week-box-header"&gt;
+    &lt;div class="week-box-left"&gt;
+      &lt;div class="week-badge"&gt;W8&lt;/div&gt;
+      &lt;div class="week-box-titles"&gt;
+        &lt;span class="week-num"&gt;Week 8&lt;/span&gt;
+        &lt;span class="week-sub"&gt;Topic Subtitle&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="week-chevron"&gt;
+      &lt;svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"&gt;&lt;polyline points="6 9 12 15 18 9"&gt;&lt;/polyline&gt;&lt;/svg&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="week-box-body"&gt;
+    &lt;!-- Add Title, Description, Topics, Key Takeaways, Images, Reflection here --&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================================= -->
+    <!-- WEEK TEMPLATE START -->
+    <!-- ================================= -->
+
+    <!--
+    <div class="week-card">
+
+        <div class="week-header">
+            <h2>Week X</h2>
+            <span>Date</span>
+        </div>
+
+        <h3>Title</h3>
+
+        <p>
+            Description goes here...
+        </p>
+
+        <h4>Topics Learned</h4>
+
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+
+        <h4>Key Takeaways</h4>
+
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+
+        <h4>Reflection</h4>
+
+        <p>
+            Reflection goes here...
+        </p>
+
+        <div class="week-images">
+            <img src="" alt="">
+        </div>
+
+    </div>
+    -->
+
+    <!-- ================================= -->
+    <!-- WEEK TEMPLATE END -->
+    <!-- ================================= -->
+
+  </main>
+
+  <!-- Modern Glassmorphic Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="nav-brand" style="margin-bottom: 1rem;">
+            <div class="nav-logo-badge">EK</div>
+            <div class="brand-text">
+              <span class="brand-name">Elakiya K S</span>
+              <span class="brand-role">Mechatronics Engineer</span>
+            </div>
+          </div>
+          <p>
+            B.E. Mechatronics Engineering student at Kumaraguru College of Technology. Building intelligent automation, embedded robotics, and connected systems.
+          </p>
+          <div class="social-links" style="margin-top: 1.5rem;">
+            <a href="https://www.linkedin.com/in/elakiya22" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="LinkedIn">in</a>
+            <a href="https://github.com/elakiya" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="GitHub">gh</a>
+            <a href="mailto:kselakiya1@gmail.com" class="social-btn" aria-label="Email">✉</a>
+            <a href="tel:8220058570" class="social-btn" aria-label="Phone">📞</a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="about.html">About Me</a>
+            <a href="skills.html">Skills Matrix</a>
+            <a href="experience.html">Experience &amp; Projects</a>
+            <a href="protosem.html">ProtoSem Journal</a>
+            <a href="iot.html">IoT Session</a>
+            <a href="contact.html">Contact</a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Contact &amp; Location</h4>
+          <div class="footer-links">
+            <p style="color: var(--text-muted); font-size: 0.92rem; margin-bottom: 0.5rem;">
+              📍 Avinashi, Tirupur / Coimbatore<br>Tamil Nadu, India - 641654
+            </p>
+            <p style="color: var(--text-muted); font-size: 0.92rem; margin-bottom: 0.5rem;">
+              📧 kselakiya1@gmail.com
+            </p>
+            <p style="color: var(--text-muted); font-size: 0.92rem;">
+              📞 +91 8220058570
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>&copy; 2026 Elakiya K S. All rights reserved.</div>
+        <div>Built with pure HTML5, CSS3 &amp; JavaScript</div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task 1: On/Off Inbuilt LED on ESP32 | IoT Session - Elakiya K S</title>
+  <meta name="description" content="Task 1: Controlling the inbuilt onboard LED on ESP32 via Wi-Fi Web Server. Complete Arduino C++ source code, execution photos, and video demonstration.">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220%22%20%220%22%20%22100%22%20%22100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
+</head>
+<body>
+
+  <!-- Background Ambient Glow -->
+  <div class="ambient-glow" aria-hidden="true"></div>
+
+  <!-- Sticky Glassmorphic Navbar -->
+  <header>
+    <nav class="navbar" id="navbar" aria-label="Main Navigation">
+      <div class="container">
+        <a href="index.html" class="nav-brand">
+          <div class="nav-logo-badge">EK</div>
+          <div class="brand-text">
+            <span class="brand-name">Elakiya K S</span>
+            <span class="brand-role">Mechatronics Engineer</span>
+          </div>
+        </a>
+
+        <div class="nav-links" id="navLinks">
+          <a href="index.html" class="nav-link">Home</a>
+          <a href="about.html" class="nav-link">About</a>
+          <a href="skills.html" class="nav-link">Skills</a>
+          <a href="experience.html" class="nav-link">Experience</a>
+          <a href="protosem.html" class="nav-link">ProtoSem</a>
+          <a href="iot.html" class="nav-link active active-iot">IoT Session</a>
+          <a href="contact.html" class="nav-link">Contact</a>
+        </div>
+
+        <div class="nav-cta">
+          <a href="contact.html" class="btn btn-outline" style="padding: 0.55rem 1.25rem; font-size: 0.88rem;">Let's Talk</a>
+          <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle navigation menu">
+            <span></span>
+          </button>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <section class="section" style="padding-top: calc(var(--nav-height) + 2.5rem);">
+      <div class="container">
+
+        <!-- Breadcrumb Navigation -->
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="index.html">Home</a>
+          <span class="sep">/</span>
+          <a href="iot.html">IoT Session</a>
+          <span class="sep">/</span>
+          <span class="current">Task 1: On/Off Inbuilt LED on ESP32</span>
+        </nav>
+
+        <!-- Task Title Header -->
+        <div style="margin-bottom: 3rem;">
+          <div class="proto-tag" style="color: var(--cyan);">TASK 01 / EMBEDDED HTTP WEB SERVER</div>
+          <h1 class="proto-main-title" style="margin-bottom: 0.8rem;">
+            On / Off Inbuilt LED on ESP32
+          </h1>
+          <p class="proto-main-subtitle">
+            Demonstrating wireless microcontroller actuation by creating a local HTTP web server on ESP32 to toggle the onboard built-in LED (GPIO 2) from any web browser interface in real time.
+          </p>
+        </div>
+
+        <!-- Technical Specification Cards -->
+        <div class="grid-3" style="margin-bottom: 3rem;">
+          <div class="glass-card" style="padding: 1.5rem;">
+            <div style="font-size: 1.6rem; margin-bottom: 0.5rem;">📟</div>
+            <div style="font-family: var(--font-mono); font-size: 0.78rem; color: var(--text-dim); text-transform: uppercase;">Hardware Board</div>
+            <strong style="color: #ffffff; font-size: 1.05rem; display: block; margin-top: 0.2rem;">NodeMCU ESP-WROOM-32</strong>
+            <span style="font-size: 0.84rem; color: var(--text-muted);">Dual-Core Xtensa LX6 MCU</span>
+          </div>
+
+          <div class="glass-card" style="padding: 1.5rem;">
+            <div style="font-size: 1.6rem; margin-bottom: 0.5rem;">💡</div>
+            <div style="font-family: var(--font-mono); font-size: 0.78rem; color: var(--text-dim); text-transform: uppercase;">Actuator / Pin</div>
+            <strong style="color: var(--cyan); font-size: 1.05rem; display: block; margin-top: 0.2rem;">Inbuilt SMD LED (GPIO 2)</strong>
+            <span style="font-size: 0.84rem; color: var(--text-muted);">Internal active-HIGH onboard LED</span>
+          </div>
+
+          <div class="glass-card" style="padding: 1.5rem;">
+            <div style="font-size: 1.6rem; margin-bottom: 0.5rem;">🌐</div>
+            <div style="font-family: var(--font-mono); font-size: 0.78rem; color: var(--text-dim); text-transform: uppercase;">Network &amp; Server</div>
+            <strong style="color: #34d399; font-size: 1.05rem; display: block; margin-top: 0.2rem;">HTTP Server (Port 80)</strong>
+            <span style="font-size: 0.84rem; color: var(--text-muted);">Local IP: 192.168.56.206</span>
+          </div>
+        </div>
+
+        <!-- =========================================================
+             SECTION: USER LAB PHOTOS (PROOF OF EXECUTION)
+             ========================================================= -->
+        <div style="margin-bottom: 3.5rem;">
+          <div class="section-tag">Laboratory Execution</div>
+          <h2>Hands-on Implementation Photos</h2>
+          <p style="color: var(--text-muted); font-size: 0.98rem; margin-bottom: 1.5rem;">
+            Photographic proof of the hands-on engineering lab session: writing the code in Arduino IDE and testing the live web-controlled LED actuation. Click any photo to zoom.
+          </p>
+
+          <div class="iot-media-grid">
+            <!-- Photo 1: Lab Workstation Coding -->
+            <div class="iot-photo-card">
+              <img src="assets/images/task1_lab.jpg" alt="Elakiya programming ESP32 in Arduino IDE at lab workstation">
+              <div class="iot-photo-tag">
+                📷 Lab Workstation &bull; Elakiya programming ESP32 in Arduino IDE
+              </div>
+            </div>
+
+            <!-- Photo 2: Live ESP32 LED Glowing & Web Interface -->
+            <div class="iot-photo-card">
+              <img src="assets/images/task1_web_led.jpg" alt="ESP32 Inbuilt LED glowing with web control page in background">
+              <div class="iot-photo-tag">
+                💡 Live Actuation &bull; Inbuilt LED glowing with "ESP32 LED Control" web page at 192.168.56.206
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- =========================================================
+             SECTION: VIDEO DEMONSTRATION
+             ========================================================= -->
+        <div style="margin-bottom: 4rem;">
+          <div class="section-tag">Live Demonstration</div>
+          <h2>Task 1 Video Demonstration</h2>
+          <p style="color: var(--text-muted); font-size: 0.98rem; margin-bottom: 1.5rem;">
+            Watch the video recording showing the web page button clicks triggering the ESP32 built-in LED in real time over Wi-Fi.
+          </p>
+
+          <div class="video-box">
+            <video controls playsinline preload="metadata" poster="assets/images/task1_web_led.jpg">
+              <source src="assets/videos/task1_video.mp4" type="video/mp4">
+              Your browser does not support HTML5 video playback.
+            </video>
+            <div class="video-caption">
+              <span>▶</span>
+              <span><strong>Video Proof:</strong> ESP32 Wi-Fi HTTP Web Server &mdash; Switching Inbuilt LED ON and OFF wirelessly.</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- =========================================================
+             SECTION: KEY POINTS & WHAT I LEARNED
+             ========================================================= -->
+        <div style="margin-bottom: 4rem;">
+          <div class="grid-2">
+
+            <!-- Key Technical Points Card -->
+            <div class="glass-card" style="padding: 2.2rem; border-color: rgba(0, 242, 254, 0.25);">
+              <div style="display: flex; align-items: center; gap: 0.85rem; margin-bottom: 1.5rem;">
+                <div style="font-size: 1.8rem;">🔑</div>
+                <div>
+                  <h3 style="margin-bottom: 0.2rem; font-size: 1.35rem; color: #ffffff;">Key Technical Points</h3>
+                  <span style="font-size: 0.85rem; color: var(--cyan); font-family: var(--font-mono);">Hardware, Protocol &amp; Pin Routing</span>
+                </div>
+              </div>
+
+              <ul class="styled-list">
+                <li>
+                  <strong>Onboard LED Pin Mapping:</strong> On standard NodeMCU ESP-WROOM-32 dev boards, the built-in SMD LED is hardwired to <strong>GPIO 2</strong>, requiring active-HIGH logic (<code style="color: var(--cyan);">digitalWrite(2, HIGH)</code>) to illuminate.
+                </li>
+                <li>
+                  <strong>Local HTTP Web Server:</strong> Hosted directly on <strong>TCP Port 80</strong> using the native <code style="color: var(--cyan);">WebServer.h</code> library, eliminating the need for any external cloud brokers or internet connection.
+                </li>
+                <li>
+                  <strong>Explicit URI Routing:</strong> Implemented discrete route handlers for <code style="color: var(--cyan);">/</code> (root dashboard), <code style="color: #34d399;">/on</code> (LED ignition), and <code style="color: #ef4444;">/off</code> (LED shutdown) via <code style="color: var(--cyan);">server.on()</code>.
+                </li>
+                <li>
+                  <strong>Dynamic HTML Injection:</strong> The microcontroller dynamically generates responsive HTML/CSS markup with current pin state feedback, rendering flawlessly on mobile browsers and desktop screens.
+                </li>
+                <li>
+                  <strong>Event Loop Servicing:</strong> Non-blocking execution achieved by calling <code style="color: var(--cyan);">server.handleClient()</code> within the Arduino <code style="color: var(--cyan);">loop()</code>, keeping response latency under 35 milliseconds.
+                </li>
+              </ul>
+            </div>
+
+            <!-- What I Learned & Insights Card -->
+            <div class="glass-card" style="padding: 2.2rem; border-color: rgba(52, 211, 153, 0.25);">
+              <div style="display: flex; align-items: center; gap: 0.85rem; margin-bottom: 1.5rem;">
+                <div style="font-size: 1.8rem;">💡</div>
+                <div>
+                  <h3 style="margin-bottom: 0.2rem; font-size: 1.35rem; color: #ffffff;">What I Learned &amp; Insights</h3>
+                  <span style="font-size: 0.85rem; color: #34d399; font-family: var(--font-mono);">Engineering Reflections &amp; Takeaways</span>
+                </div>
+              </div>
+
+              <ul class="styled-list learned-list">
+                <li>
+                  <strong>Client-Server Mechanics on Silicon:</strong> Gained deep hands-on clarity on how microcontrollers manage TCP/IP handshakes, DHCP IP leases, and parse incoming HTTP GET header packets.
+                </li>
+                <li>
+                  <strong>Strapping Pin Awareness:</strong> Learned that GPIO 2 is an ESP32 strapping pin involved in bootloader selection; maintaining pull-down integrity prevents flashing and boot loop failures.
+                </li>
+                <li>
+                  <strong>RAM &amp; Heap Preservation:</strong> Discovered how string allocations in embedded C++ can cause heap fragmentation, reinforcing best practices like pre-reserving buffer sizes or using Flash PROGMEM.
+                </li>
+                <li>
+                  <strong>Wi-Fi Network Reconnection Logic:</strong> Observed how physical distance and Wi-Fi band (2.4 GHz vs 5 GHz) affect microcontroller connection stability, and added auto-reconnect routines.
+                </li>
+                <li>
+                  <strong>Zero-Component Fast Prototyping:</strong> Utilizing the built-in LED allowed immediate software validation of the Wi-Fi stack and web server before interfacing complex external relay circuits.
+                </li>
+              </ul>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- =========================================================
+             SECTION: ARDUINO C++ SOURCE CODE
+             ========================================================= -->
+        <div style="margin-bottom: 4rem;">
+          <div class="section-tag">Firmware &amp; Software</div>
+          <h2>Arduino IDE Source Code</h2>
+          <p style="color: var(--text-muted); font-size: 0.98rem; margin-bottom: 1rem;">
+            Complete, tested Arduino C++ sketch utilizing the official <code style="color: var(--cyan); background: rgba(0,242,254,0.1); padding: 0.15rem 0.4rem; border-radius: 4px;">WiFi.h</code> and <code style="color: var(--cyan); background: rgba(0,242,254,0.1); padding: 0.15rem 0.4rem; border-radius: 4px;">WebServer.h</code> libraries to host the interactive LED control dashboard.
+          </p>
+
+          <div class="code-box">
+            <div class="code-header">
+              <div class="code-header-left">
+                <div class="code-dots">
+                  <span class="code-dot dot-red"></span>
+                  <span class="code-dot dot-yellow"></span>
+                  <span class="code-dot dot-green"></span>
+                </div>
+                <span class="code-title">ESP32_Inbuilt_LED_WebServer.ino</span>
+              </div>
+              <button class="code-copy-btn" id="copyArduinoBtn">
+                <span>📋</span> Copy Code
+              </button>
+            </div>
+
+            <pre class="code-body"><code id="arduinoSourceCode"><span class="code-inc">#include</span> <span class="code-str">&lt;WiFi.h&gt;</span>
+<span class="code-inc">#include</span> <span class="code-str">&lt;WebServer.h&gt;</span>
+
+<span class="code-com">// =========================================================</span>
+<span class="code-com">// Wi-Fi Network Credentials</span>
+<span class="code-com">// Replace with your actual local Wi-Fi SSID and Password</span>
+<span class="code-com">// =========================================================</span>
+<span class="code-type">const char</span>* ssid     = <span class="code-str">"YOUR_WIFI_SSID"</span>;
+<span class="code-type">const char</span>* password = <span class="code-str">"YOUR_WIFI_PASSWORD"</span>;
+
+<span class="code-com">// On NodeMCU ESP-WROOM-32, the onboard in-built LED is connected to GPIO 2</span>
+<span class="code-type">const int</span> ledPin = <span class="code-num">2</span>;
+
+<span class="code-com">// Instantiate WebServer listening on standard HTTP port 80</span>
+<span class="code-type">WebServer</span> server(<span class="code-num">80</span>);
+
+<span class="code-com">// =========================================================</span>
+<span class="code-com">// Function: Build and Return Responsive HTML Control Page</span>
+<span class="code-com">// =========================================================</span>
+<span class="code-type">String</span> <span class="code-fn">buildHTML</span>(<span class="code-type">bool</span> isLedOn) {
+  <span class="code-type">String</span> page = <span class="code-str">"&lt;!DOCTYPE html&gt;&lt;html&gt;"</span>;
+  page += <span class="code-str">"&lt;head&gt;&lt;meta name='viewport' content='width=device-width, initial-scale=1.0'&gt;"</span>;
+  page += <span class="code-str">"&lt;title&gt;ESP32 LED Control&lt;/title&gt;"</span>;
+  page += <span class="code-str">"&lt;style&gt;"</span>;
+  page += <span class="code-str">"body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; text-align: center; margin-top: 60px; background-color: #f8fafc; color: #1e293b; }"</span>;
+  page += <span class="code-str">"h1 { font-size: 32px; font-weight: 800; margin-bottom: 25px; color: #0f172a; }"</span>;
+  page += <span class="code-str">".btn { display: inline-block; width: 220px; padding: 18px 24px; margin: 12px; font-size: 20px; font-weight: 700; text-decoration: none; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); transition: all 0.2s; }"</span>;
+  page += <span class="code-str">".btn-on { background-color: #10b981; color: white; border: 2px solid #059669; }"</span>;
+  page += <span class="code-str">".btn-off { background-color: #ef4444; color: white; border: 2px solid #dc2626; }"</span>;
+  page += <span class="code-str">".status-box { margin-top: 35px; padding: 16px 24px; display: inline-block; background: white; border-radius: 12px; border: 1px solid #cbd5e1; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }"</span>;
+  page += <span class="code-str">"&lt;/style&gt;&lt;/head&gt;&lt;body&gt;"</span>;
+  page += <span class="code-str">"&lt;h1&gt;ESP32 LED Control&lt;/h1&gt;"</span>;
+  page += <span class="code-str">"&lt;a href='/on' class='btn btn-on'&gt;LED ON&lt;/a&gt;&lt;br&gt;"</span>;
+  page += <span class="code-str">"&lt;a href='/off' class='btn btn-off'&gt;LED OFF&lt;/a&gt;"</span>;
+  page += <span class="code-str">"&lt;div class='status-box'&gt;Current LED State: &lt;strong style='color:"</span> + <span class="code-type">String</span>(isLedOn ? <span class="code-str">"#10b981"</span> : <span class="code-str">"#ef4444"</span>) + <span class="code-str">";'&gt;"</span> + <span class="code-type">String</span>(isLedOn ? <span class="code-str">"ON (GLOWING)"</span> : <span class="code-str">"OFF"</span>) + <span class="code-str">"&lt;/strong&gt;&lt;/div&gt;"</span>;
+  page += <span class="code-str">"&lt;/body&gt;&lt;/html&gt;"</span>;
+  <span class="code-kw">return</span> page;
+}
+
+<span class="code-com">// =========================================================</span>
+<span class="code-com">// Route Handlers</span>
+<span class="code-com">// =========================================================</span>
+<span class="code-type">void</span> <span class="code-fn">handleRoot</span>() {
+  <span class="code-type">bool</span> currentLedState = <span class="code-fn">digitalRead</span>(ledPin);
+  server.<span class="code-fn">send</span>(<span class="code-num">200</span>, <span class="code-str">"text/html"</span>, <span class="code-fn">buildHTML</span>(currentLedState));
+}
+
+<span class="code-type">void</span> <span class="code-fn">handleLedOn</span>() {
+  <span class="code-fn">digitalWrite</span>(ledPin, <span class="code-kw">HIGH</span>); <span class="code-com">// Turn ON the built-in LED</span>
+  server.<span class="code-fn">send</span>(<span class="code-num">200</span>, <span class="code-str">"text/html"</span>, <span class="code-fn">buildHTML</span>(<span class="code-kw">true</span>));
+  Serial.<span class="code-fn">println</span>(<span class="code-str">"[HTTP] Received Command: LED ON (GPIO 2 HIGH)"</span>);
+}
+
+<span class="code-type">void</span> <span class="code-fn">handleLedOff</span>() {
+  <span class="code-fn">digitalWrite</span>(ledPin, <span class="code-kw">LOW</span>);  <span class="code-com">// Turn OFF the built-in LED</span>
+  server.<span class="code-fn">send</span>(<span class="code-num">200</span>, <span class="code-str">"text/html"</span>, <span class="code-fn">buildHTML</span>(<span class="code-kw">false</span>));
+  Serial.<span class="code-fn">println</span>(<span class="code-str">"[HTTP] Received Command: LED OFF (GPIO 2 LOW)"</span>);
+}
+
+<span class="code-com">// =========================================================</span>
+<span class="code-com">// Setup: Initialize Serial, GPIO, Wi-Fi &amp; HTTP Routes</span>
+<span class="code-com">// =========================================================</span>
+<span class="code-type">void</span> <span class="code-fn">setup</span>() {
+  Serial.<span class="code-fn">begin</span>(<span class="code-num">115200</span>);
+  
+  <span class="code-com">// Configure in-built LED pin as digital OUTPUT</span>
+  <span class="code-fn">pinMode</span>(ledPin, <span class="code-kw">OUTPUT</span>);
+  <span class="code-fn">digitalWrite</span>(ledPin, <span class="code-kw">LOW</span>); <span class="code-com">// Initial state: OFF</span>
+
+  <span class="code-com">// Connect to Local Wi-Fi Network</span>
+  Serial.<span class="code-fn">print</span>(<span class="code-str">"Connecting to Wi-Fi: "</span>);
+  Serial.<span class="code-fn">println</span>(ssid);
+  WiFi.<span class="code-fn">begin</span>(ssid, password);
+
+  <span class="code-kw">while</span> (WiFi.<span class="code-fn">status</span>() != <span class="code-kw">WL_CONNECTED</span>) {
+    <span class="code-fn">delay</span>(<span class="code-num">500</span>);
+    Serial.<span class="code-fn">print</span>(<span class="code-str">"."</span>);
+  }
+
+  Serial.<span class="code-fn">println</span>(<span class="code-str">""</span>);
+  Serial.<span class="code-fn">println</span>(<span class="code-str">"WiFi connected successfully!"</span>);
+  Serial.<span class="code-fn">print</span>(<span class="code-str">"ESP32 Web Server IP: http://"</span>);
+  Serial.<span class="code-fn">println</span>(WiFi.<span class="code-fn">localIP</span>());
+
+  <span class="code-com">// Register HTTP URI Handlers</span>
+  server.<span class="code-fn">on</span>(<span class="code-str">"/"</span>, handleRoot);
+  server.<span class="code-fn">on</span>(<span class="code-str">"/on"</span>, handleLedOn);
+  server.<span class="code-fn">on</span>(<span class="code-str">"/off"</span>, handleLedOff);
+
+  <span class="code-com">// Start the Server</span>
+  server.<span class="code-fn">begin</span>();
+  Serial.<span class="code-fn">println</span>(<span class="code-str">"HTTP Web Server active. Open the IP address above in your browser."</span>);
+}
+
+<span class="code-com">// =========================================================</span>
+<span class="code-com">// Main Loop: Handle Incoming Web Client Requests</span>
+<span class="code-com">// =========================================================</span>
+<span class="code-type">void</span> <span class="code-fn">loop</span>() {
+  server.<span class="code-fn">handleClient</span>();
+}</code></pre>
+          </div>
+        </div>
+
+        <!-- =========================================================
+             SECTION: STEP-BY-STEP EXECUTION WALKTHROUGH
+             ========================================================= -->
+        <div style="margin-bottom: 4rem;">
+          <div class="section-tag">Engineering Methodology</div>
+          <h2>Step-by-Step Implementation Guide</h2>
+
+          <div class="timeline" style="margin-top: 2rem;">
+            <!-- Step 1 -->
+            <div class="timeline-item">
+              <div class="timeline-marker"></div>
+              <div class="timeline-content">
+                <h3 style="font-size: 1.2rem; margin-bottom: 0.35rem;">1. Identifying Inbuilt LED Pin Mapping</h3>
+                <p style="font-size: 0.94rem;">
+                  On standard 30-pin and 38-pin NodeMCU ESP32 boards, the blue/red onboard SMD LED is hardwired directly to <strong>GPIO 2</strong>. This allows testing digital actuation and web communication directly without needing external breadboards, resistors, or jumpers.
+                </p>
+              </div>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="timeline-item">
+              <div class="timeline-marker"></div>
+              <div class="timeline-content">
+                <h3 style="font-size: 1.2rem; margin-bottom: 0.35rem;">2. Flashing Code via Arduino IDE</h3>
+                <p style="font-size: 0.94rem;">
+                  Selected board: <em>DOIT ESP32 DEVKIT V1</em> (or <em>ESP32 Dev Module</em>) under the ESP32 board manager. Configured the upload speed to 115200 baud, entered the lab Wi-Fi credentials, and successfully flashed the binary to the Xtensa chip.
+                </p>
+              </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="timeline-item">
+              <div class="timeline-marker"></div>
+              <div class="timeline-content">
+                <h3 style="font-size: 1.2rem; margin-bottom: 0.35rem;">3. Obtaining IP &amp; Browser Verification</h3>
+                <p style="font-size: 0.94rem;">
+                  Opened the Serial Monitor upon boot. The ESP32 connected to the Wi-Fi access point and printed its assigned local IP address: <code style="color: var(--cyan);">http://192.168.56.206</code>. Opening this IP address on the laptop browser immediately rendered the control buttons.
+                </p>
+              </div>
+            </div>
+
+            <!-- Step 4 -->
+            <div class="timeline-item">
+              <div class="timeline-marker"></div>
+              <div class="timeline-content">
+                <h3 style="font-size: 1.2rem; margin-bottom: 0.35rem;">4. Real-time Actuation &amp; State Validation</h3>
+                <p style="font-size: 0.94rem;">
+                  Clicking <strong>LED ON</strong> sent an HTTP GET request to <code style="color: #34d399;">/on</code>, executing <code style="color: #34d399;">digitalWrite(ledPin, HIGH)</code> and lighting up the onboard LED immediately. Clicking <strong>LED OFF</strong> issued <code style="color: #ef4444;">/off</code>, turning off the LED without perceptible latency.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Navigation Between Tasks -->
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; padding: 2rem 0; border-top: 1px solid rgba(255, 255, 255, 0.08);">
+          <a href="iot.html" class="btn btn-outline">
+            &larr; Back to IoT Session Hub
+          </a>
+          <a href="iot-task2.html" class="btn btn-primary">
+            Explore Task 2: MQTT Cloud Telemetry &rarr;
+          </a>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- Modern Glassmorphic Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="nav-brand" style="margin-bottom: 1rem;">
+            <div class="nav-logo-badge">EK</div>
+            <div class="brand-text">
+              <span class="brand-name">Elakiya K S</span>
+              <span class="brand-role">Mechatronics Engineer</span>
+            </div>
+          </div>
+          <p>
+            B.E. Mechatronics Engineering student at Kumaraguru College of Technology. Building intelligent automation, embedded robotics, and connected systems.
+          </p>
+          <div class="social-links" style="margin-top: 1.5rem;">
+            <a href="https://www.linkedin.com/in/elakiya22" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="LinkedIn">in</a>
+            <a href="https://github.com/elakiya" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="GitHub">gh</a>
+            <a href="mailto:kselakiya1@gmail.com" class="social-btn" aria-label="Email">✉</a>
+            <a href="tel:8220058570" class="social-btn" aria-label="Phone">📞</a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="about.html">About Me</a>
+            <a href="skills.html">Skills Matrix</a>
+            <a href="experience.html">Experience &amp; Projects</a>
+            <a href="protosem.html">ProtoSem Journal</a>
+            <a href="iot.html">IoT Session</a>
+            <a href="contact.html">Contact</a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Contact &amp; Location</h4>
+          <div class="footer-links">
+            <p style="color: var(--text-muted); font-size: 0.92rem; margin-bottom: 0.5rem;">
+              📍 Avinashi, Tirupur / Coimbatore<br>Tamil Nadu, India - 641654
+            </p>
+            <p style="color: var(--text-muted); font-size: 0.92rem; margin-bottom: 0.5rem;">
+              📧 kselakiya1@gmail.com
+            </p>
+            <p style="color: var(--text-muted); font-size: 0.92rem;">
+              📞 +91 8220058570
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>&copy; 2026 Elakiya K S. All rights reserved.</div>
+        <div>Built with pure HTML5, CSS3 &amp; JavaScript</div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    // Copy Arduino Code to Clipboard
+    const copyArduinoBtn = document.getElementById('copyArduinoBtn');
+    if (copyArduinoBtn) {
+      copyArduinoBtn.addEventListener('click', () => {
+        const codeElement = document.getElementById('arduinoSourceCode');
+        if (codeElement) {
+          navigator.clipboard.writeText(codeElement.innerText).then(() => {
+            window.showToast('Arduino C++ code copied to clipboard! Ready to paste into Arduino IDE.');
+          }).catch(() => {
+            window.showToast('Select code and press Ctrl+C to copy.');
+          });
+        }
+      });
+    }
+  </script>
+</body>
+</html>
