@@ -1,8 +1,26 @@
 /**
- * ELAKIYA K S — PERSONAL PORTFOLIO & PROTOSEM JOURNAL
- * Interactive Logic: Sticky Nav, Mobile Menu, Scroll Reveals,
- * Image Lightbox Modal, Contact Form Handler, & Template Clipboard
+ * Resilient Image & Video Asset Fallback Handler
+ * Ensures media loads seamlessly whether hosted under assets/images/ or root directory
  */
+window.addEventListener('error', function(e) {
+  const el = e.target;
+  if (el && el.tagName === 'IMG' && el.src) {
+    if (el.src.includes('assets/images/') && !el.dataset.retried) {
+      el.dataset.retried = 'true';
+      const filename = el.src.split('/').pop();
+      el.src = filename;
+    }
+  } else if (el && (el.tagName === 'VIDEO' || el.tagName === 'SOURCE') && el.src) {
+    if (el.src.includes('assets/videos/') && !el.dataset.retried) {
+      el.dataset.retried = 'true';
+      const filename = el.src.split('/').pop();
+      el.src = filename;
+      if (el.parentElement && el.parentElement.tagName === 'VIDEO') {
+        el.parentElement.load();
+      }
+    }
+  }
+}, true);
 
 document.addEventListener('DOMContentLoaded', () => {
   // 1. Sticky Navigation on Scroll
