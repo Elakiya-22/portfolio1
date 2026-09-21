@@ -107,7 +107,7 @@
           <div class="iot-media-grid" style="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));">
             <!-- Hardware Photo 1: Relay Testbench -->
             <div class="iot-photo-card">
-              <img src="assets/images/task3_hw1.jpg" alt="ESP32 connected to 4-channel optocoupler relay module">
+              <img src="assets/images/task3_hw1.jpg" alt="ESP32 connected to 4-channel optocoupler relay module" onerror="if(!this.dataset.t){this.dataset.t=1;this.src=this.src.includes('assets/images/')?this.src.replace('assets/images/',''):'assets/images/'+this.src;}">
               <div class="iot-photo-tag">
                 🔌 Hardware Setup 1 &bull; ESP32 microcontroller wired to 4-channel optocoupler relay module on breadboard
               </div>
@@ -115,7 +115,7 @@
 
             <!-- Hardware Photo 2: Wiring Connections -->
             <div class="iot-photo-card">
-              <img src="assets/images/task3_hw2.jpg" alt="Relay module GPIO and power connections">
+              <img src="assets/images/task3_hw2.jpg" alt="Relay module GPIO and power connections" onerror="if(!this.dataset.t){this.dataset.t=1;this.src=this.src.includes('assets/images/')?this.src.replace('assets/images/',''):'assets/images/'+this.src;}">
               <div class="iot-photo-tag">
                 ⚡ Hardware Setup 2 &bull; Detail view of control signal pins, VCC, and ground wiring from ESP32 to relay
               </div>
@@ -123,7 +123,7 @@
 
             <!-- Hardware Photo 3: Appliance Switching Bench -->
             <div class="iot-photo-card">
-              <img src="assets/images/task3_hw3.jpg" alt="Complete appliance relay switching bench">
+              <img src="assets/images/task3_hw3.jpg" alt="Complete appliance relay switching bench" onerror="if(!this.dataset.t){this.dataset.t=1;this.src=this.src.includes('assets/images/')?this.src.replace('assets/images/',''):'assets/images/'+this.src;}">
               <div class="iot-photo-tag">
                 💡 Hardware Setup 3 &bull; Integrated electrical test bench ready for voice-actuated appliance triggering
               </div>
@@ -131,7 +131,7 @@
 
             <!-- IFTTT Screenshot 1: Workflow Diagram -->
             <div class="iot-photo-card">
-              <img src="assets/images/task3_ifttt_workflow.png" alt="IFTTT automation workflow: Google Assistant to Adafruit IO">
+              <img src="assets/images/task3_ifttt_workflow.png" alt="IFTTT automation workflow: Google Assistant to Adafruit IO" onerror="if(!this.dataset.t){this.dataset.t=1;this.src=this.src.includes('assets/images/')?this.src.replace('assets/images/',''):'assets/images/'+this.src;}">
               <div class="iot-photo-tag">
                 🔄 IFTTT Pipeline &bull; &quot;If You say 'Ok Google, activate [Scene Name]', Then send data to Adafruit IO feed&quot;
               </div>
@@ -139,7 +139,7 @@
 
             <!-- IFTTT Screenshot 2: Lights ON Trigger -->
             <div class="iot-photo-card">
-              <img src="assets/images/task3_ifttt_lights_on.png" alt="IFTTT trigger for lights on scene">
+              <img src="assets/images/task3_ifttt_lights_on.png" alt="IFTTT trigger for lights on scene" onerror="if(!this.dataset.t){this.dataset.t=1;this.src=this.src.includes('assets/images/')?this.src.replace('assets/images/',''):'assets/images/'+this.src;}">
               <div class="iot-photo-tag">
                 🟢 Voice Trigger (ON) &bull; Google Assistant scene trigger configured for phrase: &quot;lights on&quot;
               </div>
@@ -147,7 +147,7 @@
 
             <!-- IFTTT Screenshot 3: Lights OFF Trigger -->
             <div class="iot-photo-card">
-              <img src="assets/images/task3_ifttt_lights_off.png" alt="IFTTT trigger for lights off scene">
+              <img src="assets/images/task3_ifttt_lights_off.png" alt="IFTTT trigger for lights off scene" onerror="if(!this.dataset.t){this.dataset.t=1;this.src=this.src.includes('assets/images/')?this.src.replace('assets/images/',''):'assets/images/'+this.src;}">
               <div class="iot-photo-tag">
                 🔴 Voice Trigger (OFF) &bull; Google Assistant scene trigger configured for phrase: &quot;lights off&quot;
               </div>
@@ -155,7 +155,7 @@
 
             <!-- IFTTT Screenshot 4: Applet Creation -->
             <div class="iot-photo-card">
-              <img src="assets/images/task3_ifttt_applet.png" alt="IFTTT Applet setup interface">
+              <img src="assets/images/task3_ifttt_applet.png" alt="IFTTT Applet setup interface" onerror="if(!this.dataset.t){this.dataset.t=1;this.src=this.src.includes('assets/images/')?this.src.replace('assets/images/',''):'assets/images/'+this.src;}">
               <div class="iot-photo-tag">
                 ⚙️ Applet Engine &bull; IFTTT rule engine binding voice scene triggers to Adafruit IO cloud MQTT actions
               </div>
@@ -174,7 +174,8 @@
           </p>
 
           <div class="video-box">
-            <video controls playsinline preload="metadata" poster="assets/images/task3_hw1.jpg">
+            <video controls playsinline preload="metadata" poster="task3_hw1.jpg" onerror="if(!this.dataset.t){this.dataset.t=1;this.poster='assets/images/task3_hw1.jpg';}">
+              <source src="task3_video.mp4" type="video/mp4">
               <source src="assets/videos/task3_video.mp4" type="video/mp4">
               Your browser does not support HTML5 video playback.
             </video>

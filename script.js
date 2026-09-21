@@ -1,26 +1,42 @@
-/**
- * Resilient Image & Video Asset Fallback Handler
- * Ensures media loads seamlessly whether hosted under assets/images/ or root directory
- */
-window.addEventListener('error', function(e) {
-  const el = e.target;
-  if (el && el.tagName === 'IMG' && el.src) {
-    if (el.src.includes('assets/images/') && !el.dataset.retried) {
-      el.dataset.retried = 'true';
-      const filename = el.src.split('/').pop();
-      el.src = filename;
+// Universal Auto-Recovery for Images & Videos (Bridges GitHub Pages root & assets/ directory)
+window.addEventListener('error', function (e) {
+  const target = e.target;
+  if (!target || target.dataset.recovered) return;
+  target.dataset.recovered = '1';
+
+  if (target.tagName === 'IMG') {
+    const src = target.getAttribute('src') || '';
+    if (src.includes('assets/images/')) {
+      target.src = src.replace('assets/images/', '');
+    } else if (!src.includes('/') && !src.startsWith('http')) {
+      target.src = 'assets/images/' + src;
     }
-  } else if (el && (el.tagName === 'VIDEO' || el.tagName === 'SOURCE') && el.src) {
-    if (el.src.includes('assets/videos/') && !el.dataset.retried) {
-      el.dataset.retried = 'true';
-      const filename = el.src.split('/').pop();
-      el.src = filename;
-      if (el.parentElement && el.parentElement.tagName === 'VIDEO') {
-        el.parentElement.load();
-      }
+  } else if (target.tagName === 'SOURCE') {
+    const src = target.getAttribute('src') || '';
+    if (src.includes('assets/videos/')) {
+      target.src = src.replace('assets/videos/', '');
+      const parent = target.parentElement;
+      if (parent && parent.load) parent.load();
+    } else if (!src.includes('/') && !src.startsWith('http')) {
+      target.src = 'assets/videos/' + src;
+      const parent = target.parentElement;
+      if (parent && parent.load) parent.load();
+    }
+  } else if (target.tagName === 'VIDEO') {
+    const poster = target.getAttribute('poster') || '';
+    if (poster.includes('assets/images/')) {
+      target.poster = poster.replace('assets/images/', '');
+    } else if (!poster.includes('/') && !poster.startsWith('http')) {
+      target.poster = 'assets/images/' + poster;
     }
   }
 }, true);
+
+/**
+ * ELAKIYA K S — PERSONAL PORTFOLIO & PROTOSEM JOURNAL
+ * Interactive Logic: Sticky Nav, Mobile Menu, Scroll Reveals,
+ * Image Lightbox Modal, Contact Form Handler, & Template Clipboard
+ */
 
 document.addEventListener('DOMContentLoaded', () => {
   // 1. Sticky Navigation on Scroll

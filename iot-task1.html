@@ -107,7 +107,7 @@
           <div class="iot-media-grid">
             <!-- Photo 1: Lab Workstation Coding -->
             <div class="iot-photo-card">
-              <img src="assets/images/task1_lab.jpg" alt="Elakiya programming ESP32 in Arduino IDE at lab workstation">
+              <img src="assets/images/task1_lab.jpg" alt="Elakiya programming ESP32 in Arduino IDE at lab workstation" onerror="if(!this.dataset.t){this.dataset.t=1;this.src=this.src.includes('assets/images/')?this.src.replace('assets/images/',''):'assets/images/'+this.src;}">
               <div class="iot-photo-tag">
                 📷 Lab Workstation &bull; Elakiya programming ESP32 in Arduino IDE
               </div>
@@ -115,7 +115,7 @@
 
             <!-- Photo 2: Live ESP32 LED Glowing & Web Interface -->
             <div class="iot-photo-card">
-              <img src="assets/images/task1_web_led.jpg" alt="ESP32 Inbuilt LED glowing with web control page in background">
+              <img src="assets/images/task1_web_led.jpg" alt="ESP32 Inbuilt LED glowing with web control page in background" onerror="if(!this.dataset.t){this.dataset.t=1;this.src=this.src.includes('assets/images/')?this.src.replace('assets/images/',''):'assets/images/'+this.src;}">
               <div class="iot-photo-tag">
                 💡 Live Actuation &bull; Inbuilt LED glowing with "ESP32 LED Control" web page at 192.168.56.206
               </div>
@@ -134,7 +134,8 @@
           </p>
 
           <div class="video-box">
-            <video controls playsinline preload="metadata" poster="assets/images/task1_web_led.jpg">
+            <video controls playsinline preload="metadata" poster="task1_web_led.jpg" onerror="if(!this.dataset.t){this.dataset.t=1;this.poster='assets/images/task1_web_led.jpg';}">
+              <source src="task1_video.mp4" type="video/mp4">
               <source src="assets/videos/task1_video.mp4" type="video/mp4">
               Your browser does not support HTML5 video playback.
             </video>

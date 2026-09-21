@@ -107,7 +107,7 @@
           <div class="iot-media-grid" style="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));">
             <!-- Photo 1: Physical Soldered Hardware Board -->
             <div class="iot-photo-card" style="grid-column: 1 / -1;">
-              <img src="assets/images/task2_hardware.jpg" alt="Perfboard circuit verified with handwritten pink tag 'ELAKIYA K S'">
+              <img src="assets/images/task2_hardware.jpg" alt="Perfboard circuit verified with handwritten pink tag 'ELAKIYA K S'" onerror="if(!this.dataset.t){this.dataset.t=1;this.src=this.src.includes('assets/images/')?this.src.replace('assets/images/',''):'assets/images/'+this.src;}">
               <div class="iot-photo-tag">
                 🏷️ Hardware Verification &bull; Custom soldered perfboard circuit verified with handwritten pink label &quot;ELAKIYA &middot; K &middot; S&quot;, tactile push button, transistor switch, and LED
               </div>
@@ -115,7 +115,7 @@
 
             <!-- Screenshot 1: Adafruit IO Dashboards List -->
             <div class="iot-photo-card">
-              <img src="assets/images/task2_dashboards_list.png" alt="Adafruit IO Dashboards list showing bulb dashboard by Elakiya KS">
+              <img src="assets/images/task2_dashboards_list.png" alt="Adafruit IO Dashboards list showing bulb dashboard by Elakiya KS" onerror="if(!this.dataset.t){this.dataset.t=1;this.src=this.src.includes('assets/images/')?this.src.replace('assets/images/',''):'assets/images/'+this.src;}">
               <div class="iot-photo-tag">
                 ☁️ Adafruit IO Dashboards &bull; Elakiya KS account (<code>elaks_22</code>) showing the <code>bulb</code> dashboard created on September 11, 2026
               </div>
@@ -123,7 +123,7 @@
 
             <!-- Screenshot 2: Creating New Block -->
             <div class="iot-photo-card">
-              <img src="assets/images/task2_block_create.png" alt="Creating a new block in Adafruit IO bulb dashboard">
+              <img src="assets/images/task2_block_create.png" alt="Creating a new block in Adafruit IO bulb dashboard" onerror="if(!this.dataset.t){this.dataset.t=1;this.src=this.src.includes('assets/images/')?this.src.replace('assets/images/',''):'assets/images/'+this.src;}">
               <div class="iot-photo-tag">
                 ⚙️ Block Configuration &bull; Adding and configuring the interactive Toggle Switch block for the <code>bulb</code> feed
               </div>
@@ -131,7 +131,7 @@
 
             <!-- Screenshot 3: Dashboard OFF State -->
             <div class="iot-photo-card">
-              <img src="assets/images/task2_dashboard_off.png" alt="Adafruit IO bulb dashboard in OFF state">
+              <img src="assets/images/task2_dashboard_off.png" alt="Adafruit IO bulb dashboard in OFF state" onerror="if(!this.dataset.t){this.dataset.t=1;this.src=this.src.includes('assets/images/')?this.src.replace('assets/images/',''):'assets/images/'+this.src;}">
               <div class="iot-photo-tag">
                 🔴 Cloud Actuation (OFF) &bull; Live Adafruit IO <code>bulb</code> dashboard displaying the actuator switch in OFF state
               </div>
@@ -139,7 +139,7 @@
 
             <!-- Screenshot 4: Dashboard ON State -->
             <div class="iot-photo-card">
-              <img src="assets/images/task2_dashboard_on.png" alt="Adafruit IO bulb dashboard in ON state">
+              <img src="assets/images/task2_dashboard_on.png" alt="Adafruit IO bulb dashboard in ON state" onerror="if(!this.dataset.t){this.dataset.t=1;this.src=this.src.includes('assets/images/')?this.src.replace('assets/images/',''):'assets/images/'+this.src;}">
               <div class="iot-photo-tag">
                 🟢 Cloud Actuation (ON) &bull; Live Adafruit IO <code>bulb</code> dashboard displaying the actuator switch in ON state
               </div>
@@ -158,7 +158,8 @@
           </p>
 
           <div class="video-box">
-            <video controls playsinline preload="metadata" poster="assets/images/task2_hardware.jpg">
+            <video controls playsinline preload="metadata" poster="task2_hardware.jpg" onerror="if(!this.dataset.t){this.dataset.t=1;this.poster='assets/images/task2_hardware.jpg';}">
+              <source src="task2_video.mp4" type="video/mp4">
               <source src="assets/videos/task2_video.mp4" type="video/mp4">
               Your browser does not support HTML5 video playback.
             </video>
